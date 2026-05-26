@@ -324,6 +324,7 @@ export default function ShandayaiLandingPageV2() {
             <a href="#architecture" className="hover:text-white">Architecture</a>
             <a href="#workflow" className="hover:text-white">Workflow</a>
             <a href="#trust" className="hover:text-white">Trust</a>
+            <a href="/blog" className="hover:text-white">Blog</a>
           </nav>
           <button className="rounded-2xl border border-cyan-300/30 bg-cyan-300/10 px-4 py-2 text-sm font-medium text-cyan-200 hover:bg-cyan-300/20">
             Request Preview
