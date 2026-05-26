@@ -1,28 +1,4 @@
-import {
-  Activity,
-  ArrowRight,
-  Brain,
-  BrainCircuit,
-  Camera,
-  CheckCircle2,
-  CircuitBoard,
-  Clock,
-  FileChartColumn,
-  FileText,
-  GitBranch,
-  Layers3,
-  LockKeyhole,
-  Network,
-  Radio,
-  Rocket,
-  Shield,
-  ShieldCheck,
-  Sparkles,
-  TrendingUp,
-  Users,
-  Zap,
-} from "lucide-react";
-
+import { ArrowRight, BrainCircuit, CheckCircle2, CircuitBoard, GitBranch, Layers3, LockKeyhole, Network, ShieldCheck, Sparkles, Zap } from "lucide-react";
 
 const platformLayers = [
   {
@@ -79,131 +55,6 @@ const capabilities = [
     desc: "Every recommendation should be explainable, traceable, and controlled before moving toward automation.",
   },
 ];
-
-const executiveFlow = [
-  {
-    label: "Any Signal",
-    desc: "Logs, metrics, traces, screens, APIs, events, and operational signals.",
-    icon: <Activity className="h-7 w-7" />,
-    tone: "from-violet-400 to-purple-500",
-  },
-  {
-    label: "Semantic Understanding",
-    desc: "Normalize signals into entities, events, relationships, and context.",
-    icon: <Brain className="h-7 w-7" />,
-    tone: "from-purple-400 to-fuchsia-500",
-  },
-  {
-    label: "Causal Intelligence",
-    desc: "Build timelines, infer relationships, and identify likely root causes.",
-    icon: <Network className="h-7 w-7" />,
-    tone: "from-blue-400 to-cyan-500",
-  },
-  {
-    label: "Insights & Explanations",
-    desc: "Generate evidence-backed RCA, impact analysis, and what happened.",
-    icon: <FileChartColumn className="h-7 w-7" />,
-    tone: "from-cyan-400 to-teal-500",
-  },
-  {
-    label: "Actions & Automation",
-    desc: "Enable recommendations, alerts, workflows, integrations, and remediation.",
-    icon: <Rocket className="h-7 w-7" />,
-    tone: "from-emerald-400 to-green-500",
-  },
-];
-
-const outcomeCards = [
-  {
-    title: "Resolve Issues Faster",
-    desc: "Reduce MTTR and downtime",
-    icon: <Clock className="h-5 w-5" />,
-  },
-  {
-    title: "Improve Reliability",
-    desc: "Prevent recurrence and risk",
-    icon: <Shield className="h-5 w-5" />,
-  },
-  {
-    title: "Increase Efficiency",
-    desc: "Automate insights to actions",
-    icon: <TrendingUp className="h-5 w-5" />,
-  },
-  {
-    title: "Scale with Confidence",
-    desc: "Enterprise-grade and extensible",
-    icon: <Users className="h-5 w-5" />,
-  },
-];
-
-function ExecutiveVisionVisual() {
-  return (
-    <section id="vision" className="mx-auto max-w-7xl px-6 pb-24 lg:px-8">
-      <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.03] p-8 shadow-2xl shadow-cyan-950/30">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(124,58,237,0.20),transparent_28%),radial-gradient(circle_at_80%_30%,rgba(34,211,238,0.18),transparent_30%)]" />
-
-        <div className="relative">
-          <div className="mb-10 text-center">
-            <div className="mx-auto mb-5 inline-flex rounded-full border border-purple-300/30 bg-purple-300/10 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-purple-200">
-              Level 1 Vision
-            </div>
-
-            <h2 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-              Operational Intelligence. Causal Clarity. Confident Actions.
-            </h2>
-
-            <p className="mx-auto mt-5 max-w-3xl text-lg leading-8 text-slate-400">
-              Shandayai transforms operational signals into evidence-backed insights
-              so teams can prevent issues, resolve faster, and operate with confidence.
-            </p>
-          </div>
-
-          <div className="grid gap-4 lg:grid-cols-5">
-            {executiveFlow.map((item, index) => (
-              <div key={item.label} className="relative">
-                <div className="flex h-full flex-col rounded-3xl border border-white/10 bg-slate-950/70 p-6 text-center backdrop-blur">
-                  <div
-                    className={`mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br ${item.tone} text-slate-950 shadow-lg`}
-                  >
-                    {item.icon}
-                  </div>
-
-                  <h3 className="mt-5 text-base font-semibold uppercase tracking-wide text-white">
-                    {item.label}
-                  </h3>
-
-                  <p className="mt-3 text-sm leading-6 text-slate-400">
-                    {item.desc}
-                  </p>
-                </div>
-
-                {index < executiveFlow.length - 1 && (
-                  <div className="absolute right-[-1.25rem] top-1/2 z-10 hidden -translate-y-1/2 text-cyan-300 lg:block">
-                    <ArrowRight className="h-6 w-6" />
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-8 grid gap-4 rounded-3xl border border-white/10 bg-white/[0.04] p-5 sm:grid-cols-2 lg:grid-cols-4">
-            {outcomeCards.map((item) => (
-              <div key={item.title} className="flex items-start gap-4">
-                <div className="rounded-2xl bg-cyan-300/10 p-3 text-cyan-300 ring-1 ring-cyan-300/20">
-                  {item.icon}
-                </div>
-                <div>
-                  <h4 className="font-semibold text-white">{item.title}</h4>
-                  <p className="mt-1 text-sm text-slate-400">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
 
 function ArchitectureVisual() {
   return (
@@ -319,7 +170,6 @@ export default function ShandayaiLandingPageV2() {
             <div className="text-lg font-semibold tracking-tight">Shandayai</div>
           </div>
           <nav className="hidden items-center gap-8 text-sm text-slate-300 md:flex">
-            <a href="#vision" className="hover:text-white">Vision</a>
             <a href="#platform" className="hover:text-white">Platform</a>
             <a href="#architecture" className="hover:text-white">Architecture</a>
             <a href="#workflow" className="hover:text-white">Workflow</a>
@@ -366,8 +216,6 @@ export default function ShandayaiLandingPageV2() {
             </div>
           </div>
         </section>
-
-        <ExecutiveVisionVisual />
 
         <section id="platform" className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
