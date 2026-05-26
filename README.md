@@ -18,9 +18,23 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 npm run build
 ```
 
+The build is configured as a static export for Cloudflare Pages and writes to:
+
+```text
+out/
+```
+
 ## Deployment
 
-Deploy through Vercel and connect the GoDaddy-managed domain:
+Deploy through Cloudflare Pages with:
+
+```text
+Build command: npm run build
+Output directory: out
+Node version: 22
+```
+
+Then connect the GoDaddy-managed domain:
 
 - `shandayai.com`
 - `www.shandayai.com`
