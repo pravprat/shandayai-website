@@ -1,6 +1,16 @@
-<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="64" height="64" rx="18" fill="#030712"/>
-  <path d="M18 42C22.5 29.5 29.5 22.5 42 18C37.5 30.5 30.5 37.5 18 42Z" fill="#67E8F9"/>
-  <circle cx="42" cy="18" r="5" fill="#A78BFA"/>
-  <circle cx="18" cy="42" r="5" fill="#22D3EE"/>
+<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="64" height="64" rx="16" fill="#020617"/>
+  <defs>
+    <linearGradient id="g" x1="8" y1="8" x2="56" y2="56">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="50%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#a855f7"/>
+    </linearGradient>
+  </defs>
+  <path d="M14 18L28 8H50L36 18H14Z" fill="url(#g)"/>
+  <path d="M14 18L28 28H50L36 18H14Z" fill="url(#g)" opacity="0.9"/>
+  <path d="M14 46L28 36H50L36 46H14Z" fill="url(#g)" opacity="0.95"/>
+  <path d="M14 46L28 56H50L36 46H14Z" fill="url(#g)" opacity="0.75"/>
+  <path d="M18 32L31 23H47L34 32H18Z" fill="white" opacity="0.16"/>
+  <path d="M18 32L31 41H47L34 32H18Z" fill="white" opacity="0.10"/>
 </svg>
