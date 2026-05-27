@@ -9,6 +9,8 @@ type Props = {
   };
 };
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return articles.map((article) => ({
     slug: article.slug,
