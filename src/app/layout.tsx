@@ -32,7 +32,7 @@ export const metadata: Metadata = {
       "Operational intelligence, deterministic AI, and agentic infrastructure systems.",
   },
   icons: {
-    icon: "/icon.svg",
+    icon: "/icon.png",
   },
 };
 

@@ -43,5 +43,6 @@ Then connect the GoDaddy-managed domain:
 
 - Landing page: `src/app/page.tsx`
 - Metadata: `src/app/layout.tsx`
-- Favicon: `public/icon.svg`
+- Logo: `public/shandayai-logo.png`
+- Favicon: `public/icon.png`
 
