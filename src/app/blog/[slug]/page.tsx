@@ -4,9 +4,9 @@ import { ArrowLeft, Layers3 } from "lucide-react";
 import { articles } from "../articles";
 
 type Props = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
 export const dynamicParams = false;
@@ -17,8 +17,9 @@ export function generateStaticParams() {
   }));
 }
 
-export function generateMetadata({ params }: Props) {
-  const article = articles.find((item) => item.slug === params.slug);
+export async function generateMetadata({ params }: Props) {
+  const { slug } = await params;
+  const article = articles.find((item) => item.slug === slug);
 
   if (!article) {
     return {};
@@ -30,8 +31,9 @@ export function generateMetadata({ params }: Props) {
   };
 }
 
-export default function BlogArticlePage({ params }: Props) {
-  const article = articles.find((item) => item.slug === params.slug);
+export default async function BlogArticlePage({ params }: Props) {
+  const { slug } = await params;
+  const article = articles.find((item) => item.slug === slug);
 
   if (!article) {
     notFound();
