@@ -1,0 +1,6 @@
+# Static Next.js export — deploy the `out/` folder (NOT OpenNext / Workers SSR).
+name = "shandayai-website"
+compatibility_date = "2024-12-01"
+
+[assets]
+directory = "./out"
