@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Layers3 } from "lucide-react";
 import { articles } from "../articles";
+import SiteHeader from "../../components/SiteHeader";
 
 type Props = {
   params: Promise<{
@@ -41,6 +42,8 @@ export default async function BlogArticlePage({ params }: Props) {
 
   return (
     <main className="min-h-screen bg-[#030712] text-white">
+      <SiteHeader />
+
       <article className="mx-auto max-w-4xl px-6 py-20 lg:px-8">
         <Link
           href="/blog"

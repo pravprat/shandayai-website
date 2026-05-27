@@ -14,12 +14,11 @@ import {
   Rocket,
   Shield,
   ShieldCheck,
-  Sparkles,
   TrendingUp,
   Users,
   Zap,
 } from "lucide-react";
-import Link from "next/link";
+import SiteHeader from "./components/SiteHeader";
 
 
 const platformLayers = [
@@ -308,27 +307,7 @@ function RemediationVisual() {
 export default function ShandayaiLandingPageV2() {
   return (
     <div className="min-h-screen bg-[#030712] text-white">
-      <header className="sticky top-0 z-50 border-b border-white/10 bg-[#030712]/80 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-cyan-400 text-slate-950">
-              <Sparkles className="h-5 w-5" />
-            </div>
-            <div className="text-lg font-semibold tracking-tight">Shandayai</div>
-          </div>
-          <nav className="hidden items-center gap-8 text-sm text-slate-300 md:flex">
-            <a href="#vision" className="hover:text-white">Vision</a>
-            <a href="#platform" className="hover:text-white">Platform</a>
-            <a href="#architecture" className="hover:text-white">Architecture</a>
-            <a href="#workflow" className="hover:text-white">Workflow</a>
-            <a href="#trust" className="hover:text-white">Trust</a>
-            <Link href="/blog" className="hover:text-white">Blog</Link>
-          </nav>
-          <button className="rounded-2xl border border-cyan-300/30 bg-cyan-300/10 px-4 py-2 text-sm font-medium text-cyan-200 hover:bg-cyan-300/20">
-            Request Preview
-          </button>
-        </div>
-      </header>
+      <SiteHeader />
 
       <main>
         <section className="relative overflow-hidden">
@@ -466,7 +445,7 @@ export default function ShandayaiLandingPageV2() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-5xl px-6 py-24 text-center lg:px-8">
+        <section id="contact" className="mx-auto max-w-5xl px-6 py-24 text-center lg:px-8">
           <div className="rounded-[2rem] border border-cyan-300/20 bg-cyan-300/10 p-10 shadow-2xl shadow-cyan-950/30">
             <GitBranch className="mx-auto h-10 w-10 text-cyan-300" />
             <h2 className="mt-6 text-4xl font-semibold tracking-tight">Build the intelligence layer between alerts and action.</h2>

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, BookOpen } from "lucide-react";
 import { articles } from "./articles";
+import SiteHeader from "../components/SiteHeader";
 
 export const metadata = {
   title: "Shandayai Blog",
@@ -11,6 +12,8 @@ export const metadata = {
 export default function BlogPage() {
   return (
     <main className="min-h-screen bg-[#030712] text-white">
+      <SiteHeader />
+
       <section className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
         <div className="max-w-4xl">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-300/20 bg-cyan-300/10 px-4 py-2 text-sm text-cyan-200">
