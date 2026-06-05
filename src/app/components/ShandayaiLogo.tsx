@@ -7,9 +7,9 @@ export function ShandayaiLogo() {
       <Image
         src="/ShandayAI.png"
         alt="ShandayAI"
-        width={320}
-        height={96}
-        className="h-12 w-auto md:h-14"
+        width={360}
+        height={108}
+        className="h-14 w-auto md:h-16"
         priority
       />
     </Link>
