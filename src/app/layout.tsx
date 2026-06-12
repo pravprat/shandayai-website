@@ -16,11 +16,11 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://shandayai.com"),
   title: "ShandayAI — Enterprise AI Advisory & Semantic Intelligence Platforms",
   description:
-    "ShandayAI helps enterprises move from AI experimentation to governed, production-ready systems through AI advisory, SCRCA, and semantic intelligence platforms.",
+    "ShandayAI helps enterprises move from AI experiments to governed, production-ready AI systems through executive AI advisory, platform architecture, and semantic intelligence platforms.",
   openGraph: {
     title: "ShandayAI — Enterprise AI Advisory & Semantic Intelligence Platforms",
     description:
-      "AI strategy, platform architecture, SCRCA, and semantic intelligence for measurable enterprise impact.",
+      "Executive AI advisory and semantic intelligence platforms for governed, measurable enterprise AI operating systems.",
     url: "https://shandayai.com",
     siteName: "ShandayAI",
     type: "website",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "ShandayAI",
     description:
-      "Enterprise AI advisory and semantic intelligence platforms for governed, production-ready AI systems.",
+      "Enterprise AI advisory and semantic intelligence platforms — SCRCA, SIP, and governed AI operating systems.",
   },
   icons: {
     icon: "/icon.png",
