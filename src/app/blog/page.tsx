@@ -4,9 +4,9 @@ import { articles } from "./articles";
 import SiteHeader from "../components/SiteHeader";
 
 export const metadata = {
-  title: "Shandayai Blog",
+  title: "Blog | ShandayAI",
   description:
-    "Technical writing on operational intelligence, deterministic AI, semantic infrastructure, and agentic operations.",
+    "Technical writing on semantic intelligence, operational AI, deterministic RCA, and enterprise AI strategy.",
 };
 
 export default function BlogPage() {
@@ -22,12 +22,12 @@ export default function BlogPage() {
           </div>
 
           <h1 className="text-5xl font-semibold tracking-tight sm:text-6xl">
-            Thinking in public about intelligent operations.
+            Thinking on semantic intelligence and enterprise AI.
           </h1>
 
           <p className="mt-6 max-w-3xl text-xl leading-9 text-slate-400">
-            Architecture notes on operational intelligence, deterministic RCA,
-            semantic infrastructure context, and agentic AI systems.
+            Architecture notes on operational intelligence, deterministic RCA, semantic
+            infrastructure context, agentic AI systems, and enterprise AI strategy.
           </p>
         </div>
 

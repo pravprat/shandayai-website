@@ -14,22 +14,22 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://shandayai.com"),
-  title: "Shandayai",
+  title: "ShandayAI — Enterprise AI Advisory & Semantic Intelligence Platforms",
   description:
-    "Operational intelligence, deterministic AI, and agentic infrastructure systems.",
+    "ShandayAI helps enterprises move from AI experimentation to governed, production-ready systems through AI advisory, SCRCA, and semantic intelligence platforms.",
   openGraph: {
-    title: "Shandayai",
+    title: "ShandayAI — Enterprise AI Advisory & Semantic Intelligence Platforms",
     description:
-      "Operational intelligence, deterministic AI, and agentic infrastructure systems.",
+      "AI strategy, platform architecture, SCRCA, and semantic intelligence for measurable enterprise impact.",
     url: "https://shandayai.com",
-    siteName: "Shandayai",
+    siteName: "ShandayAI",
     type: "website",
   },
   twitter: {
     card: "summary",
-    title: "Shandayai",
+    title: "ShandayAI",
     description:
-      "Operational intelligence, deterministic AI, and agentic infrastructure systems.",
+      "Enterprise AI advisory and semantic intelligence platforms for governed, production-ready AI systems.",
   },
   icons: {
     icon: "/icon.png",
