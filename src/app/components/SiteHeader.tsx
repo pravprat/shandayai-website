@@ -3,9 +3,8 @@ import { ShandayaiLogo } from "./ShandayaiLogo";
 
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/#advisory", label: "AI Advisory" },
-  { href: "/#platforms", label: "Semantic Platforms" },
-  { href: "/#use-cases", label: "Use Cases" },
+  { href: "/advisory", label: "AI Strategy" },
+  { href: "/platforms", label: "Semantic Platforms" },
   { href: "/#about", label: "About" },
 ];
 
@@ -15,7 +14,7 @@ export default function SiteHeader() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
         <ShandayaiLogo />
 
-        <nav className="hidden items-center gap-6 text-sm text-slate-300 lg:flex xl:gap-8">
+        <nav className="hidden items-center gap-6 text-sm text-slate-300 md:flex lg:gap-8">
           {navLinks.map((link) => (
             <Link key={link.href} href={link.href} className="hover:text-white">
               {link.label}

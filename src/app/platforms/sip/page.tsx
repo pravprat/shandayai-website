@@ -6,7 +6,7 @@ import SiteFooter from "../../components/SiteFooter";
 import ContactSection from "../../components/ContactSection";
 
 export const metadata: Metadata = {
-  title: "SIP — Semantic Intelligence Platform | ShandayAI",
+  title: "SIP — Semantic Intelligence Pilot | ShandayAI",
   description:
     "Enterprise knowledge, semantic retrieval, and evidence-backed reasoning for trusted AI decision support.",
 };
@@ -44,18 +44,19 @@ export default function SipPage() {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(139,92,246,0.24),transparent_28%),radial-gradient(circle_at_80%_20%,rgba(34,211,238,0.16),transparent_30%),linear-gradient(to_bottom,transparent,rgba(3,7,18,1))]" />
           <div className="relative mx-auto max-w-7xl px-6 py-24 lg:px-8 lg:py-32">
             <div className="mx-auto max-w-4xl text-center">
-              <div className="mx-auto mb-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-slate-300">
-                Semantic Intelligence Platforms
+              <div className="mx-auto mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-slate-300">
+                Semantic Intelligence Pilot
               </div>
-              <h1 className="text-5xl font-semibold tracking-tight sm:text-6xl lg:text-7xl">
+              <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
                 SIP
                 <span className="block bg-gradient-to-r from-purple-300 via-blue-400 to-cyan-300 bg-clip-text text-transparent">
                   Semantic Intelligence Platform
                 </span>
               </h1>
-              <p className="mx-auto mt-8 max-w-3xl text-xl leading-9 text-slate-300">
-                For organizations that need AI systems that reason over complex enterprise data,
-                documents, workflows, and domain context — with evidence, lineage, and auditability.
+              <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300">
+                A pilot service for enterprise knowledge and workflow intelligence — building
+                AI-ready semantic context layers with evidence-backed reasoning. Available for
+                targeted design partner engagements.
               </p>
             </div>
           </div>

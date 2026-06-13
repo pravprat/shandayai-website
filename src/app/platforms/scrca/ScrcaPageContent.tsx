@@ -321,18 +321,18 @@ export default function ScrcaPageContent() {
           <div className="relative mx-auto max-w-7xl px-6 py-24 lg:px-8 lg:py-32">
             <div className="mx-auto max-w-5xl text-center">
               <div className="mx-auto mb-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-slate-300">
-                Semantic Intelligence Platforms
+                Semantic RCA Pilot
               </div>
-              <h1 className="text-5xl font-semibold tracking-tight sm:text-6xl lg:text-7xl">
+              <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
                 SCRCA
                 <span className="block bg-gradient-to-r from-cyan-300 via-blue-400 to-purple-400 bg-clip-text text-transparent">
                   Semantic Root Cause Analysis
                 </span>
               </h1>
-              <p className="mx-auto mt-8 max-w-3xl text-xl leading-9 text-slate-300">
-                Evidence-backed root cause analysis for observability, logs, incidents, and
-                operational intelligence — built to turn alerts and system signals into trusted
-                diagnosis and governed action.
+              <p className="mx-auto mt-8 max-w-3xl text-lg leading-8 text-slate-300">
+                An emerging platform capability for evidence-backed root cause analysis —
+                available for targeted pilots across observability, logs, incidents, and
+                operational intelligence.
               </p>
               <div className="mt-10 flex flex-wrap justify-center gap-4">
                 <a
