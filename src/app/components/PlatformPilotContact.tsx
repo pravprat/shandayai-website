@@ -1,5 +1,5 @@
 import { Mail } from "lucide-react";
-import { EMAIL_SALES } from "./contact";
+import { EMAIL_PLATFORMS } from "./contact";
 
 type PlatformPilotContactProps = {
   product?: "SCRCA" | "SIP" | "platforms";
@@ -19,13 +19,13 @@ export default function PlatformPilotContact({ product = "platforms" }: Platform
         <h2 className="text-2xl font-semibold tracking-tight">Discuss a pilot</h2>
         <p className="mt-4 text-base leading-7 text-slate-400">{message}</p>
         <a
-          href={`mailto:${EMAIL_SALES}?subject=${encodeURIComponent(
+          href={`mailto:${EMAIL_PLATFORMS}?subject=${encodeURIComponent(
             product === "platforms" ? "Semantic platform pilot inquiry" : `${product} pilot inquiry`,
           )}`}
           className="mt-6 inline-flex items-center gap-2 rounded-2xl bg-cyan-300 px-6 py-3 font-semibold text-slate-950 hover:bg-cyan-200"
         >
           <Mail className="h-5 w-5" />
-          {EMAIL_SALES}
+          {EMAIL_PLATFORMS}
         </a>
       </div>
     </section>
