@@ -114,7 +114,7 @@ export default function SipPage() {
           </div>
         </section>
 
-        <ContactSection />
+        <ContactSection variant="platforms" />
       </main>
 
       <SiteFooter />

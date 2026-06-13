@@ -20,6 +20,7 @@ import Link from "next/link";
 import SiteHeader from "../../components/SiteHeader";
 import SiteFooter from "../../components/SiteFooter";
 import ContactSection from "../../components/ContactSection";
+import { EMAIL_SALES } from "../../components/contact";
 
 const platformLayers = [
   {
@@ -334,12 +335,12 @@ export default function ScrcaPageContent() {
                 diagnosis and governed action.
               </p>
               <div className="mt-10 flex flex-wrap justify-center gap-4">
-                <Link
-                  href="/#contact"
+                <a
+                  href={`mailto:${EMAIL_SALES}`}
                   className="rounded-2xl bg-cyan-300 px-6 py-3 font-semibold text-slate-950 hover:bg-cyan-200"
                 >
-                  Request Platform Preview
-                </Link>
+                  Contact Platform Team
+                </a>
                 <Link
                   href="/platforms"
                   className="rounded-2xl border border-white/10 bg-white/[0.03] px-6 py-3 font-semibold text-white hover:bg-white/[0.06]"
@@ -519,7 +520,7 @@ export default function ScrcaPageContent() {
           </div>
         </section>
 
-        <ContactSection />
+        <ContactSection variant="platforms" />
       </main>
 
       <SiteFooter />

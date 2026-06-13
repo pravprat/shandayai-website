@@ -1,21 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import {
-  ArrowRight,
-  BookOpen,
-  Brain,
-  Building2,
-  Cloud,
-  Compass,
-  Layers3,
-  Scale,
-  Shield,
-  Sparkles,
-  Users,
-} from "lucide-react";
+import { ArrowRight, Brain, Building2, Cloud, Compass, Layers3, Scale, Shield, Sparkles, Users } from "lucide-react";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
 import ContactSection from "../components/ContactSection";
+import { EMAIL_ADVISORY } from "../components/contact";
 
 export const metadata: Metadata = {
   title: "AI Advisory & Strategy | ShandayAI",
@@ -165,17 +154,17 @@ export default function AdvisoryPage() {
                 enterprise.
               </p>
               <Link
-                href="/#contact"
+                href={`mailto:${EMAIL_ADVISORY}`}
                 className="mt-6 inline-flex items-center gap-2 text-purple-300 hover:text-purple-200"
               >
-                Start an advisory conversation
+                Email {EMAIL_ADVISORY}
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
           </div>
         </section>
 
-        <ContactSection />
+        <ContactSection variant="advisory" />
       </main>
 
       <SiteFooter />

@@ -149,7 +149,7 @@ export default function PlatformsPage() {
           </div>
         </section>
 
-        <ContactSection />
+        <ContactSection variant="platforms" />
       </main>
 
       <SiteFooter />
