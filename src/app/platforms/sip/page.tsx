@@ -7,23 +7,80 @@ import {
   CheckCircle2,
   Database,
   FileText,
+  GitBranch,
   Layers3,
   Mail,
   Scale,
+  Search,
+  ShieldCheck,
   Sparkles,
   Users,
 } from "lucide-react";
 import SiteHeader from "../../components/SiteHeader";
 import SiteFooter from "../../components/SiteFooter";
 import PlatformPilotContact from "../../components/PlatformPilotContact";
+import { PlatformFlowVisual } from "../../components/PlatformFlowVisual";
 import { BlogRelatedSection } from "../../components/BlogRelatedSection";
 import { EMAIL_PLATFORMS } from "../../components/contact";
 
 export const metadata: Metadata = {
   title: "SIP: Semantic Intelligence Platform | ShandayAI",
   description:
-    "SIP platform pilot for enterprise knowledge: governed retrieval, semantic context, evidence-backed answers, and agent-ready context across documents, metadata, and workflows.",
+    "SIP platform pilot for enterprise knowledge: semantic context layers, governed retrieval, evidence-backed answers, and agent-ready context.",
 };
+
+const differentiationCards = [
+  "Treats retrieval as a business-context problem, not only semantic search",
+  "Adds metadata, ownership, source authority, permissions, and relationships",
+  "Supports evidence-backed answers, not opaque generation",
+  "Creates agent-ready context with governance and workflow boundaries",
+  "Helps organizations move from RAG demos to production knowledge intelligence",
+];
+
+const sipPipeline = [
+  {
+    label: "Knowledge sources",
+    desc: "Documents, policies, data catalogs, metadata, tickets, product knowledge, customer cases, workflows, and operational knowledge.",
+    icon: <Database className="h-6 w-6" />,
+    tone: "from-purple-400 to-fuchsia-500",
+  },
+  {
+    label: "Ingest and normalize",
+    desc: "Connect sources, standardize content, extract structure, and preserve source identity.",
+    icon: <FileText className="h-6 w-6" />,
+    tone: "from-fuchsia-400 to-pink-500",
+  },
+  {
+    label: "Enrich with semantic context",
+    desc: "Add entities, relationships, ownership, definitions, taxonomy, ontology, lineage, and access boundaries.",
+    icon: <Layers3 className="h-6 w-6" />,
+    tone: "from-violet-400 to-purple-500",
+  },
+  {
+    label: "Build knowledge map",
+    desc: "Connect people, processes, products, documents, systems, policies, data assets, and decisions.",
+    icon: <GitBranch className="h-6 w-6" />,
+    tone: "from-indigo-400 to-violet-500",
+  },
+  {
+    label: "Retrieve with governance",
+    desc: "Use permission-aware retrieval, metadata filters, business-context ranking, citations, and source traceability.",
+    icon: <Search className="h-6 w-6" />,
+    tone: "from-blue-400 to-indigo-500",
+  },
+  {
+    label: "Reason with evidence",
+    desc: "Generate grounded answers, alternatives, confidence signals, and evidence bundles.",
+    icon: <Brain className="h-6 w-6" />,
+    tone: "from-cyan-400 to-blue-500",
+  },
+  {
+    label: "Prepare agent-ready context",
+    desc: "Provide tool access, workflow boundaries, human approvals, escalation paths, and auditability.",
+    icon: <Sparkles className="h-6 w-6" />,
+    tone: "from-emerald-400 to-teal-500",
+  },
+];
 
 const workflowCards = [
   {
@@ -67,6 +124,7 @@ const pilotDeliverables = [
   "Evidence-backed answer workflow",
   "Access and governance model",
   "Evaluation approach",
+  "Agent-ready context plan",
   "Pilot findings and production-readiness roadmap",
 ];
 
@@ -83,34 +141,6 @@ const ragContrast = [
   {
     generic: "Treats retrieval as a search problem.",
     sip: "Treats retrieval as a business-context problem that must understand entities, relationships, policies, ownership, source quality, and workflow intent.",
-  },
-];
-
-const architectureFlow = [
-  {
-    step: 1,
-    title: "Ingest knowledge sources",
-    desc: "Documents, policies, data catalogs, metadata, tickets, product knowledge, customer cases, workflows, and operational knowledge.",
-  },
-  {
-    step: 2,
-    title: "Enrich with semantic context",
-    desc: "Entities, relationships, source authority, ownership, definitions, taxonomy, ontology, lineage, and access boundaries.",
-  },
-  {
-    step: 3,
-    title: "Retrieve with governance",
-    desc: "Permission-aware retrieval, metadata filters, business-context ranking, citations, and source traceability.",
-  },
-  {
-    step: 4,
-    title: "Reason with evidence",
-    desc: "Grounded answers, alternative hypotheses, confidence signals, and evidence bundles.",
-  },
-  {
-    step: 5,
-    title: "Prepare agent-ready context",
-    desc: "Tool access, workflow boundaries, human approvals, escalation paths, and auditability.",
   },
 ];
 
@@ -145,7 +175,7 @@ export default function SipPage() {
           <div className="relative mx-auto max-w-7xl px-6 py-24 lg:px-8 lg:py-32">
             <div className="mx-auto max-w-4xl text-center">
               <div className="mx-auto mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-slate-300">
-                Semantic Intelligence Pilot
+                Semantic Intelligence Pilot Service
               </div>
               <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
                 SIP: Semantic Intelligence Platform for Enterprise Knowledge
@@ -180,16 +210,53 @@ export default function SipPage() {
           </div>
         </section>
 
-        {/* Where SIP creates value */}
+        {/* Why different */}
+        <section className="border-t border-white/10">
+          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+              Not generic RAG. Not just enterprise search.
+            </h2>
+            <p className="mt-6 max-w-3xl text-base leading-8 text-slate-400">
+              SIP is designed to create the semantic context layer that enterprise AI needs before
+              retrieval, generation, or agentic action can be trusted. It enriches knowledge sources
+              with metadata, business entities, relationships, ownership, permissions, source
+              authority, evidence, and evaluation so AI systems can reason with context instead of
+              isolated chunks.
+            </p>
+            <div className="mt-10 grid gap-4 sm:grid-cols-2">
+              {differentiationCards.map((item) => (
+                <div
+                  key={item}
+                  className="flex items-start gap-3 rounded-xl border border-purple-300/20 bg-purple-300/5 p-4"
+                >
+                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-purple-300" />
+                  <span className="text-sm leading-6 text-slate-300">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Visual flow */}
+        <section id="flow" className="border-t border-white/10 bg-white/[0.02]">
+          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+            <PlatformFlowVisual
+              badge="Semantic Knowledge Pipeline"
+              title="From fragmented knowledge to agent-ready context"
+              subtitle="Documents, data assets, policies, cases, metadata, and workflows through governed semantic intelligence."
+              stages={sipPipeline}
+              footer="SIP is not generic RAG. SIP focuses on the semantic context layer that enterprise AI systems need before retrieval, generation, or agentic action can be trusted."
+              accent="purple"
+            />
+          </div>
+        </section>
+
+        {/* Workflow value */}
         <section className="border-t border-white/10">
           <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
             <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
               Where SIP creates value
             </h2>
-            <p className="mt-4 max-w-3xl text-slate-400">
-              SIP supports enterprise workflows where trusted retrieval, semantic context, and
-              evidence-backed reasoning matter more than generic chat responses.
-            </p>
             <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {workflowCards.map((item) => (
                 <div
@@ -209,18 +276,15 @@ export default function SipPage() {
           </div>
         </section>
 
-        {/* Pilot deliverables */}
+        {/* Deliverables */}
         <section className="border-t border-white/10 bg-white/[0.02]">
           <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
             <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
               What a SIP pilot produces
             </h2>
-            <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-10 grid gap-3 rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:grid-cols-2 lg:grid-cols-3">
               {pilotDeliverables.map((item) => (
-                <div
-                  key={item}
-                  className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3"
-                >
+                <div key={item} className="flex items-start gap-3 px-2 py-2">
                   <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-purple-300" />
                   <span className="text-sm leading-6 text-slate-300">{item}</span>
                 </div>
@@ -229,13 +293,13 @@ export default function SipPage() {
           </div>
         </section>
 
-        {/* Generic RAG vs SIP */}
+        {/* RAG contrast */}
         <section className="border-t border-white/10">
           <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
             <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
               How SIP is different from generic RAG
             </h2>
-            <div className="mt-12 space-y-6">
+            <div className="mt-12 space-y-4">
               {ragContrast.map((row, index) => (
                 <div
                   key={index}
@@ -247,7 +311,7 @@ export default function SipPage() {
                     </p>
                     <p className="mt-2 text-sm leading-6 text-slate-400">{row.generic}</p>
                   </div>
-                  <div>
+                  <div className="border-t border-white/10 pt-4 lg:border-l lg:border-t-0 lg:pl-6 lg:pt-0">
                     <p className="text-xs font-semibold uppercase tracking-wider text-purple-300">
                       SIP
                     </p>
@@ -259,37 +323,8 @@ export default function SipPage() {
           </div>
         </section>
 
-        {/* Architecture flow */}
-        <section id="flow" className="border-t border-white/10 bg-white/[0.02]">
-          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-              SIP architecture flow
-            </h2>
-            <div className="mt-12 grid gap-4 lg:grid-cols-5">
-              {architectureFlow.map((item, index) => (
-                <div key={item.step} className="relative">
-                  <div className="flex h-full flex-col rounded-2xl border border-white/10 bg-slate-950/70 p-5">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-purple-300/10 text-sm font-semibold text-purple-300 ring-1 ring-purple-300/20">
-                      {item.step}
-                    </div>
-                    <h3 className="mt-4 text-sm font-semibold leading-snug text-white">
-                      {item.title}
-                    </h3>
-                    <p className="mt-2 flex-1 text-xs leading-5 text-slate-400">{item.desc}</p>
-                  </div>
-                  {index < architectureFlow.length - 1 && (
-                    <div className="absolute right-[-0.75rem] top-1/2 z-10 hidden -translate-y-1/2 text-purple-300 lg:block">
-                      <ArrowRight className="h-4 w-4" />
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* SCRCA relationship */}
-        <section className="border-t border-white/10">
+        <section className="border-t border-white/10 bg-white/[0.02]">
           <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
             <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
               <div>
@@ -314,13 +349,13 @@ export default function SipPage() {
                 </Link>
               </div>
               <div className="rounded-2xl border border-purple-300/20 bg-purple-300/5 p-8">
-                <Layers3 className="h-8 w-8 text-purple-300" />
+                <ShieldCheck className="h-8 w-8 text-purple-300" />
                 <h3 className="mt-6 text-xl font-semibold">Why enterprises can trust the approach</h3>
                 <p className="mt-4 text-sm leading-7 text-slate-400">
-                  ShandayAI platform services are built on evidence-backed reasoning, customer
-                  data boundaries, explainability, and pilot-first validation. SIP is an emerging
-                  platform capability, not a mature marketplace product. Engagements start with
-                  scoped pilots designed to prove value before broader rollout.
+                  ShandayAI platform services are built on evidence-backed reasoning, customer data
+                  boundaries, explainability, and pilot-first validation. SIP is an emerging
+                  platform capability designed with future cloud and marketplace deployment
+                  patterns in mind.
                 </p>
               </div>
             </div>
@@ -328,7 +363,7 @@ export default function SipPage() {
         </section>
 
         {/* Thought leadership */}
-        <section className="border-t border-white/10 bg-white/[0.02]">
+        <section className="border-t border-white/10">
           <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
             <p className="text-sm font-semibold uppercase tracking-widest text-purple-300">
               Thought leadership
@@ -352,7 +387,7 @@ export default function SipPage() {
         </section>
 
         <BlogRelatedSection variant="sip" />
-        <PlatformPilotContact product="SIP" />
+        <PlatformPilotContact product="SIP" headline="Make enterprise knowledge AI-ready." />
       </main>
 
       <SiteFooter />

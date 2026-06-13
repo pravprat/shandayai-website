@@ -13,12 +13,12 @@ const defaults: Record<
   { headline: string; body: string; ctaLabel: string }
 > = {
   SCRCA: {
-    headline: "Ready to test semantic RCA on real operational data?",
+    headline: "Test semantic RCA on real operational data.",
     body: "Start with a scoped pilot using a limited set of logs, events, incidents, tickets, or observability data.",
     ctaLabel: "Discuss an SCRCA Pilot",
   },
   SIP: {
-    headline: "Need to make enterprise knowledge AI-ready?",
+    headline: "Make enterprise knowledge AI-ready.",
     body: "Start with a SIP pilot to assess your knowledge sources, metadata, retrieval quality, access boundaries, and agent-ready context.",
     ctaLabel: "Discuss a SIP Pilot",
   },
