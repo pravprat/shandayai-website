@@ -24,38 +24,38 @@ export const metadata: Metadata = {
 };
 
 const strategyQuestions = [
-  "Do your AI tools have access to trusted, governed, business-aware context?",
-  "Can your AI systems access the right data without violating data locality, security, or compliance boundaries?",
-  "Does your data carry enough business context for AI to reason correctly?",
-  "Can agents retrieve, act, escalate, and explain decisions safely?",
-  "Can you measure adoption, quality, cost, risk, and business value?",
+  "Are these tools connected to trusted enterprise data?",
+  "Can AI systems respect data locality, access boundaries, security, and compliance requirements?",
+  "Does the data carry enough business context for models and agents to reason correctly?",
+  "Are workflows designed for human approval, escalation, auditability, and rollback?",
+  "Can leaders measure quality, adoption, cost, risk, customer impact, and productivity lift?",
 ];
 
 const dataFlowStages = [
   {
-    title: "Raw enterprise data",
+    title: "Raw Enterprise Data",
     examples:
-      "Databases, warehouses, lakehouses, SaaS systems, documents, tickets, logs, events, customer interactions, product records, operational workflows",
+      "Databases, warehouses, lakehouses, SaaS systems, documents, tickets, logs, events, customer interactions, product records, financial records, policies, and operational workflows.",
   },
   {
-    title: "Data readiness pivots",
+    title: "AI-Ready Data Pivots",
     examples:
-      "Data quality, ownership, lineage, metadata, access controls, freshness, data products, data locality, compliance boundaries",
+      "Data quality, ownership, lineage, freshness, metadata, access controls, data products, data locality, privacy, compliance boundaries, and source authority.",
   },
   {
-    title: "Semantic and business context",
+    title: "Semantic and Business Context",
     examples:
-      "Business entities, customer context, product context, process context, knowledge graphs, taxonomy, ontology, retrieval boundaries, citations, source authority",
+      "Business entities, customer context, product context, process context, knowledge graphs, taxonomy, ontology, retrieval boundaries, citations, definitions, and relationships.",
   },
   {
-    title: "Models and agentic workflows",
+    title: "Models and Agentic Workflows",
     examples:
-      "RAG, semantic retrieval, model gateways, assistants, workflow agents, tool access, human approvals, evaluation gates, monitoring",
+      "RAG, semantic retrieval, model gateways, assistants, workflow agents, tool access, prompt and model versioning, human approvals, evaluation gates, and monitoring.",
   },
   {
-    title: "Validated action and value creation",
+    title: "Validated Action and Value Creation",
     examples:
-      "Customer impact, productivity lift, cost reduction, cycle-time reduction, risk reduction, better decisions, trusted automation, measurable adoption",
+      "Customer impact, productivity lift, cost reduction, cycle-time reduction, risk reduction, better decisions, trusted automation, measurable adoption, and operating leverage.",
   },
 ];
 
@@ -138,10 +138,10 @@ const engagements = [
     icon: <Compass className="h-6 w-6" />,
     title: "AI Strategy Sprint",
     duration: "2 to 4 weeks",
-    bestFor: "Executives or platform leaders who need a clear AI direction.",
+    bestFor: "Executives or platform leaders who need a clear AI direction and a practical roadmap.",
     howItWorks: [
       "Discovery with business and technology stakeholders",
-      "Current-state review of data, platforms, AI pilots, tools, and governance",
+      "Current-state review of data, platforms, AI pilots, tools, workflows, and governance",
       "Prioritization of use cases and value pools",
       "Target-state AI and data platform architecture",
       "Roadmap across quick wins, platform foundations, and longer-term capabilities",
@@ -154,39 +154,39 @@ const engagements = [
       "Risk, governance, and value measurement model",
     ],
     benefit:
-      "Leadership alignment, reduced ambiguity, and a practical roadmap for enterprise AI execution.",
+      "Leadership alignment, reduced ambiguity, and a practical path from AI pilots to enterprise AI execution.",
   },
   {
     icon: <Database className="h-6 w-6" />,
     title: "Architecture and Vendor Review",
     duration: "Focused engagement",
     bestFor:
-      "Teams evaluating vendors, cloud options, model providers, data platforms, GPU and inference architecture, observability tools, or AI workflow platforms.",
+      "Teams evaluating cloud options, data platforms, model providers, AI tools, GPU and inference architecture, observability platforms, vendor solutions, or agentic workflow platforms.",
     howItWorks: [
-      "Review current architecture and vendor landscape",
-      "Compare platform choices against business, cost, security, and operating requirements",
-      "Identify integration risks, lock-in risks, governance gaps, and scalability concerns",
+      "Review current architecture, constraints, and vendor landscape",
+      "Compare platform choices against business, cost, security, compliance, and operating requirements",
+      "Identify integration risks, lock-in risks, governance gaps, scalability issues, and cost concerns",
       "Provide recommendation options with tradeoffs",
     ],
     deliverables: [
       "Vendor and platform scorecard",
       "Architecture tradeoff analysis",
       "Cost, performance, and deployment considerations",
-      "Recommended decision path",
-      "Executive readout",
+      "Build, buy, partner recommendation",
+      "Executive decision readout",
     ],
     benefit:
-      "Better platform decisions, fewer costly wrong turns, and clearer build, buy, partner choices.",
+      "Better platform decisions, fewer costly wrong turns, and clearer technology investment choices.",
   },
   {
     icon: <BarChart3 className="h-6 w-6" />,
     title: "Fractional AI Operating Partner",
     duration: "Ongoing advisory",
     bestFor:
-      "Organizations that need senior AI and data platform leadership but are not ready for a full-time executive, or need an external operator-advisor.",
+      "Organizations that need senior AI and data platform leadership but are not ready for a full-time executive, or need an external operator-advisor to support execution.",
     howItWorks: [
       "Regular executive and platform-team advisory sessions",
-      "Roadmap and architecture reviews",
+      "AI roadmap and architecture reviews",
       "Governance and operating cadence",
       "Vendor and partner evaluation",
       "Team coaching and delivery guidance",
@@ -195,7 +195,7 @@ const engagements = [
     deliverables: [
       "Monthly operating cadence",
       "Architecture and roadmap reviews",
-      "Decision memos",
+      "Executive decision memos",
       "Governance and evaluation patterns",
       "Adoption and value-tracking framework",
     ],
@@ -287,10 +287,10 @@ export default function AdvisoryPage() {
                 infrastructure, model ecosystems, governance, and measurable adoption.
               </p>
               <p className="mx-auto mt-5 max-w-3xl text-base leading-7 text-slate-400">
-                Most organizations do not fail because they lack AI tools. They fail because
-                pilots, vendors, data platforms, security requirements, workflows, and operating
-                models are not connected. ShandayAI helps teams move from fragmented AI activity
-                to a governed, reusable, measurable AI platform strategy.
+                AI tools are not the strategy. The strategy is making enterprise data, business
+                context, governance, models, agents, and workflows work together to produce
+                validated action and measurable value. ShandayAI helps teams connect those layers
+                into a governed, reusable, measurable AI platform strategy.
               </p>
               <AdvisoryCta className="mt-10" />
               <p className="mt-5 text-sm text-slate-500">
@@ -313,9 +313,10 @@ export default function AdvisoryPage() {
             </h2>
             <div className="mt-8 space-y-5 text-base leading-8 text-slate-400">
               <p>
-                Every enterprise is experimenting with AI tools. Teams are using copilots,
-                enterprise assistants, SaaS AI features, automation platforms, model APIs, and
-                agent frameworks. But tool adoption alone does not answer the harder questions.
+                Most enterprises are already using AI tools. Teams are experimenting with copilots,
+                enterprise assistants, SaaS AI features, automation tools, model APIs, and agent
+                frameworks. That activity is useful, but it does not answer the harder enterprise
+                questions.
               </p>
             </div>
             <ul className="mt-8 space-y-4">
@@ -326,9 +327,10 @@ export default function AdvisoryPage() {
                 </li>
               ))}
             </ul>
-            <p className="mt-8 text-base leading-8 text-slate-400">
-              ShandayAI helps leaders answer these questions and convert AI activity into an
-              operating model.
+            <p className="mt-8 text-base leading-8 text-slate-300">
+              ShandayAI helps leaders move from tool adoption to an enterprise AI operating model:
+              one that connects data, context, governance, models, agents, workflows, measurement,
+              and business value.
             </p>
           </div>
         </section>
@@ -338,13 +340,13 @@ export default function AdvisoryPage() {
           <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
             <div className="max-w-3xl">
               <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-                Is your enterprise data AI-ready?
+                From raw enterprise data to validated action.
               </h2>
               <p className="mt-6 text-base leading-8 text-slate-400">
-                AI value depends on the quality, context, accessibility, and governance of
-                enterprise data. Raw data is not enough. Data must be organized, enriched,
-                governed, and connected to business meaning before models and agents can produce
-                trusted outcomes.
+                Enterprise AI value depends on whether data can be trusted, governed, enriched,
+                retrieved, reasoned over, and converted into action. Raw data alone is not enough.
+                AI-ready data needs context, ownership, quality, access boundaries, and business
+                meaning.
               </p>
             </div>
 
