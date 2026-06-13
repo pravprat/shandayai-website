@@ -31,8 +31,8 @@ export function BlogRelatedSection({ variant }: BlogRelatedSectionProps) {
 
   const intro =
     variant === "scrca"
-      ? "These articles explain the shift from observability to operational intelligence — and why deterministic, governed AI is required at enterprise scale."
-      : "These articles explain how semantic intelligence turns infrastructure data into governed, actionable insight — and why that foundation matters for enterprise AI.";
+      ? "These articles explain the shift from observability to operational intelligence, and why deterministic, governed AI is required at enterprise scale."
+      : "These articles explain how semantic intelligence turns enterprise data into governed, actionable insight, and why that foundation matters for enterprise AI.";
 
   return (
     <section className="border-t border-white/10 bg-[#030712] py-20">

@@ -5,111 +5,131 @@ import {
   BookOpen,
   Brain,
   CheckCircle2,
-  Cloud,
-  Container,
   Database,
-  GitBranch,
+  FileText,
   Layers3,
-  Plug,
-  Search,
-  ShieldCheck,
+  Mail,
+  Scale,
   Sparkles,
+  Users,
 } from "lucide-react";
 import SiteHeader from "../../components/SiteHeader";
 import SiteFooter from "../../components/SiteFooter";
 import PlatformPilotContact from "../../components/PlatformPilotContact";
 import { BlogRelatedSection } from "../../components/BlogRelatedSection";
+import { EMAIL_PLATFORMS } from "../../components/contact";
 
 export const metadata: Metadata = {
-  title: "SIP — Semantic Intelligence Pilot | ShandayAI",
+  title: "SIP: Semantic Intelligence Platform | ShandayAI",
   description:
-    "Enterprise knowledge, semantic retrieval, and evidence-backed reasoning for trusted AI decision support.",
+    "SIP platform pilot for enterprise knowledge: governed retrieval, semantic context, evidence-backed answers, and agent-ready context across documents, metadata, and workflows.",
 };
 
-const intelligenceFlow = [
+const workflowCards = [
   {
-    label: "Ingest",
-    desc: "Documents, data assets, metadata, tickets, and operational knowledge.",
+    icon: <FileText className="h-6 w-6" />,
+    title: "Product and engineering knowledge assistants",
+    desc: "Help teams retrieve grounded context across specifications, designs, documents, issues, and internal knowledge.",
+  },
+  {
+    icon: <Users className="h-6 w-6" />,
+    title: "Support and escalation intelligence",
+    desc: "Connect customer cases, known issues, product metadata, incident history, and remediation context.",
+  },
+  {
+    icon: <Scale className="h-6 w-6" />,
+    title: "Policy and compliance knowledge retrieval",
+    desc: "Provide governed retrieval across policies, procedures, controls, obligations, and decision history.",
+  },
+  {
     icon: <Database className="h-6 w-6" />,
+    title: "Data catalog and metadata intelligence",
+    desc: "Connect data assets, lineage, ownership, definitions, quality, and business meaning.",
   },
   {
-    label: "Enrich",
-    desc: "Entity extraction, relationship mapping, and semantic normalization.",
-    icon: <Layers3 className="h-6 w-6" />,
-  },
-  {
-    label: "Retrieve",
-    desc: "Context-aware search and assembly across enterprise sources.",
-    icon: <Search className="h-6 w-6" />,
-  },
-  {
-    label: "Reason",
-    desc: "Evidence-backed answers with confidence, lineage, and alternatives.",
-    icon: <Brain className="h-6 w-6" />,
-  },
-  {
-    label: "Act",
-    desc: "Agent-ready context for governed workflows and decision support.",
     icon: <Sparkles className="h-6 w-6" />,
+    title: "Sales and solution enablement",
+    desc: "Help customer-facing teams find accurate product, technical, commercial, and workflow context.",
+  },
+  {
+    icon: <Brain className="h-6 w-6" />,
+    title: "Employee and advisor workflow copilots",
+    desc: "Prepare agent-ready context for business workflows that need retrieval, reasoning, and human approval.",
   },
 ];
 
-const capabilities = [
+const pilotDeliverables = [
+  "Source inventory and ingestion plan",
+  "Domain knowledge map",
+  "Metadata and semantic enrichment strategy",
+  "Business entity and relationship model",
+  "Retrieval quality baseline",
+  "Evidence-backed answer workflow",
+  "Access and governance model",
+  "Evaluation approach",
+  "Pilot findings and production-readiness roadmap",
+];
+
+const ragContrast = [
   {
-    icon: <Search className="h-6 w-6" />,
-    title: "Semantic retrieval",
-    desc: "Move beyond keyword search to context-aware retrieval over enterprise documents, runbooks, and data catalogs.",
+    generic: "Retrieves chunks and generates answers.",
+    sip: "Builds an AI-ready semantic context layer with metadata, business meaning, relationships, permissions, source authority, evidence, and evaluation.",
   },
   {
-    icon: <GitBranch className="h-6 w-6" />,
-    title: "Knowledge graph reasoning",
-    desc: "Connect entities, relationships, and domain context into a queryable semantic layer your teams can trust.",
+    generic:
+      "Often works in a demo but struggles with trust, governance, source authority, and workflow boundaries.",
+    sip: "Focuses on production readiness, access boundaries, evidence-backed outputs, evaluation, and agent-ready context.",
   },
   {
-    icon: <ShieldCheck className="h-6 w-6" />,
-    title: "Evidence-backed outputs",
-    desc: "Every answer includes confidence, source lineage, and alternatives — built for auditability, not black-box summaries.",
-  },
-  {
-    icon: <BookOpen className="h-6 w-6" />,
-    title: "Enterprise context layer",
-    desc: "Ground LLM reasoning in structured domain knowledge, workflows, and operational metadata instead of generic prompts.",
+    generic: "Treats retrieval as a search problem.",
+    sip: "Treats retrieval as a business-context problem that must understand entities, relationships, policies, ownership, source quality, and workflow intent.",
   },
 ];
 
-const deploymentOptions = [
+const architectureFlow = [
   {
-    icon: <Container className="h-6 w-6" />,
-    title: "Customer-hosted deployment",
-    desc: "Run SIP components inside your environment so sensitive documents and knowledge stay within your security boundary.",
-    bullets: [
-      "Private ingestion and enrichment pipelines",
-      "Your data never leaves your infrastructure",
-      "Integrates with existing identity and access controls",
-    ],
-    badge: "Design partner",
+    step: 1,
+    title: "Ingest knowledge sources",
+    desc: "Documents, policies, data catalogs, metadata, tickets, product knowledge, customer cases, workflows, and operational knowledge.",
   },
   {
-    icon: <Plug className="h-6 w-6" />,
-    title: "API and workflow integration",
-    desc: "Embed semantic retrieval and evidence-backed reasoning into internal tools, support portals, or agent platforms.",
-    bullets: [
-      "Context assembly for copilots and agents",
-      "Source-attributed answers for compliance teams",
-      "Plugs into existing knowledge bases and catalogs",
-    ],
-    badge: "Pilot",
+    step: 2,
+    title: "Enrich with semantic context",
+    desc: "Entities, relationships, source authority, ownership, definitions, taxonomy, ontology, lineage, and access boundaries.",
   },
   {
-    icon: <Cloud className="h-6 w-6" />,
-    title: "Scoped design partner pilot",
-    desc: "Time-boxed engagement to validate SIP on a specific knowledge or workflow use case with clear success criteria.",
-    bullets: [
-      "Co-designed scope with your domain experts",
-      "Iterative feedback on retrieval quality and governance",
-      "Path to broader rollout if validated",
-    ],
-    badge: "Pilot",
+    step: 3,
+    title: "Retrieve with governance",
+    desc: "Permission-aware retrieval, metadata filters, business-context ranking, citations, and source traceability.",
+  },
+  {
+    step: 4,
+    title: "Reason with evidence",
+    desc: "Grounded answers, alternative hypotheses, confidence signals, and evidence bundles.",
+  },
+  {
+    step: 5,
+    title: "Prepare agent-ready context",
+    desc: "Tool access, workflow boundaries, human approvals, escalation paths, and auditability.",
+  },
+];
+
+const thoughtLeadership = [
+  {
+    title: "Why Enterprise Knowledge Needs a Semantic Layer",
+    desc: "Raw documents and data catalogs are not enough for trusted enterprise AI. Business meaning, source authority, and retrieval boundaries must come first.",
+  },
+  {
+    title: "From RAG to Evidence-Backed Enterprise Intelligence",
+    desc: "Moving beyond chunk retrieval toward context assembly, citations, evaluation, and workflow-ready outputs.",
+  },
+  {
+    title: "Making Enterprise Data AI-Ready with Metadata, Context, and Governance",
+    desc: "How metadata, entity models, access controls, and semantic enrichment prepare data for production AI systems.",
+  },
+  {
+    title: "How Semantic Context Makes Agents Trustworthy",
+    desc: "Why agents need governed context, evidence bundles, and human approval paths before they can act safely in enterprise workflows.",
   },
 ];
 
@@ -119,6 +139,7 @@ export default function SipPage() {
       <SiteHeader />
 
       <main>
+        {/* Hero */}
         <section className="relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(139,92,246,0.24),transparent_28%),radial-gradient(circle_at_80%_20%,rgba(34,211,238,0.16),transparent_30%),linear-gradient(to_bottom,transparent,rgba(3,7,18,1))]" />
           <div className="relative mx-auto max-w-7xl px-6 py-24 lg:px-8 lg:py-32">
@@ -127,159 +148,205 @@ export default function SipPage() {
                 Semantic Intelligence Pilot
               </div>
               <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
-                SIP
-                <span className="block bg-gradient-to-r from-purple-300 via-blue-400 to-cyan-300 bg-clip-text text-transparent">
-                  Semantic Intelligence Platform
-                </span>
+                SIP: Semantic Intelligence Platform for Enterprise Knowledge
               </h1>
               <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300">
-                Enterprise knowledge and workflow intelligence with evidence-backed semantic
-                reasoning. SIP turns fragmented documents and data into governed, agent-ready
-                context — so AI decisions are explainable, auditable, and grounded in your domain.
+                A platform pilot for turning documents, data assets, metadata, policies, customer
+                cases, product knowledge, and operational workflows into governed, evidence-backed
+                AI context.
               </p>
-            </div>
-          </div>
-        </section>
-
-        <section id="flow" className="mx-auto max-w-7xl px-6 pb-20 lg:px-8">
-          <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.03] p-8">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(139,92,246,0.15),transparent_40%)]" />
-            <div className="relative">
-              <div className="mb-10 text-center">
-                <p className="text-sm font-semibold uppercase tracking-[0.3em] text-purple-300">
-                  How it works
-                </p>
-                <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
-                  From fragmented knowledge to governed intelligence.
-                </h2>
-                <p className="mx-auto mt-4 max-w-2xl text-slate-400">
-                  SIP builds a semantic layer that connects what your organization knows with
-                  how AI systems reason about it.
-                </p>
-              </div>
-              <div className="grid gap-4 lg:grid-cols-5">
-                {intelligenceFlow.map((step, index) => (
-                  <div key={step.label} className="relative">
-                    <div className="flex h-full flex-col rounded-2xl border border-white/10 bg-slate-950/70 p-5 text-center">
-                      <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-purple-300/10 text-purple-300 ring-1 ring-purple-300/20">
-                        {step.icon}
-                      </div>
-                      <h3 className="mt-4 text-sm font-semibold uppercase tracking-wide text-white">
-                        {step.label}
-                      </h3>
-                      <p className="mt-2 text-xs leading-5 text-slate-400">{step.desc}</p>
-                    </div>
-                    {index < intelligenceFlow.length - 1 && (
-                      <div className="absolute right-[-1rem] top-1/2 z-10 hidden -translate-y-1/2 text-purple-300 lg:block">
-                        <ArrowRight className="h-5 w-5" />
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
-          <div className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-purple-300">
-              What SIP delivers
-            </p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
-              Semantic context your teams and agents can trust.
-            </h2>
-          </div>
-          <div className="mt-10 grid gap-6 sm:grid-cols-2">
-            {capabilities.map((item) => (
-              <div
-                key={item.title}
-                className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 hover:border-purple-300/30"
+              <p className="mx-auto mt-5 max-w-3xl text-base leading-7 text-slate-400">
+                Enterprise AI fails when models retrieve fragments without enough business context,
+                source authority, permissions, or workflow grounding. SIP helps organizations
+                build semantic context layers that make enterprise knowledge searchable,
+                explainable, auditable, and agent-ready.
+              </p>
+              <a
+                href={`mailto:${EMAIL_PLATFORMS}?subject=${encodeURIComponent("SIP pilot inquiry")}`}
+                className="mt-10 inline-flex items-center gap-2 rounded-2xl bg-purple-400 px-7 py-3.5 font-semibold text-slate-950 hover:bg-purple-300"
               >
-                <div className="mb-5 inline-flex rounded-2xl bg-purple-300/10 p-3 text-purple-300 ring-1 ring-purple-300/20">
-                  {item.icon}
-                </div>
-                <h3 className="text-xl font-semibold">{item.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-slate-400">{item.desc}</p>
-              </div>
-            ))}
+                <Mail className="h-5 w-5" />
+                Discuss a SIP Pilot
+              </a>
+              <p className="mt-5 text-sm text-slate-500">
+                <a
+                  href={`mailto:${EMAIL_PLATFORMS}`}
+                  className="text-slate-400 hover:text-purple-300"
+                >
+                  {EMAIL_PLATFORMS}
+                </a>
+              </p>
+            </div>
           </div>
         </section>
 
-        <section id="deployment" className="border-y border-white/10 bg-white/[0.02]">
-          <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
-            <div className="max-w-3xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-purple-300">
-                How you can utilize it
-              </p>
-              <h2 className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
-                Deployment options for enterprise knowledge.
-              </h2>
-              <p className="mt-6 text-lg leading-8 text-slate-400">
-                SIP is in active development with design partners. Engagements are scoped to
-                your knowledge domain, security requirements, and workflow integration needs.
-              </p>
-            </div>
-            <div className="mt-12 grid gap-6 md:grid-cols-3">
-              {deploymentOptions.map((option) => (
+        {/* Where SIP creates value */}
+        <section className="border-t border-white/10">
+          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+              Where SIP creates value
+            </h2>
+            <p className="mt-4 max-w-3xl text-slate-400">
+              SIP supports enterprise workflows where trusted retrieval, semantic context, and
+              evidence-backed reasoning matter more than generic chat responses.
+            </p>
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {workflowCards.map((item) => (
                 <div
-                  key={option.title}
-                  className="rounded-3xl border border-white/10 bg-white/[0.04] p-8 hover:border-purple-300/30"
+                  key={item.title}
+                  className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 hover:border-purple-300/30"
                 >
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="inline-flex rounded-2xl bg-purple-300/10 p-3 text-purple-300 ring-1 ring-purple-300/20">
-                      {option.icon}
-                    </div>
-                    <span className="shrink-0 rounded-full border border-purple-300/20 bg-purple-300/10 px-3 py-1 text-xs font-medium text-purple-200">
-                      {option.badge}
-                    </span>
+                  <div className="inline-flex rounded-xl bg-purple-300/10 p-3 text-purple-300 ring-1 ring-purple-300/20">
+                    {item.icon}
                   </div>
-                  <h3 className="mt-5 text-xl font-semibold">{option.title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-slate-400">{option.desc}</p>
-                  <ul className="mt-5 space-y-2">
-                    {option.bullets.map((bullet) => (
-                      <li key={bullet} className="flex items-start gap-2 text-sm text-slate-300">
-                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-purple-300" />
-                        {bullet}
-                      </li>
-                    ))}
-                  </ul>
+                  <h3 className="mt-4 text-base font-semibold leading-snug text-white">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-6 text-slate-400">{item.desc}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-purple-300">
-                Relationship to SCRCA
-              </p>
-              <h2 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
-                Shared semantic foundation, different primary domains.
-              </h2>
-              <p className="mt-6 text-lg leading-8 text-slate-400">
-                SIP and SCRCA share a common approach to semantic context, evidence bundles,
-                and explainable reasoning. SCRCA focuses on observability and operational signals.
-                SIP focuses on enterprise knowledge, documents, and decision support workflows.
-              </p>
-              <Link
-                href="/platforms/scrca"
-                className="mt-6 inline-flex items-center gap-2 text-purple-300 hover:text-purple-200"
-              >
-                Explore SCRCA
-                <ArrowRight className="h-4 w-4" />
-              </Link>
+        {/* Pilot deliverables */}
+        <section className="border-t border-white/10 bg-white/[0.02]">
+          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+              What a SIP pilot produces
+            </h2>
+            <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {pilotDeliverables.map((item) => (
+                <div
+                  key={item}
+                  className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3"
+                >
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-purple-300" />
+                  <span className="text-sm leading-6 text-slate-300">{item}</span>
+                </div>
+              ))}
             </div>
-            <div className="rounded-[2rem] border border-purple-300/20 bg-purple-300/5 p-8">
-              <Database className="h-8 w-8 text-purple-300" />
-              <h3 className="mt-6 text-2xl font-semibold">Why enterprises need this</h3>
-              <p className="mt-4 leading-7 text-slate-400">
-                Generic LLM deployments fail when answers cannot be traced to sources,
-                domain context is missing, or governance teams cannot audit outputs. SIP
-                addresses the gap between raw documents and trustworthy AI decision support.
-              </p>
+          </div>
+        </section>
+
+        {/* Generic RAG vs SIP */}
+        <section className="border-t border-white/10">
+          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+              How SIP is different from generic RAG
+            </h2>
+            <div className="mt-12 space-y-6">
+              {ragContrast.map((row, index) => (
+                <div
+                  key={index}
+                  className="grid gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-6 lg:grid-cols-2"
+                >
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+                      Generic RAG
+                    </p>
+                    <p className="mt-2 text-sm leading-6 text-slate-400">{row.generic}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-wider text-purple-300">
+                      SIP
+                    </p>
+                    <p className="mt-2 text-sm leading-6 text-slate-300">{row.sip}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Architecture flow */}
+        <section id="flow" className="border-t border-white/10 bg-white/[0.02]">
+          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+              SIP architecture flow
+            </h2>
+            <div className="mt-12 grid gap-4 lg:grid-cols-5">
+              {architectureFlow.map((item, index) => (
+                <div key={item.step} className="relative">
+                  <div className="flex h-full flex-col rounded-2xl border border-white/10 bg-slate-950/70 p-5">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-purple-300/10 text-sm font-semibold text-purple-300 ring-1 ring-purple-300/20">
+                      {item.step}
+                    </div>
+                    <h3 className="mt-4 text-sm font-semibold leading-snug text-white">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2 flex-1 text-xs leading-5 text-slate-400">{item.desc}</p>
+                  </div>
+                  {index < architectureFlow.length - 1 && (
+                    <div className="absolute right-[-0.75rem] top-1/2 z-10 hidden -translate-y-1/2 text-purple-300 lg:block">
+                      <ArrowRight className="h-4 w-4" />
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* SCRCA relationship */}
+        <section className="border-t border-white/10">
+          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+            <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.3em] text-purple-300">
+                  SIP and SCRCA relationship
+                </p>
+                <h2 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
+                  Shared semantic intelligence, different primary domains.
+                </h2>
+                <p className="mt-6 text-base leading-8 text-slate-400">
+                  SIP and SCRCA share a common semantic intelligence approach: context, evidence,
+                  explainability, and auditability. SCRCA focuses on observability and operational
+                  signals. SIP focuses on enterprise knowledge, documents, data assets, and
+                  decision-support workflows.
+                </p>
+                <Link
+                  href="/platforms/scrca"
+                  className="mt-6 inline-flex items-center gap-2 text-purple-300 hover:text-purple-200"
+                >
+                  Explore SCRCA
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+              <div className="rounded-2xl border border-purple-300/20 bg-purple-300/5 p-8">
+                <Layers3 className="h-8 w-8 text-purple-300" />
+                <h3 className="mt-6 text-xl font-semibold">Why enterprises can trust the approach</h3>
+                <p className="mt-4 text-sm leading-7 text-slate-400">
+                  ShandayAI platform services are built on evidence-backed reasoning, customer
+                  data boundaries, explainability, and pilot-first validation. SIP is an emerging
+                  platform capability, not a mature marketplace product. Engagements start with
+                  scoped pilots designed to prove value before broader rollout.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Thought leadership */}
+        <section className="border-t border-white/10 bg-white/[0.02]">
+          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+            <p className="text-sm font-semibold uppercase tracking-widest text-purple-300">
+              Thought leadership
+            </p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
+              Why semantic context matters for enterprise knowledge
+            </h2>
+            <div className="mt-10 grid gap-6 sm:grid-cols-2">
+              {thoughtLeadership.map((item) => (
+                <div
+                  key={item.title}
+                  className="rounded-2xl border border-white/10 bg-white/[0.04] p-6"
+                >
+                  <BookOpen className="h-5 w-5 text-purple-300" />
+                  <h3 className="mt-4 text-lg font-semibold text-white">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-slate-400">{item.desc}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>

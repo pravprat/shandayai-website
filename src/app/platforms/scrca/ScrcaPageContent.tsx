@@ -1,235 +1,140 @@
 import {
-  Activity,
-  ArrowRight,
-  Brain,
   CheckCircle2,
+  Clock,
   Cloud,
   Container,
-  FileChartColumn,
-  Network,
+  FileSearch,
+  GitBranch,
+  Mail,
   Plug,
   Rocket,
   Shield,
   TrendingUp,
   Users,
-  CircuitBoard,
+  Zap,
 } from "lucide-react";
 import SiteHeader from "../../components/SiteHeader";
 import SiteFooter from "../../components/SiteFooter";
 import PlatformPilotContact from "../../components/PlatformPilotContact";
 import { BlogRelatedSection } from "../../components/BlogRelatedSection";
+import { EMAIL_PLATFORMS } from "../../components/contact";
 
-const executiveFlow = [
+const scrcaFlow = [
   {
-    label: "Any Signal",
-    desc: "Logs, metrics, traces, screens, APIs, events, and operational signals.",
-    icon: <Activity className="h-7 w-7" />,
-    tone: "from-violet-400 to-purple-500",
+    step: 1,
+    title: "Ingest operational signals",
+    desc: "Logs, events, traces, metrics, tickets, alerts, runtime errors, and incident artifacts.",
   },
   {
-    label: "Semantic Understanding",
-    desc: "Normalize signals into entities, events, relationships, and context.",
-    icon: <Brain className="h-7 w-7" />,
-    tone: "from-purple-400 to-fuchsia-500",
+    step: 2,
+    title: "Normalize and eventize",
+    desc: "Convert noisy records into structured events with timestamps, source, severity, service, environment, and signal type.",
   },
   {
-    label: "Causal Intelligence",
-    desc: "Build timelines, infer relationships, and identify likely root causes.",
-    icon: <Network className="h-7 w-7" />,
-    tone: "from-blue-400 to-cyan-500",
+    step: 3,
+    title: "Cluster related behavior",
+    desc: "Group related patterns across services, systems, time windows, and event types.",
   },
   {
-    label: "Insights & Explanations",
-    desc: "Generate evidence-backed RCA, impact analysis, and what happened.",
-    icon: <FileChartColumn className="h-7 w-7" />,
-    tone: "from-cyan-400 to-teal-500",
+    step: 4,
+    title: "Detect incident windows",
+    desc: "Identify meaningful incident periods and separate recurring background noise from candidate incident signals.",
   },
   {
-    label: "Actions & Automation",
-    desc: "Enable recommendations, alerts, workflows, integrations, and remediation.",
-    icon: <Rocket className="h-7 w-7" />,
-    tone: "from-emerald-400 to-green-500",
+    step: 5,
+    title: "Build causal graph",
+    desc: "Map relationships across components, clusters, services, dependencies, and event timing.",
+  },
+  {
+    step: 6,
+    title: "Rank root cause candidates",
+    desc: "Score likely causes using trigger behavior, temporal precedence, graph relationships, severity, and supporting evidence.",
+  },
+  {
+    step: 7,
+    title: "Produce evidence bundle",
+    desc: "Capture the sources, events, timelines, clusters, confidence signals, and alternative hypotheses.",
+  },
+  {
+    step: 8,
+    title: "Generate RCA summary",
+    desc: "Create engineer-readable RCA reports and escalation packets with human-review context.",
   },
 ];
 
-const outcomeCards = [
+const pilotDeliverables = [
+  "Operational signal inventory",
+  "Ingestion and parsing approach",
+  "Event clusters and trigger analysis",
+  "Incident window detection",
+  "Root cause candidate ranking",
+  "Evidence-backed RCA report",
+  "Incident timeline",
+  "Support escalation packet",
+  "Human-reviewed remediation context",
+  "Pilot findings and production-readiness roadmap",
+];
+
+const whyTeamsUse = [
   {
-    title: "Resolve Issues Faster",
-    desc: "Reduce MTTR and downtime",
+    icon: <Clock className="h-5 w-5" />,
+    title: "Reduce incident investigation time",
+    desc: "Help engineers move faster from alert noise to likely causes and supporting evidence.",
+  },
+  {
+    icon: <FileSearch className="h-5 w-5" />,
+    title: "Improve escalation quality",
+    desc: "Generate clearer support packets with timelines, evidence, suspected causes, and system context.",
+  },
+  {
+    icon: <Zap className="h-5 w-5" />,
+    title: "Separate signal from noise",
+    desc: "Group recurring events and isolate incident-relevant behavior.",
+  },
+  {
     icon: <Shield className="h-5 w-5" />,
+    title: "Preserve data locality",
+    desc: "Support customer-hosted or customer-managed patterns where raw operational data should remain in place.",
   },
   {
-    title: "Improve Reliability",
-    desc: "Prevent recurrence and risk",
+    icon: <GitBranch className="h-5 w-5" />,
+    title: "Capture repeatable RCA workflows",
+    desc: "Move RCA from tribal knowledge to structured, evidence-backed reasoning.",
+  },
+  {
     icon: <TrendingUp className="h-5 w-5" />,
+    title: "Improve operational learning",
+    desc: "Turn incidents into reusable patterns, known failure modes, and future detection signals.",
   },
   {
-    title: "Increase Efficiency",
-    desc: "Automate insights to actions",
     icon: <Users className="h-5 w-5" />,
-  },
-  {
-    title: "Scale with Confidence",
-    desc: "Enterprise-grade and extensible",
-    icon: <CircuitBoard className="h-5 w-5" />,
+    title: "Prepare for governed remediation",
+    desc: "Create a foundation for future agentic remediation workflows with human approval.",
   },
 ];
 
-const deploymentOptions = [
+const deploymentModels = [
   {
     icon: <Container className="h-6 w-6" />,
-    title: "Customer-hosted service",
-    desc: "Runtime RCA runs inside your environment — Docker deployment, logs read in place, raw data stays in your boundary.",
-    bullets: [
-      "Spark, JVM, and Kubernetes runtime logs",
-      "Evidence-backed RCA reports and escalation packets",
-      "No log export required for diagnosis",
-    ],
-    badge: "Available now",
+    title: "Customer-hosted pilot",
+    desc: "Runs inside the customer environment where sensitive operational data can remain within customer boundaries.",
   },
   {
     icon: <Plug className="h-6 w-6" />,
     title: "API integration",
-    desc: "Embed SCRCA diagnostics into your existing observability stack, incident tools, or internal platforms via API.",
-    bullets: [
-      "Incident window detection and RCA summaries",
-      "Evidence bundles for ticketing and chatops",
-      "Fits into current on-call and SRE workflows",
-    ],
-    badge: "Pilot",
+    desc: "Connects through existing observability, logging, incident, or support systems.",
   },
   {
     icon: <Cloud className="h-6 w-6" />,
-    title: "Scoped pilot engagement",
-    desc: "Work with ShandayAI on a time-boxed pilot — observability RCA, log intelligence, or operational diagnostics for a specific use case.",
-    bullets: [
-      "Defined scope, success criteria, and timeline",
-      "Co-designed with your platform or SRE team",
-      "Path to production deployment if validated",
-    ],
-    badge: "Pilot",
+    title: "Scoped RCA pilot",
+    desc: "Starts with a limited set of services, incidents, logs, or operational data.",
   },
   {
     icon: <Rocket className="h-6 w-6" />,
     title: "Design partner program",
-    desc: "Early access for teams building governed AI operations — influence product direction while solving real incident and RCA problems.",
-    bullets: [
-      "Priority access to new capabilities",
-      "Joint architecture and integration planning",
-      "Enterprise governance and trust model alignment",
-    ],
-    badge: "Limited slots",
+    desc: "For teams that want to shape the next generation of semantic RCA and operational intelligence.",
   },
 ];
-
-function OperationalIntelligenceFlow() {
-  return (
-    <section id="flow" className="mx-auto max-w-7xl px-6 pb-24 lg:px-8">
-      <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.03] p-8 shadow-2xl shadow-cyan-950/30">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(124,58,237,0.20),transparent_28%),radial-gradient(circle_at_80%_30%,rgba(34,211,238,0.18),transparent_30%)]" />
-        <div className="relative">
-          <div className="mb-10 text-center">
-            <div className="mx-auto mb-5 inline-flex rounded-full border border-purple-300/30 bg-purple-300/10 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-purple-200">
-              Operational Intelligence
-            </div>
-            <h2 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-              Operational Intelligence. Causal Clarity. Confident Actions.
-            </h2>
-            <p className="mx-auto mt-5 max-w-3xl text-lg leading-8 text-slate-400">
-              SCRCA transforms operational signals into evidence-backed insights so teams can
-              prevent issues, resolve faster, and operate with confidence.
-            </p>
-          </div>
-          <div className="grid gap-4 lg:grid-cols-5">
-            {executiveFlow.map((item, index) => (
-              <div key={item.label} className="relative">
-                <div className="flex h-full flex-col rounded-3xl border border-white/10 bg-slate-950/70 p-6 text-center backdrop-blur">
-                  <div
-                    className={`mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br ${item.tone} text-slate-950 shadow-lg`}
-                  >
-                    {item.icon}
-                  </div>
-                  <h3 className="mt-5 text-base font-semibold uppercase tracking-wide text-white">
-                    {item.label}
-                  </h3>
-                  <p className="mt-3 text-sm leading-6 text-slate-400">{item.desc}</p>
-                </div>
-                {index < executiveFlow.length - 1 && (
-                  <div className="absolute right-[-1.25rem] top-1/2 z-10 hidden -translate-y-1/2 text-cyan-300 lg:block">
-                    <ArrowRight className="h-6 w-6" />
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-          <div className="mt-8 grid gap-4 rounded-3xl border border-white/10 bg-white/[0.04] p-5 sm:grid-cols-2 lg:grid-cols-4">
-            {outcomeCards.map((item) => (
-              <div key={item.title} className="flex items-start gap-4">
-                <div className="rounded-2xl bg-cyan-300/10 p-3 text-cyan-300 ring-1 ring-cyan-300/20">
-                  {item.icon}
-                </div>
-                <div>
-                  <h4 className="font-semibold text-white">{item.title}</h4>
-                  <p className="mt-1 text-sm text-slate-400">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function DeploymentOptionsSection() {
-  return (
-    <section id="deployment" className="border-t border-white/10 bg-white/[0.02]">
-      <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
-        <div className="max-w-3xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-300">
-            How you can utilize it
-          </p>
-          <h2 className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
-            Deployment options for your environment.
-          </h2>
-          <p className="mt-6 text-lg leading-8 text-slate-400">
-            Whether you need a customer-hosted service, API integration, or a scoped pilot —
-            SCRCA is designed to meet enterprise security, governance, and operational
-            requirements from day one.
-          </p>
-        </div>
-
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
-          {deploymentOptions.map((option) => (
-            <div
-              key={option.title}
-              className="rounded-3xl border border-white/10 bg-white/[0.04] p-8 hover:border-cyan-300/30"
-            >
-              <div className="flex items-start justify-between gap-4">
-                <div className="inline-flex rounded-2xl bg-cyan-300/10 p-3 text-cyan-300 ring-1 ring-cyan-300/20">
-                  {option.icon}
-                </div>
-                <span className="shrink-0 rounded-full border border-cyan-300/20 bg-cyan-300/10 px-3 py-1 text-xs font-medium text-cyan-200">
-                  {option.badge}
-                </span>
-              </div>
-              <h3 className="mt-5 text-xl font-semibold">{option.title}</h3>
-              <p className="mt-3 text-sm leading-7 text-slate-400">{option.desc}</p>
-              <ul className="mt-5 space-y-2">
-                {option.bullets.map((bullet) => (
-                  <li key={bullet} className="flex items-start gap-2 text-sm text-slate-300">
-                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-cyan-300" />
-                    {bullet}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 export default function ScrcaPageContent() {
   return (
@@ -237,30 +142,149 @@ export default function ScrcaPageContent() {
       <SiteHeader />
 
       <main>
+        {/* Hero */}
         <section className="relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(34,211,238,0.28),transparent_28%),radial-gradient(circle_at_80%_20%,rgba(139,92,246,0.24),transparent_30%),linear-gradient(to_bottom,transparent,rgba(3,7,18,1))]" />
           <div className="relative mx-auto max-w-7xl px-6 py-24 lg:px-8 lg:py-32">
             <div className="mx-auto max-w-4xl text-center">
-              <div className="mx-auto mb-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-slate-300">
+              <div className="mx-auto mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-slate-300">
                 Semantic RCA Pilot
               </div>
               <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
-                SCRCA
-                <span className="block bg-gradient-to-r from-cyan-300 via-blue-400 to-purple-400 bg-clip-text text-transparent">
-                  Semantic Root Cause Analysis
-                </span>
+                SCRCA: Semantic Root Cause Analysis for Operational Intelligence
               </h1>
-              <p className="mx-auto mt-8 max-w-3xl text-lg leading-8 text-slate-300">
-                Evidence-backed root cause analysis for observability and operations teams.
-                SCRCA connects logs, events, traces, and incident data into deterministic,
-                explainable diagnostics — so teams move from alerts to confident action.
+              <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300">
+                A pilot service for turning logs, events, traces, metrics, tickets, alerts, and
+                incident data into evidence-backed root cause candidates, timelines, narratives,
+                and escalation context.
+              </p>
+              <p className="mx-auto mt-5 max-w-3xl text-base leading-7 text-slate-400">
+                Infrastructure teams do not need another alert stream. They need systems that can
+                organize noisy operational data, identify meaningful event patterns, explain why
+                incidents happened, and produce evidence that engineers can trust.
+              </p>
+              <a
+                href={`mailto:${EMAIL_PLATFORMS}?subject=${encodeURIComponent("SCRCA pilot inquiry")}`}
+                className="mt-10 inline-flex items-center gap-2 rounded-2xl bg-cyan-300 px-7 py-3.5 font-semibold text-slate-950 hover:bg-cyan-200"
+              >
+                <Mail className="h-5 w-5" />
+                Discuss an SCRCA Pilot
+              </a>
+              <p className="mt-5 text-sm text-slate-500">
+                <a
+                  href={`mailto:${EMAIL_PLATFORMS}`}
+                  className="text-slate-400 hover:text-cyan-300"
+                >
+                  {EMAIL_PLATFORMS}
+                </a>
               </p>
             </div>
           </div>
         </section>
 
-        <OperationalIntelligenceFlow />
-        <DeploymentOptionsSection />
+        {/* What SCRCA does */}
+        <section id="flow" className="border-t border-white/10">
+          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+            <div className="max-w-3xl">
+              <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+                What SCRCA does
+              </h2>
+              <p className="mt-4 text-slate-400">
+                SCRCA processes logs, events, traces, metrics, tickets, runtime errors, alerts,
+                and operational signals through a structured pipeline from ingestion to
+                evidence-backed RCA.
+              </p>
+            </div>
+            <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {scrcaFlow.map((item) => (
+                <div
+                  key={item.step}
+                  className="rounded-2xl border border-white/10 bg-white/[0.04] p-5"
+                >
+                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-cyan-300/10 text-sm font-semibold text-cyan-300 ring-1 ring-cyan-300/20">
+                    {item.step}
+                  </div>
+                  <h3 className="mt-4 text-sm font-semibold leading-snug text-white">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 text-xs leading-5 text-slate-400">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Pilot deliverables */}
+        <section className="border-t border-white/10 bg-white/[0.02]">
+          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+              What an SCRCA pilot produces
+            </h2>
+            <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {pilotDeliverables.map((item) => (
+                <div
+                  key={item}
+                  className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3"
+                >
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-cyan-300" />
+                  <span className="text-sm leading-6 text-slate-300">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Why teams use SCRCA */}
+        <section className="border-t border-white/10">
+          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+              Why teams use SCRCA
+            </h2>
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {whyTeamsUse.map((item) => (
+                <div
+                  key={item.title}
+                  className="rounded-2xl border border-white/10 bg-white/[0.04] p-6"
+                >
+                  <div className="inline-flex rounded-xl bg-cyan-300/10 p-2.5 text-cyan-300 ring-1 ring-cyan-300/20">
+                    {item.icon}
+                  </div>
+                  <h3 className="mt-4 text-base font-semibold text-white">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-slate-400">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Deployment models */}
+        <section id="deployment" className="border-t border-white/10 bg-white/[0.02]">
+          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+              Deployment and pilot models
+            </h2>
+            <div className="mt-12 grid gap-6 sm:grid-cols-2">
+              {deploymentModels.map((item) => (
+                <div
+                  key={item.title}
+                  className="rounded-2xl border border-white/10 bg-white/[0.04] p-7"
+                >
+                  <div className="inline-flex rounded-xl bg-cyan-300/10 p-3 text-cyan-300 ring-1 ring-cyan-300/20">
+                    {item.icon}
+                  </div>
+                  <h3 className="mt-4 text-lg font-semibold text-white">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-slate-400">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+            <p className="mt-10 max-w-3xl text-sm leading-7 text-slate-400">
+              SCRCA is designed with future cloud and marketplace deployment patterns in mind,
+              but the initial focus is targeted pilots and customer-controlled deployment
+              patterns.
+            </p>
+          </div>
+        </section>
+
         <BlogRelatedSection variant="scrca" />
         <PlatformPilotContact product="SCRCA" />
       </main>
