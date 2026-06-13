@@ -2,15 +2,16 @@ import type { Metadata } from "next";
 import {
   ArrowRight,
   BarChart3,
-  Bot,
-  Cloud,
+  Building2,
+  CheckCircle2,
   Compass,
   Database,
-  GitBranch,
   Layers3,
   Mail,
-  Scale,
+  Rocket,
   ShieldCheck,
+  Target,
+  TrendingUp,
 } from "lucide-react";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
@@ -19,81 +20,248 @@ import { EMAIL_ADVISORY } from "../components/contact";
 export const metadata: Metadata = {
   title: "AI Strategy & Architecture | ShandayAI",
   description:
-    "Founder-led enterprise AI strategy and architecture advisory — GenAI platforms, agentic AI, RAG, semantic retrieval, governance, heterogeneous infrastructure, and measurable adoption.",
+    "ShandayAI helps enterprises, startups, investors, and platform teams turn AI ambition into a governed operating model: AI-ready data, agentic workflows, governance, and measurable adoption.",
 };
 
-const helpAreas = [
+const strategyQuestions = [
+  "Do your AI tools have access to trusted, governed, business-aware context?",
+  "Can your AI systems access the right data without violating data locality, security, or compliance boundaries?",
+  "Does your data carry enough business context for AI to reason correctly?",
+  "Can agents retrieve, act, escalate, and explain decisions safely?",
+  "Can you measure adoption, quality, cost, risk, and business value?",
+];
+
+const dataFlowStages = [
   {
-    icon: <Compass className="h-6 w-6" />,
-    title: "Enterprise AI Strategy",
-    desc: "Roadmaps for GenAI, agentic AI, enterprise assistants, workflow automation, knowledge intelligence, and AI adoption across business and technology teams.",
+    title: "Raw enterprise data",
+    examples:
+      "Databases, warehouses, lakehouses, SaaS systems, documents, tickets, logs, events, customer interactions, product records, operational workflows",
   },
   {
-    icon: <Layers3 className="h-6 w-6" />,
-    title: "AI & Data Platform Architecture",
-    desc: "Architecture guidance across data platforms, semantic layers, lakehouse/warehouse patterns, retrieval systems, model gateways, observability, and cloud-native infrastructure.",
+    title: "Data readiness pivots",
+    examples:
+      "Data quality, ownership, lineage, metadata, access controls, freshness, data products, data locality, compliance boundaries",
   },
   {
-    icon: <Bot className="h-6 w-6" />,
-    title: "Agentic AI Operating Models",
-    desc: "Patterns for agents, tools, workflow orchestration, human-in-the-loop approvals, prompt/model versioning, evaluation gates, escalation, and operational support.",
+    title: "Semantic and business context",
+    examples:
+      "Business entities, customer context, product context, process context, knowledge graphs, taxonomy, ontology, retrieval boundaries, citations, source authority",
   },
   {
-    icon: <GitBranch className="h-6 w-6" />,
-    title: "RAG & Semantic Retrieval",
-    desc: "Design patterns for enterprise knowledge retrieval, grounding, citations, metadata, permissions, context assembly, evaluation, and hallucination control.",
+    title: "Models and agentic workflows",
+    examples:
+      "RAG, semantic retrieval, model gateways, assistants, workflow agents, tool access, human approvals, evaluation gates, monitoring",
   },
   {
-    icon: <Cloud className="h-6 w-6" />,
-    title: "Heterogeneous Infrastructure Strategy",
-    desc: "Architecture tradeoffs across SaaS, PaaS, cloud, on-prem, hybrid-cloud, customer-managed, storage, GPU, inference, and edge deployment models.",
-  },
-  {
-    icon: <ShieldCheck className="h-6 w-6" />,
-    title: "Governance, Risk & Measurement",
-    desc: "Practical guardrails for data handling, access boundaries, AI usage policies, vendor risk, evaluation, monitoring, cost tracking, adoption, and business-value measurement.",
+    title: "Validated action and value creation",
+    examples:
+      "Customer impact, productivity lift, cost reduction, cycle-time reduction, risk reduction, better decisions, trusted automation, measurable adoption",
   },
 ];
 
-const valueBullets = [
-  "Clarify AI strategy and investment priorities",
-  "Evaluate build, buy, and partner options",
-  "Design scalable enterprise AI and data platform foundations",
-  "Define reusable RAG, agent, and model gateway patterns",
-  "Establish governance, evaluation, and adoption metrics",
-  "Translate AI architecture into business outcomes, cost visibility, and execution roadmaps",
+const problemCards = [
+  {
+    title: "Scattered AI pilots",
+    problem:
+      "Teams are experimenting with GenAI tools, assistants, copilots, and workflow automation, but there is no common platform, governance, or measurement model.",
+    help: "Define reusable AI platform patterns, operating standards, governance, and adoption metrics.",
+  },
+  {
+    title: "Data is not AI-ready",
+    problem:
+      "Enterprise data exists across warehouses, lakehouses, SaaS systems, documents, logs, and operational platforms, but it lacks quality, ownership, metadata, semantic context, or safe retrieval boundaries.",
+    help: "Design AI-ready data products, semantic layers, metadata patterns, data locality strategies, retrieval boundaries, and data quality controls.",
+  },
+  {
+    title: "RAG and agents stuck in prototype mode",
+    problem:
+      "RAG and assistant demos work in narrow cases but are not reliable, explainable, permission-aware, or production-ready.",
+    help: "Define grounding, citations, context assembly, evaluation, escalation, and human-in-the-loop patterns.",
+  },
+  {
+    title: "Vendor and platform confusion",
+    problem:
+      "Leaders need to compare hyperscalers, SaaS and PaaS platforms, data platforms, model providers, observability tools, GPU and inference options, and AI vendors.",
+    help: "Create decision frameworks, vendor scorecards, architecture tradeoff analysis, and build, buy, partner recommendations.",
+  },
+  {
+    title: "AI governance slows delivery",
+    problem:
+      "Risk, compliance, security, and legal requirements are often handled late, slowing adoption or creating shadow AI.",
+    help: "Build governance into architecture through data boundaries, access policies, prompt and model versioning, evaluation gates, auditability, and usage controls.",
+  },
+  {
+    title: "Unclear business value",
+    problem:
+      "AI activity is increasing, but leaders cannot clearly measure adoption, quality, time saved, cost, risk reduction, customer impact, or productivity impact.",
+    help: "Define value telemetry, adoption metrics, cost per workflow, quality measures, and executive operating dashboards.",
+  },
+];
+
+const audiences = [
+  {
+    icon: <Building2 className="h-6 w-6" />,
+    title: "Enterprises",
+    forWhom:
+      "For CIO, CTO, CDO, CDAO, product, platform, data, AI, and security leaders building enterprise AI foundations.",
+    value:
+      "AI strategy, target architecture, governance, platform roadmap, vendor decisions, operating model, adoption metrics.",
+  },
+  {
+    icon: <Rocket className="h-6 w-6" />,
+    title: "Startups and technology vendors",
+    forWhom:
+      "For AI, data, cloud, observability, storage, and infrastructure companies that need sharper enterprise positioning and product-market clarity.",
+    value:
+      "Product strategy, architecture narrative, enterprise buyer feedback, competitive differentiation, roadmap pressure testing.",
+  },
+  {
+    icon: <TrendingUp className="h-6 w-6" />,
+    title: "Investors and expert networks",
+    forWhom:
+      "For investors and research teams evaluating AI and data infrastructure markets, vendors, adoption trends, or platform categories.",
+    value:
+      "Independent technical perspective, market interpretation, buyer-adoption risk, category assessment.",
+  },
+  {
+    icon: <Layers3 className="h-6 w-6" />,
+    title: "Platform and product teams",
+    forWhom:
+      "For teams building RAG, agents, AI assistants, data products, observability intelligence, or semantic platforms.",
+    value:
+      "Architecture review, design patterns, governance model, evaluation approach, production-readiness guidance.",
+  },
 ];
 
 const engagements = [
   {
     icon: <Compass className="h-6 w-6" />,
     title: "AI Strategy Sprint",
-    duration: "2–4 weeks",
-    desc: "Clarify priorities, assess current architecture, identify gaps, define target-state AI/data platform strategy, and produce an executive roadmap.",
+    duration: "2 to 4 weeks",
+    bestFor: "Executives or platform leaders who need a clear AI direction.",
+    howItWorks: [
+      "Discovery with business and technology stakeholders",
+      "Current-state review of data, platforms, AI pilots, tools, and governance",
+      "Prioritization of use cases and value pools",
+      "Target-state AI and data platform architecture",
+      "Roadmap across quick wins, platform foundations, and longer-term capabilities",
+    ],
+    deliverables: [
+      "Executive AI strategy memo",
+      "Target-state architecture view",
+      "Prioritized use-case roadmap",
+      "Build, buy, partner recommendations",
+      "Risk, governance, and value measurement model",
+    ],
+    benefit:
+      "Leadership alignment, reduced ambiguity, and a practical roadmap for enterprise AI execution.",
   },
   {
     icon: <Database className="h-6 w-6" />,
-    title: "Architecture & Vendor Review",
+    title: "Architecture and Vendor Review",
     duration: "Focused engagement",
-    desc: "Evaluate platform choices, vendor positioning, cloud/on-prem patterns, AI tools, data architecture, model deployment options, and cost/performance tradeoffs.",
+    bestFor:
+      "Teams evaluating vendors, cloud options, model providers, data platforms, GPU and inference architecture, observability tools, or AI workflow platforms.",
+    howItWorks: [
+      "Review current architecture and vendor landscape",
+      "Compare platform choices against business, cost, security, and operating requirements",
+      "Identify integration risks, lock-in risks, governance gaps, and scalability concerns",
+      "Provide recommendation options with tradeoffs",
+    ],
+    deliverables: [
+      "Vendor and platform scorecard",
+      "Architecture tradeoff analysis",
+      "Cost, performance, and deployment considerations",
+      "Recommended decision path",
+      "Executive readout",
+    ],
+    benefit:
+      "Better platform decisions, fewer costly wrong turns, and clearer build, buy, partner choices.",
   },
   {
     icon: <BarChart3 className="h-6 w-6" />,
     title: "Fractional AI Operating Partner",
     duration: "Ongoing advisory",
-    desc: "Partner with executives and platform teams on AI roadmap execution, architecture reviews, governance, team guidance, vendor strategy, and operating cadence.",
+    bestFor:
+      "Organizations that need senior AI and data platform leadership but are not ready for a full-time executive, or need an external operator-advisor.",
+    howItWorks: [
+      "Regular executive and platform-team advisory sessions",
+      "Roadmap and architecture reviews",
+      "Governance and operating cadence",
+      "Vendor and partner evaluation",
+      "Team coaching and delivery guidance",
+      "Metrics and decision tracking",
+    ],
+    deliverables: [
+      "Monthly operating cadence",
+      "Architecture and roadmap reviews",
+      "Decision memos",
+      "Governance and evaluation patterns",
+      "Adoption and value-tracking framework",
+    ],
+    benefit:
+      "Senior AI platform leadership, faster decisions, stronger execution discipline, and reduced risk across AI initiatives.",
   },
 ];
 
-const goodFitBullets = [
-  "AI pilots are growing but platform standards are unclear",
-  "Data platforms are not yet AI-ready",
-  "RAG or assistant prototypes are not trusted enough for production",
-  "Teams need a build/buy/partner strategy",
-  "Vendor choices are hard to compare",
-  "Leaders need measurable adoption, risk, cost, and business-value metrics",
-  "Platform teams need reusable patterns for agents, retrieval, model access, and governance",
+const clientDeliverables = [
+  "Enterprise AI strategy and roadmap",
+  "Target-state AI and data platform architecture",
+  "AI-ready data assessment",
+  "Data locality and access pattern recommendations",
+  "Semantic enrichment and retrieval design",
+  "Agentic AI workflow patterns",
+  "Model gateway and tool-access patterns",
+  "Governance and risk framework",
+  "Evaluation and monitoring approach",
+  "Vendor and platform scorecards",
+  "Adoption and value measurement model",
+  "Executive decision memo",
+  "Implementation sequencing plan",
 ];
+
+const trustBullets = [
+  "20+ years of enterprise AI, data, and platform leadership experience",
+  "Experience across large-scale data platforms, AI systems, analytics, search, personalization, recommendations, observability, and infrastructure ecosystems",
+  "Practical exposure to SaaS, PaaS, cloud, hybrid-cloud, on-prem, customer-managed, GPU, inference, and edge deployment patterns",
+  "Advisor perspective across enterprise buyers, investors, expert networks, technology vendors, and platform teams",
+  "Focus on architecture, governance, measurable adoption, and business outcomes, not AI hype",
+];
+
+const principles = [
+  {
+    title: "Architecture before tools",
+    desc: "We start with business context, data readiness, workflows, risk, and operating model before selecting tools.",
+  },
+  {
+    title: "AI-ready data before AI automation",
+    desc: "We assess whether enterprise data has the quality, context, access controls, locality, metadata, and semantic enrichment needed for trusted AI systems.",
+  },
+  {
+    title: "Governance that enables delivery",
+    desc: "Governance should create safe adoption patterns, not block every experiment.",
+  },
+  {
+    title: "Measurement from day one",
+    desc: "Every AI initiative should define adoption, quality, risk, cost, productivity, customer impact, and business-value metrics.",
+  },
+  {
+    title: "Validated action over generic answers",
+    desc: "The goal is to move from model outputs to trusted decisions, workflow execution, and measurable value creation.",
+  },
+];
+
+function AdvisoryCta({ className = "" }: { className?: string }) {
+  return (
+    <a
+      href={`mailto:${EMAIL_ADVISORY}?subject=${encodeURIComponent("Advisory conversation")}`}
+      className={`inline-flex items-center gap-2 rounded-2xl bg-purple-400 px-7 py-3.5 font-semibold text-slate-950 transition hover:bg-purple-300 ${className}`}
+    >
+      Start an Advisory Conversation
+      <ArrowRight className="h-5 w-5" />
+    </a>
+  );
+}
 
 export default function AdvisoryPage() {
   return (
@@ -103,7 +271,7 @@ export default function AdvisoryPage() {
       <main>
         {/* Hero */}
         <section className="relative overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(139,92,246,0.20),transparent_28%),radial-gradient(circle_at_80%_30%,rgba(34,211,238,0.10),transparent_35%),linear-gradient(to_bottom,transparent,rgba(3,7,18,1))]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(139,92,246,0.22),transparent_28%),radial-gradient(circle_at_80%_30%,rgba(34,211,238,0.10),transparent_35%),linear-gradient(to_bottom,transparent,rgba(3,7,18,1))]" />
           <div className="relative mx-auto max-w-7xl px-6 py-24 lg:px-8 lg:py-32">
             <div className="mx-auto max-w-4xl text-center">
               <div className="mx-auto mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-slate-300">
@@ -111,24 +279,20 @@ export default function AdvisoryPage() {
                 AI Strategy & Architecture
               </div>
               <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
-                AI Strategy & Architecture for the Agentic Enterprise
+                Turn AI ambition into an enterprise operating model.
               </h1>
               <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300">
-                ShandayAI helps technology leaders design and operationalize enterprise AI across
-                heterogeneous data, cloud, application, model, and infrastructure environments.
+                ShandayAI helps executives, platform teams, and technology leaders make clear
+                decisions across enterprise AI, agentic systems, data platforms, cloud
+                infrastructure, model ecosystems, governance, and measurable adoption.
               </p>
               <p className="mx-auto mt-5 max-w-3xl text-base leading-7 text-slate-400">
-                We advise leaders on how to move from scattered GenAI pilots and disconnected tools
-                to reusable AI platforms, governed data foundations, agentic workflows, measurable
-                adoption, and production-ready execution.
+                Most organizations do not fail because they lack AI tools. They fail because
+                pilots, vendors, data platforms, security requirements, workflows, and operating
+                models are not connected. ShandayAI helps teams move from fragmented AI activity
+                to a governed, reusable, measurable AI platform strategy.
               </p>
-              <a
-                href={`mailto:${EMAIL_ADVISORY}?subject=${encodeURIComponent("Advisory conversation")}`}
-                className="mt-10 inline-flex items-center gap-2 rounded-2xl bg-purple-400 px-7 py-3.5 font-semibold text-slate-950 transition hover:bg-purple-300"
-              >
-                Start an Advisory Conversation
-                <ArrowRight className="h-5 w-5" />
-              </a>
+              <AdvisoryCta className="mt-10" />
               <p className="mt-5 text-sm text-slate-500">
                 <a
                   href={`mailto:${EMAIL_ADVISORY}`}
@@ -141,166 +305,274 @@ export default function AdvisoryPage() {
           </div>
         </section>
 
-        {/* Opening Point of View */}
+        {/* Section 1: Tools vs Strategy */}
         <section className="border-t border-white/10">
           <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
             <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-              AI strategy is no longer a model-selection exercise.
+              Using AI tools is not the same as having an AI strategy.
             </h2>
             <div className="mt-8 space-y-5 text-base leading-8 text-slate-400">
               <p>
-                Enterprise AI now spans data platforms, semantic retrieval, model gateways,
-                agentic workflows, governance, security, observability, GPU/inference economics,
-                cloud/on-prem deployment patterns, and business adoption. The hard part is not
-                launching another assistant. The hard part is designing the operating layer that
-                makes AI reusable, trusted, measurable, and aligned to business outcomes.
-              </p>
-              <p>
-                ShandayAI helps organizations make those decisions clearly: what to build, what to
-                buy, where to partner, how to govern, how to measure, and how to scale.
+                Every enterprise is experimenting with AI tools. Teams are using copilots,
+                enterprise assistants, SaaS AI features, automation platforms, model APIs, and
+                agent frameworks. But tool adoption alone does not answer the harder questions.
               </p>
             </div>
+            <ul className="mt-8 space-y-4">
+              {strategyQuestions.map((q) => (
+                <li key={q} className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/[0.03] p-4 text-sm leading-6 text-slate-300 sm:text-base">
+                  <Target className="mt-0.5 h-5 w-5 shrink-0 text-purple-300" />
+                  {q}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-8 text-base leading-8 text-slate-400">
+              ShandayAI helps leaders answer these questions and convert AI activity into an
+              operating model.
+            </p>
           </div>
         </section>
 
-        {/* What We Help With */}
+        {/* Section 2: AI-Ready Data Flow */}
         <section className="border-t border-white/10 bg-white/[0.02]">
           <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-            <div className="max-w-2xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-purple-300">
-                What we help with
-              </p>
-              <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
-                Strategy and architecture across the full enterprise AI stack.
+            <div className="max-w-3xl">
+              <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+                Is your enterprise data AI-ready?
               </h2>
+              <p className="mt-6 text-base leading-8 text-slate-400">
+                AI value depends on the quality, context, accessibility, and governance of
+                enterprise data. Raw data is not enough. Data must be organized, enriched,
+                governed, and connected to business meaning before models and agents can produce
+                trusted outcomes.
+              </p>
             </div>
-            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {helpAreas.map((area) => (
-                <div
-                  key={area.title}
-                  className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 transition hover:border-purple-300/25"
-                >
-                  <div className="mb-4 inline-flex rounded-xl bg-purple-300/10 p-3 text-purple-300 ring-1 ring-purple-300/20">
-                    {area.icon}
+
+            <div className="mt-12 overflow-x-auto pb-2">
+              <div className="flex min-w-[56rem] gap-3 lg:min-w-0 lg:grid lg:grid-cols-5">
+                {dataFlowStages.map((stage, index) => (
+                  <div key={stage.title} className="relative flex-1">
+                    <div className="flex h-full flex-col rounded-2xl border border-white/10 bg-slate-950/70 p-5">
+                      <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-purple-300/10 text-sm font-semibold text-purple-300 ring-1 ring-purple-300/20">
+                        {index + 1}
+                      </div>
+                      <h3 className="text-sm font-semibold leading-snug text-white">
+                        {stage.title}
+                      </h3>
+                      <p className="mt-3 flex-1 text-xs leading-5 text-slate-500">
+                        {stage.examples}
+                      </p>
+                    </div>
+                    {index < dataFlowStages.length - 1 && (
+                      <div className="absolute right-[-0.65rem] top-1/2 z-10 hidden -translate-y-1/2 text-purple-300 lg:block">
+                        <ArrowRight className="h-4 w-4" />
+                      </div>
+                    )}
                   </div>
-                  <h3 className="text-lg font-semibold text-white">{area.title}</h3>
-                  <p className="mt-3 text-sm leading-6 text-slate-400">{area.desc}</p>
+                ))}
+              </div>
+            </div>
+
+            <p className="mt-10 max-w-3xl text-base font-medium leading-8 text-slate-300">
+              The goal is not just better answers. The goal is validated action that creates
+              measurable enterprise value.
+            </p>
+          </div>
+        </section>
+
+        {/* Section 3: What ShandayAI Helps You Solve */}
+        <section className="border-t border-white/10">
+          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+            <div className="max-w-3xl">
+              <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+                What ShandayAI helps you solve
+              </h2>
+              <p className="mt-6 text-base leading-8 text-slate-400">
+                Enterprise AI decisions now cut across data platforms, semantic retrieval, model
+                gateways, agentic workflows, cloud and on-prem infrastructure, security,
+                governance, observability, GPU and inference economics, and business adoption.
+                ShandayAI helps leaders simplify those decisions and turn them into practical
+                architecture, roadmap, and execution plans.
+              </p>
+            </div>
+
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {problemCards.map((card) => (
+                <div
+                  key={card.title}
+                  className="rounded-2xl border border-white/10 bg-white/[0.04] p-6"
+                >
+                  <h3 className="text-lg font-semibold text-white">{card.title}</h3>
+                  <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-slate-500">
+                    Problem
+                  </p>
+                  <p className="mt-2 text-sm leading-6 text-slate-400">{card.problem}</p>
+                  <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-purple-300">
+                    How we help
+                  </p>
+                  <p className="mt-2 text-sm leading-6 text-slate-300">{card.help}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Where We Add Value */}
+        {/* Section 4: Who We Advise */}
+        <section className="border-t border-white/10 bg-white/[0.02]">
+          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">Who we advise</h2>
+            <div className="mt-12 grid gap-6 sm:grid-cols-2">
+              {audiences.map((audience) => (
+                <div
+                  key={audience.title}
+                  className="rounded-2xl border border-white/10 bg-white/[0.04] p-7"
+                >
+                  <div className="inline-flex rounded-xl bg-purple-300/10 p-3 text-purple-300 ring-1 ring-purple-300/20">
+                    {audience.icon}
+                  </div>
+                  <h3 className="mt-5 text-xl font-semibold text-white">{audience.title}</h3>
+                  <p className="mt-4 text-sm leading-6 text-slate-400">{audience.forWhom}</p>
+                  <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-purple-300">
+                    Value
+                  </p>
+                  <p className="mt-2 text-sm leading-6 text-slate-300">{audience.value}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Section 5: Advisory Engagements */}
+        <section className="border-t border-white/10">
+          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+            <div className="max-w-3xl">
+              <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+                Advisory engagements that produce decisions, not decks.
+              </h2>
+              <p className="mt-6 text-base leading-8 text-slate-400">
+                Each engagement is designed to create a usable decision artifact: a roadmap,
+                architecture, scorecard, operating model, or implementation plan that leaders can
+                act on.
+              </p>
+            </div>
+
+            <div className="mt-12 space-y-8">
+              {engagements.map((engagement) => (
+                <div
+                  key={engagement.title}
+                  className="rounded-2xl border border-white/10 bg-white/[0.04] p-8 lg:p-10"
+                >
+                  <div className="flex flex-wrap items-start gap-4">
+                    <div className="inline-flex rounded-xl bg-purple-300/10 p-3 text-purple-300 ring-1 ring-purple-300/20">
+                      {engagement.icon}
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-widest text-purple-300">
+                        {engagement.duration}
+                      </p>
+                      <h3 className="mt-1 text-2xl font-semibold text-white">
+                        {engagement.title}
+                      </h3>
+                      <p className="mt-2 text-sm text-slate-400">
+                        <span className="font-medium text-slate-300">Best for: </span>
+                        {engagement.bestFor}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="mt-8 grid gap-8 lg:grid-cols-3">
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+                        How it works
+                      </p>
+                      <ul className="mt-3 space-y-2">
+                        {engagement.howItWorks.map((item) => (
+                          <li
+                            key={item}
+                            className="flex items-start gap-2 text-sm leading-6 text-slate-400"
+                          >
+                            <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-purple-300" />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+                        Deliverables
+                      </p>
+                      <ul className="mt-3 space-y-2">
+                        {engagement.deliverables.map((item) => (
+                          <li
+                            key={item}
+                            className="flex items-start gap-2 text-sm leading-6 text-slate-400"
+                          >
+                            <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-purple-300/80" />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+                        Client benefit
+                      </p>
+                      <p className="mt-3 text-sm leading-6 text-slate-300">{engagement.benefit}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Section 6: What Clients Get */}
+        <section className="border-t border-white/10 bg-white/[0.02]">
+          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+              What clients get
+            </h2>
+            <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {clientDeliverables.map((item) => (
+                <div
+                  key={item}
+                  className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3"
+                >
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-purple-300" />
+                  <span className="text-sm leading-6 text-slate-300">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Section 7: Trust */}
         <section className="border-t border-white/10">
           <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
             <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
               <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.3em] text-purple-300">
-                  Where we add value
-                </p>
-                <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
-                  From architecture choices to operating leverage.
+                <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+                  Why enterprises can trust ShandayAI
                 </h2>
                 <p className="mt-6 text-base leading-8 text-slate-400">
-                  ShandayAI is built for leaders who need clear thinking across both business and
-                  technical layers. We help teams connect strategy to platform decisions, platform
-                  decisions to delivery patterns, and delivery patterns to measurable outcomes.
+                  ShandayAI is not a generic AI content or automation shop. The advisory practice
+                  is grounded in enterprise platform experience across AI, data, cloud
+                  infrastructure, storage, observability, semantic retrieval, RAG, agentic
+                  workflows, hybrid deployment, governance, and production systems.
+                </p>
+                <p className="mt-6 text-base leading-8 text-slate-400">
+                  ShandayAI is founder-led by Praveen Pratury, an enterprise AI and data platform
+                  operator with 20+ years of experience building and advising on AI platforms,
+                  data strategy, cloud infrastructure, semantic retrieval, RAG, agentic workflows,
+                  observability, analytics, and production AI systems. His approach combines
+                  executive-level strategy with hands-on platform architecture and practical
+                  delivery experience.
                 </p>
               </div>
               <ul className="space-y-4">
-                {valueBullets.map((bullet) => (
-                  <li key={bullet} className="flex items-start gap-3 text-slate-300">
-                    <Scale className="mt-0.5 h-5 w-5 shrink-0 text-purple-300" />
-                    <span className="text-sm leading-6 sm:text-base">{bullet}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        {/* Advisory Engagements */}
-        <section className="border-t border-white/10 bg-white/[0.02]">
-          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-            <div className="max-w-2xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-purple-300">
-                Engagements
-              </p>
-              <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
-                Advisory engagements built for real decisions.
-              </h2>
-            </div>
-            <div className="mt-12 grid gap-6 lg:grid-cols-3">
-              {engagements.map((item) => (
-                <div
-                  key={item.title}
-                  className="flex flex-col rounded-2xl border border-white/10 bg-white/[0.04] p-7"
-                >
-                  <div className="inline-flex w-fit rounded-xl bg-purple-300/10 p-3 text-purple-300 ring-1 ring-purple-300/20">
-                    {item.icon}
-                  </div>
-                  <p className="mt-5 text-xs font-semibold uppercase tracking-widest text-purple-300">
-                    {item.duration}
-                  </p>
-                  <h3 className="mt-2 text-xl font-semibold text-white">{item.title}</h3>
-                  <p className="mt-4 flex-1 text-sm leading-6 text-slate-400">{item.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Founder-Led Perspective */}
-        <section className="border-t border-white/10">
-          <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-purple-300">
-              Founder-led
-            </p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
-              Founder-led by an enterprise AI and data platform operator.
-            </h2>
-            <div className="mt-8 space-y-5 text-base leading-8 text-slate-400">
-              <p>
-                ShandayAI is led by Praveen Pratury, an enterprise AI and data platform leader with
-                20+ years of experience across AI platforms, data strategy, cloud infrastructure,
-                semantic retrieval, RAG, agentic workflows, observability, analytics, and production
-                AI systems.
-              </p>
-              <p>
-                His work spans enterprise AI strategy, AI/data platform architecture, GenAI
-                enablement, hybrid-cloud and on-prem deployment patterns, model gateways,
-                governance, evaluation, and large-scale systems tied to measurable business outcomes.
-              </p>
-              <p>
-                The advisory practice combines executive-level strategy with hands-on platform
-                architecture experience, helping clients move from AI ambition to practical roadmap,
-                implementation patterns, and measurable value.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Good-Fit Clients */}
-        <section className="border-t border-white/10 bg-white/[0.02]">
-          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-            <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
-              <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.3em] text-purple-300">
-                  Best fit
-                </p>
-                <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
-                  Organizations serious about enterprise AI.
-                </h2>
-                <p className="mt-6 text-base leading-8 text-slate-400">
-                  ShandayAI is a strong fit for organizations that are serious about enterprise AI
-                  but need clarity on architecture, governance, operating model, and execution.
-                </p>
-              </div>
-              <ul className="space-y-3">
-                {goodFitBullets.map((bullet) => (
+                {trustBullets.map((bullet) => (
                   <li key={bullet} className="flex items-start gap-3 text-sm leading-6 text-slate-300">
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-purple-300" />
+                    <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-purple-300" />
                     {bullet}
                   </li>
                 ))}
@@ -309,23 +581,51 @@ export default function AdvisoryPage() {
           </div>
         </section>
 
-        {/* Final CTA */}
+        {/* Section 8: Principles */}
+        <section className="border-t border-white/10 bg-white/[0.02]">
+          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+              Our advisory principles
+            </h2>
+            <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {principles.map((principle, index) => (
+                <div
+                  key={principle.title}
+                  className="rounded-2xl border border-white/10 bg-white/[0.04] p-6"
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-purple-300/10 text-sm font-semibold text-purple-300">
+                      {index + 1}
+                    </span>
+                    <h3 className="font-semibold text-white">{principle.title}</h3>
+                  </div>
+                  <p className="mt-4 text-sm leading-6 text-slate-400">{principle.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Section 9: Final CTA */}
         <section className="border-t border-white/10">
           <div className="mx-auto max-w-3xl px-6 py-20 text-center lg:px-8">
             <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-              Move from AI experiments to an enterprise AI operating model.
+              Need clarity on your enterprise AI direction?
             </h2>
             <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-slate-400">
-              Schedule an advisory conversation to discuss your AI strategy, architecture
-              tradeoffs, vendor choices, platform roadmap, or agentic AI operating model.
+              Use ShandayAI advisory to pressure-test your AI roadmap, data readiness, platform
+              architecture, vendor choices, governance model, or agentic AI execution plan.
             </p>
-            <a
-              href={`mailto:${EMAIL_ADVISORY}?subject=${encodeURIComponent("Advisory conversation")}`}
-              className="mt-8 inline-flex items-center gap-2 rounded-2xl bg-purple-400 px-7 py-3.5 font-semibold text-slate-950 transition hover:bg-purple-300"
-            >
-              <Mail className="h-5 w-5" />
-              {EMAIL_ADVISORY}
-            </a>
+            <AdvisoryCta className="mt-8" />
+            <p className="mt-5">
+              <a
+                href={`mailto:${EMAIL_ADVISORY}`}
+                className="inline-flex items-center gap-2 text-sm text-slate-400 transition hover:text-purple-300"
+              >
+                <Mail className="h-4 w-4" />
+                {EMAIL_ADVISORY}
+              </a>
+            </p>
           </div>
         </section>
       </main>
