@@ -1,5 +1,5 @@
 import { Mail } from "lucide-react";
-import { EMAIL_ADVISORY, EMAIL_GENERAL, EMAIL_PLATFORMS } from "./contact";
+import { EMAIL_ADVISORY, EMAIL_PLATFORMS } from "./contact";
 
 type ContactSectionProps = {
   variant?: "default" | "advisory" | "platforms";
@@ -22,7 +22,6 @@ const emailCards: Record<EmailKey, { email: string; label: string; desc: string 
 
 export default function ContactSection({ variant = "default" }: ContactSectionProps) {
   const primary: EmailKey = variant === "platforms" ? "platforms" : "advisory";
-  const secondary: EmailKey = primary === "advisory" ? "platforms" : "advisory";
   const showBoth = variant === "default";
 
   return (
@@ -63,27 +62,6 @@ export default function ContactSection({ variant = "default" }: ContactSectionPr
             );
           })}
         </div>
-
-        {!showBoth && (
-          <p className="mx-auto mt-5 text-sm text-slate-500">
-            For {emailCards[secondary].label.toLowerCase()}:{" "}
-            <a
-              href={`mailto:${emailCards[secondary].email}`}
-              className="text-cyan-300 hover:text-cyan-200"
-            >
-              {emailCards[secondary].email}
-            </a>
-          </p>
-        )}
-
-        {showBoth && (
-          <a
-            href={`mailto:${EMAIL_GENERAL}`}
-            className="mt-8 inline-block rounded-2xl bg-white px-6 py-3 font-semibold text-slate-950 hover:bg-slate-200"
-          >
-            Contact ShandayAI
-          </a>
-        )}
       </div>
     </section>
   );
