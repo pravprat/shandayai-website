@@ -1,4 +1,4 @@
-import { EMAIL_ADVISORY, EMAIL_SALES } from "./contact";
+import { EMAIL_ADVISORY, EMAIL_PLATFORMS } from "./contact";
 
 export default function SiteFooter() {
   return (
@@ -9,8 +9,8 @@ export default function SiteFooter() {
           {EMAIL_ADVISORY}
         </a>
         <span className="mx-2">·</span>
-        <a href={`mailto:${EMAIL_SALES}`} className="text-slate-400 hover:text-cyan-300">
-          {EMAIL_SALES}
+        <a href={`mailto:${EMAIL_PLATFORMS}`} className="text-slate-400 hover:text-cyan-300">
+          {EMAIL_PLATFORMS}
         </a>
       </p>
     </footer>

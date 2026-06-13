@@ -1,12 +1,11 @@
-import Link from "next/link";
 import { Mail } from "lucide-react";
-import { EMAIL_ADVISORY, EMAIL_SALES } from "./contact";
+import { EMAIL_ADVISORY, EMAIL_GENERAL, EMAIL_PLATFORMS } from "./contact";
 
 type ContactSectionProps = {
   variant?: "default" | "advisory" | "platforms";
 };
 
-type EmailKey = "advisory" | "sales";
+type EmailKey = "advisory" | "platforms";
 
 const emailCards: Record<EmailKey, { email: string; label: string; desc: string }> = {
   advisory: {
@@ -14,16 +13,16 @@ const emailCards: Record<EmailKey, { email: string; label: string; desc: string 
     label: "AI Strategy & Architecture",
     desc: "Strategy, architecture, governance, and roadmap conversations.",
   },
-  sales: {
-    email: EMAIL_SALES,
+  platforms: {
+    email: EMAIL_PLATFORMS,
     label: "Semantic Platforms & Pilots",
     desc: "SCRCA, SIP, and semantic intelligence pilot inquiries.",
   },
 };
 
 export default function ContactSection({ variant = "default" }: ContactSectionProps) {
-  const primary: EmailKey = variant === "platforms" ? "sales" : "advisory";
-  const secondary: EmailKey = primary === "advisory" ? "sales" : "advisory";
+  const primary: EmailKey = variant === "platforms" ? "platforms" : "advisory";
+  const secondary: EmailKey = primary === "advisory" ? "platforms" : "advisory";
   const showBoth = variant === "default";
 
   return (
@@ -44,7 +43,7 @@ export default function ContactSection({ variant = "default" }: ContactSectionPr
         <div
           className={`mx-auto mt-8 grid max-w-3xl gap-4 ${showBoth ? "sm:grid-cols-2" : "max-w-md"}`}
         >
-          {(showBoth ? (["advisory", "sales"] as const) : [primary]).map((key) => {
+          {(showBoth ? (["advisory", "platforms"] as const) : [primary]).map((key) => {
             const card = emailCards[key];
             return (
               <a
@@ -79,7 +78,7 @@ export default function ContactSection({ variant = "default" }: ContactSectionPr
 
         {showBoth && (
           <a
-            href={`mailto:${EMAIL_ADVISORY}`}
+            href={`mailto:${EMAIL_GENERAL}`}
             className="mt-8 inline-block rounded-2xl bg-white px-6 py-3 font-semibold text-slate-950 hover:bg-slate-200"
           >
             Contact ShandayAI
