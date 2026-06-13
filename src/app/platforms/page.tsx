@@ -3,7 +3,6 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
-import ContactSection from "../components/ContactSection";
 
 export const metadata: Metadata = {
   title: "Semantic Platforms & Pilots | ShandayAI",
@@ -92,7 +91,6 @@ export default function PlatformsPage() {
           </div>
         </section>
 
-        <ContactSection variant="platforms" />
       </main>
 
       <SiteFooter />
