@@ -2,33 +2,35 @@ import { BarChart3, Bot, CheckCircle2, ShieldCheck } from "lucide-react";
 
 const columns = [
   {
-    title: "Traditional Observability",
+    title: "Your observability stack",
     icon: <BarChart3 className="h-5 w-5" />,
-    summary: "Collects logs, metrics, traces, alerts",
+    summary:
+      "Collects logs, metrics, traces, and alerts from the platforms your teams already run.",
     accent: "border-white/10 bg-white/[0.03]",
     iconStyle: "bg-slate-500/10 text-slate-400 ring-slate-500/20",
     muted: true,
   },
   {
-    title: "Generic AI Chatbot",
+    title: "Generic AI chatbot",
     icon: <Bot className="h-5 w-5" />,
-    summary: "Answers questions, but may lack evidence and workflow grounding",
+    summary: "Answers questions quickly, but may lack evidence links, timelines, and reviewable RCA structure.",
     accent: "border-white/10 bg-white/[0.03]",
     iconStyle: "bg-slate-500/10 text-slate-400 ring-slate-500/20",
     muted: true,
   },
   {
-    title: "ShandayAI Reliability Intelligence",
+    title: "ShandayAI",
     icon: <ShieldCheck className="h-5 w-5" />,
-    summary: "Finds root cause, links evidence, creates reports, recommends next steps",
+    summary:
+      "Analyzes incident logs, ranks root causes with evidence, and produces structured reports for team review.",
     accent: "border-cyan-300/30 bg-cyan-300/5",
     iconStyle: "bg-cyan-300/10 text-cyan-300 ring-cyan-300/20",
     muted: false,
     highlights: [
-      "RCA Findings",
-      "Evidence",
-      "Reports",
-      "Remediation Guidance",
+      "Evidence-linked RCA findings",
+      "Incident timelines",
+      "Support-ready reports",
+      "Remediation guidance",
     ],
   },
 ];
@@ -37,8 +39,12 @@ export function DifferentiationVisual() {
   return (
     <div className="rounded-[2rem] border border-white/10 bg-white/[0.03] p-6 sm:p-8">
       <h3 className="text-xl font-semibold tracking-tight text-white sm:text-2xl">
-        Designed to complement observability, not replace it
+        Complements your observability stack
       </h3>
+      <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-400">
+        ShandayAI does not replace log platforms, metrics, or alerting. It adds an evidence-backed
+        RCA layer on top of the incident data you already collect.
+      </p>
 
       <div className="mt-8 grid gap-5 lg:grid-cols-3">
         {columns.map((col) => (

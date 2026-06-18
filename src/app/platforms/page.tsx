@@ -7,13 +7,15 @@ import { DeploymentOptionsVisual } from "../components/platforms/DeploymentOptio
 import { DifferentiationVisual } from "../components/platforms/DifferentiationVisual";
 import { HowItWorksFlow } from "../components/platforms/HowItWorksFlow";
 import { InvestigationDeliverables } from "../components/platforms/InvestigationDeliverables";
+import { PlatformProofStrip } from "../components/platforms/PlatformProofStrip";
 import { ProductTierSection } from "../components/platforms/ProductTierSection";
+import { SampleInvestigationReport } from "../components/platforms/SampleInvestigationReport";
 import { EMAIL_PLATFORMS } from "../components/contact";
 
 export const metadata: Metadata = {
-  title: "ShandayAI Reliability Intelligence Platform",
+  title: "Incident RCA Software | ShandayAI",
   description:
-    "Incident RCA software that turns logs and incident data into evidence-backed root-cause findings and reports. RCA Core available today.",
+    "Evidence-backed root cause analysis from incident logs. RCA Core available today in a local container. Assist and enterprise platform through design partner pilots.",
 };
 
 const availabilityItems = [
@@ -29,63 +31,69 @@ export default function PlatformsPage() {
       <SiteHeader />
 
       <main>
-        {/* Hero — 10-second clarity */}
+        {/* Hero */}
         <section className="relative overflow-hidden border-b border-white/10">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(34,211,238,0.14),transparent_30%),radial-gradient(circle_at_20%_10%,rgba(139,92,246,0.10),transparent_28%)]" />
-          <div className="relative mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-28">
-            <div className="mx-auto max-w-3xl text-center">
-              <p className="text-sm font-semibold uppercase tracking-widest text-cyan-300">
-                Incident RCA software
-              </p>
-              <h1 className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl lg:text-[3.25rem] lg:leading-tight">
-                Evidence-backed root cause analysis from incident logs
-              </h1>
-              <p className="mx-auto mt-6 text-lg leading-8 text-slate-300">
-                ShandayAI ingests logs and incident data, ranks likely root causes with supporting
-                evidence, and produces reports your operations and SRE teams can review and act on.
-              </p>
-              <p className="mx-auto mt-4 text-base leading-7 text-slate-400">
-                Runs in a local container today. Expands to AI-assisted investigation and private
-                enterprise deployment through design partner pilots.
-              </p>
+          <div className="relative mx-auto max-w-7xl px-6 py-16 lg:px-8 lg:py-24">
+            <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+              <div className="text-center lg:text-left">
+                <p className="text-sm font-semibold uppercase tracking-widest text-cyan-300">
+                  Incident RCA software
+                </p>
+                <h1 className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl lg:leading-tight">
+                  Evidence-backed root cause analysis from incident logs
+                </h1>
+                <p className="mt-6 text-lg leading-8 text-slate-300">
+                  ShandayAI ingests logs and incident data, ranks likely root causes with supporting
+                  evidence, and produces reports your operations and SRE teams can review and act on.
+                </p>
+                <p className="mt-4 text-base leading-7 text-slate-400">
+                  Runs in a local container today. Expands to AI-assisted investigation and private
+                  enterprise deployment through design partner pilots.
+                </p>
 
-              <div className="mt-8 flex flex-wrap justify-center gap-2">
-                {availabilityItems.map((item) => (
-                  <span
-                    key={item.label}
-                    className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs text-slate-300"
-                  >
-                    <span className="font-medium text-white">{item.label}</span>
-                    <span className="mx-1.5 text-slate-600">·</span>
-                    {item.status}
-                  </span>
-                ))}
+                <div className="mt-8 flex flex-wrap justify-center gap-2 lg:justify-start">
+                  {availabilityItems.map((item) => (
+                    <span
+                      key={item.label}
+                      className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs text-slate-300"
+                    >
+                      <span className="font-medium text-white">{item.label}</span>
+                      <span className="mx-1.5 text-slate-600">·</span>
+                      {item.status}
+                    </span>
+                  ))}
+                </div>
+
+                <a
+                  href={`mailto:${EMAIL_PLATFORMS}?subject=${encodeURIComponent("Reliability Intelligence inquiry")}`}
+                  className="mt-10 inline-flex items-center gap-2 rounded-2xl bg-cyan-300 px-7 py-3.5 font-semibold text-slate-950 hover:bg-cyan-200"
+                >
+                  <Mail className="h-5 w-5" />
+                  Discuss Your Use Case
+                </a>
+                <p className="mt-4 text-sm text-slate-500">
+                  <a href={`mailto:${EMAIL_PLATFORMS}`} className="text-slate-400 hover:text-cyan-300">
+                    {EMAIL_PLATFORMS}
+                  </a>
+                </p>
               </div>
 
-              <a
-                href={`mailto:${EMAIL_PLATFORMS}?subject=${encodeURIComponent("Reliability Intelligence inquiry")}`}
-                className="mt-10 inline-flex items-center gap-2 rounded-2xl bg-cyan-300 px-7 py-3.5 font-semibold text-slate-950 hover:bg-cyan-200"
-              >
-                <Mail className="h-5 w-5" />
-                Discuss Your Use Case
-              </a>
-              <p className="mt-4 text-sm text-slate-500">
-                <a href={`mailto:${EMAIL_PLATFORMS}`} className="text-slate-400 hover:text-cyan-300">
-                  {EMAIL_PLATFORMS}
-                </a>
-              </p>
+              <SampleInvestigationReport />
             </div>
           </div>
         </section>
 
-        {/* Product tiers — single source of truth */}
+        <PlatformProofStrip />
+
+        {/* Product tiers */}
         <section className="border-b border-white/10">
           <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
             <ProductTierSection />
           </div>
         </section>
 
-        {/* How it works — one flow */}
+        {/* How it works */}
         <section className="border-b border-white/10 bg-white/[0.02]">
           <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
             <div className="max-w-3xl">

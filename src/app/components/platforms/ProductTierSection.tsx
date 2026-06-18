@@ -10,6 +10,9 @@ export type ProductTier = {
   accent: string;
   labelColor: string;
   badge: "Available today" | "Design partner pilot" | "Pilot and roadmap";
+  todayLabel?: string;
+  futureLabel?: string;
+  note?: string;
 };
 
 const tiers: ProductTier[] = [
@@ -53,6 +56,9 @@ const tiers: ProductTier[] = [
     accent: "border-teal-300/25 bg-gradient-to-b from-teal-300/5 to-transparent",
     labelColor: "text-teal-300",
     badge: "Design partner pilot",
+    todayLabel: "In pilot today",
+    futureLabel: "Planned for broader release",
+    note: "AI-assisted investigation is delivered through design partner pilots. The RCA Core pipeline is available now.",
   },
   {
     name: "ShandayAI Reliability Intelligence Platform",
@@ -72,6 +78,8 @@ const tiers: ProductTier[] = [
     accent: "border-violet-300/25 bg-gradient-to-b from-violet-300/5 to-transparent",
     labelColor: "text-violet-300",
     badge: "Pilot and roadmap",
+    todayLabel: "In pilot today",
+    futureLabel: "Planned for broader release",
   },
 ];
 
@@ -115,7 +123,7 @@ export function ProductTierSection() {
                   className={`flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider ${tier.labelColor}`}
                 >
                   <CheckCircle2 className="h-3.5 w-3.5" />
-                  Available today
+                  {tier.todayLabel ?? "Available today"}
                 </p>
                 <ul className="mt-2 space-y-1.5">
                   {tier.availableToday.map((item) => (
@@ -124,12 +132,17 @@ export function ProductTierSection() {
                     </li>
                   ))}
                 </ul>
+                {tier.note && (
+                  <p className="mt-3 rounded-lg border border-amber-400/20 bg-amber-400/5 px-3 py-2 text-xs leading-5 text-amber-100/90">
+                    {tier.note}
+                  </p>
+                )}
               </div>
 
               <div className="mt-5">
                 <p className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-slate-500">
                   <Clock className="h-3.5 w-3.5" />
-                  Future releases
+                  {tier.futureLabel ?? "Future releases"}
                 </p>
                 <ul className="mt-2 space-y-1.5">
                   {tier.comingSoon.map((item) => (

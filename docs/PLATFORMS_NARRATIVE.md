@@ -54,13 +54,14 @@ Customers start at the tier that matches their maturity. Each tier builds on the
 
 ## Page structure (do not duplicate)
 
-1. Hero — pitch + availability strip + CTA
-2. Product tiers — one section only; each card shows Available today vs Coming in future releases
-3. How it works — one flow diagram
-4. Standard deliverables — compact list
-5. Deployment — today vs roadmap labels
-6. Fits your stack — short differentiation
-7. Contact
+1. Hero — pitch + sample report visual + availability strip + CTA
+2. Proof strip — why teams evaluate (honest, no fake logos)
+3. Product tiers — one section only; each card shows today vs future releases
+4. How it works — one flow diagram
+5. Standard deliverables — compact list
+6. Deployment — today vs roadmap labels
+7. Fits your stack — short differentiation
+8. Contact
 
 ## Copy rules
 
