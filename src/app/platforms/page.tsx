@@ -1,18 +1,13 @@
 import type { Metadata } from "next";
-import {
-  Box,
-  Building2,
-  Cloud,
-  Container,
-  Layers3,
-  Mail,
-  Search,
-  Sparkles,
-  TrendingUp,
-} from "lucide-react";
+import { Box, Mail } from "lucide-react";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
 import PlatformPilotContact from "../components/PlatformPilotContact";
+import { DeploymentOptionsVisual } from "../components/platforms/DeploymentOptionsVisual";
+import { DifferentiationVisual } from "../components/platforms/DifferentiationVisual";
+import { HowItWorksFlow } from "../components/platforms/HowItWorksFlow";
+import { ProductPackagingLadder } from "../components/platforms/ProductPackagingLadder";
+import { RCAOutputPacketVisual } from "../components/platforms/RCAOutputPacketVisual";
 import { EMAIL_PLATFORMS } from "../components/contact";
 
 export const metadata: Metadata = {
@@ -58,51 +53,6 @@ const offerings = [
   },
 ];
 
-const deploymentOptions = [
-  {
-    icon: <Container className="h-6 w-6" />,
-    title: "Local Container Deployment",
-    desc: "Run RCA Core or RCA Assist locally or inside a customer-managed environment. Best for lightweight trials, SMBs, technical evaluations, and early pilots.",
-  },
-  {
-    icon: <Building2 className="h-6 w-6" />,
-    title: "Private Enterprise Deployment",
-    desc: "Deploy inside the customer's VPC, Kubernetes environment, or private infrastructure. Best for enterprises that need data locality, security review, auditability, and controlled access to logs and RCA artifacts.",
-  },
-  {
-    icon: <Cloud className="h-6 w-6" />,
-    title: "Marketplace Deployment",
-    desc: "Use the same product family through AWS, Azure, or GCP marketplace channels when marketplace procurement, private offers, metering, or standardized deployment are required. Marketplace is a deployment and procurement option, not a separate product.",
-  },
-];
-
-const howItWorks = [
-  {
-    step: 1,
-    title: "Bring logs and incident data",
-    text: "Start with operational logs, incident artifacts, or customer-provided failure data.",
-    icon: <Layers3 className="h-5 w-5" />,
-  },
-  {
-    step: 2,
-    title: "Run evidence-backed RCA",
-    text: "The RCA pipeline detects incident windows, clusters related failures, ranks likely root causes, and links findings to supporting evidence.",
-    icon: <Search className="h-5 w-5" />,
-  },
-  {
-    step: 3,
-    title: "Add assisted investigation",
-    text: "Optional AI-assisted workflows generate summaries, hypotheses, remediation suggestions, and support-ready reports.",
-    icon: <Sparkles className="h-5 w-5" />,
-  },
-  {
-    step: 4,
-    title: "Deploy at the right level",
-    text: "Start with a local container, move to a private enterprise deployment, or use marketplace deployment when procurement and scale require it.",
-    icon: <TrendingUp className="h-5 w-5" />,
-  },
-];
-
 export default function PlatformsPage() {
   return (
     <div className="min-h-screen bg-[#030712] text-white">
@@ -128,9 +78,14 @@ export default function PlatformsPage() {
                 AI-assisted investigation and reporting, and scale into a full enterprise
                 reliability intelligence platform as their needs mature.
               </p>
+            </div>
+
+            <ProductPackagingLadder />
+
+            <div className="mx-auto mt-12 max-w-4xl text-center">
               <a
                 href={`mailto:${EMAIL_PLATFORMS}?subject=${encodeURIComponent("Reliability Intelligence inquiry")}`}
-                className="mt-10 inline-flex items-center gap-2 rounded-2xl bg-cyan-300 px-7 py-3.5 font-semibold text-slate-950 hover:bg-cyan-200"
+                className="inline-flex items-center gap-2 rounded-2xl bg-cyan-300 px-7 py-3.5 font-semibold text-slate-950 hover:bg-cyan-200"
               >
                 <Mail className="h-5 w-5" />
                 Discuss Your Use Case
@@ -155,25 +110,33 @@ export default function PlatformsPage() {
               evidence-backed RCA foundation.
             </p>
 
-            <div className="mt-12 grid gap-8 lg:grid-cols-3">
-              {offerings.map((item) => (
-                <div key={item.headline} className={`rounded-2xl border p-8 ${item.accent}`}>
-                  <p className={`text-xs font-semibold uppercase tracking-widest ${item.labelColor}`}>
-                    {item.tier}
-                  </p>
-                  <h3 className="mt-3 text-xl font-semibold leading-snug">{item.headline}</h3>
-                  <p className="mt-2 text-sm font-medium text-slate-300">{item.subHeadline}</p>
-                  <p className="mt-5 text-sm leading-7 text-slate-400">{item.body}</p>
-                  <p className="mt-5 text-xs font-semibold uppercase tracking-wider text-slate-500">
-                    Best for
-                  </p>
-                  <p className="mt-1 text-sm leading-6 text-slate-300">{item.bestFor}</p>
-                  <p className="mt-5 text-xs font-semibold uppercase tracking-wider text-slate-500">
-                    Deployment
-                  </p>
-                  <p className="mt-1 text-sm leading-6 text-slate-400">{item.deployment}</p>
+            <div className="mt-12 flex flex-col-reverse gap-10 lg:flex-row lg:items-start lg:gap-12">
+              <div className="flex-1">
+                <div className="grid gap-8 lg:grid-cols-3">
+                  {offerings.map((item) => (
+                    <div key={item.headline} className={`rounded-2xl border p-8 ${item.accent}`}>
+                      <p className={`text-xs font-semibold uppercase tracking-widest ${item.labelColor}`}>
+                        {item.tier}
+                      </p>
+                      <h3 className="mt-3 text-xl font-semibold leading-snug">{item.headline}</h3>
+                      <p className="mt-2 text-sm font-medium text-slate-300">{item.subHeadline}</p>
+                      <p className="mt-5 text-sm leading-7 text-slate-400">{item.body}</p>
+                      <p className="mt-5 text-xs font-semibold uppercase tracking-wider text-slate-500">
+                        Best for
+                      </p>
+                      <p className="mt-1 text-sm leading-6 text-slate-300">{item.bestFor}</p>
+                      <p className="mt-5 text-xs font-semibold uppercase tracking-wider text-slate-500">
+                        Deployment
+                      </p>
+                      <p className="mt-1 text-sm leading-6 text-slate-400">{item.deployment}</p>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
+
+              <div className="shrink-0 lg:w-80 lg:sticky lg:top-24">
+                <RCAOutputPacketVisual />
+              </div>
             </div>
           </div>
         </section>
@@ -186,19 +149,8 @@ export default function PlatformsPage() {
               ShandayAI products are designed to meet customers where they are, from local container
               trials to private enterprise deployments and future marketplace-based procurement.
             </p>
-            <div className="mt-12 grid gap-6 lg:grid-cols-3">
-              {deploymentOptions.map((option) => (
-                <div
-                  key={option.title}
-                  className="rounded-2xl border border-white/10 bg-white/[0.04] p-7"
-                >
-                  <div className="inline-flex rounded-xl bg-cyan-300/10 p-3 text-cyan-300 ring-1 ring-cyan-300/20">
-                    {option.icon}
-                  </div>
-                  <h3 className="mt-5 text-lg font-semibold text-white">{option.title}</h3>
-                  <p className="mt-3 text-sm leading-6 text-slate-400">{option.desc}</p>
-                </div>
-              ))}
+            <div className="mt-10">
+              <DeploymentOptionsVisual />
             </div>
           </div>
         </section>
@@ -207,33 +159,24 @@ export default function PlatformsPage() {
         <section className="border-t border-white/10">
           <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
             <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">How It Works</h2>
-            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {howItWorks.map((item) => (
-                <div
-                  key={item.step}
-                  className="rounded-2xl border border-white/10 bg-white/[0.04] p-6"
-                >
-                  <div className="flex items-center gap-3">
-                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-cyan-300/10 text-sm font-semibold text-cyan-300 ring-1 ring-cyan-300/20">
-                      {item.step}
-                    </span>
-                    <div className="rounded-lg bg-cyan-300/10 p-2 text-cyan-300 ring-1 ring-cyan-300/20">
-                      {item.icon}
-                    </div>
-                  </div>
-                  <h3 className="mt-5 font-semibold text-white">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-6 text-slate-400">{item.text}</p>
-                </div>
-              ))}
+            <p className="mt-4 max-w-3xl text-base leading-8 text-slate-400">
+              Start with operational logs and incident data. Run evidence-backed RCA, add optional
+              AI-assisted investigation, and deliver reports with clear next steps.
+            </p>
+            <div className="mt-10">
+              <HowItWorksFlow />
             </div>
           </div>
         </section>
 
         {/* What This Is Not */}
         <section className="border-t border-white/10 bg-white/[0.02]">
-          <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
+          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
             <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">What This Is Not</h2>
-            <p className="mt-6 text-base leading-8 text-slate-400">
+            <div className="mt-8">
+              <DifferentiationVisual />
+            </div>
+            <p className="mx-auto mt-8 max-w-3xl text-base leading-8 text-slate-400">
               ShandayAI Reliability Intelligence is not another dashboarding tool and not a generic
               chatbot. It is designed to complement existing observability and incident systems by
               turning the signals teams already collect into root-cause findings, evidence-backed
