@@ -4,12 +4,12 @@ import {
   FileText,
   Link2,
   ShieldCheck,
-  Stethoscope,
+  Target,
   Wrench,
 } from "lucide-react";
 
 const outputs = [
-  { label: "Root-cause finding", icon: <Stethoscope className="h-4 w-4" /> },
+  { label: "Root-cause finding", icon: <Target className="h-4 w-4" /> },
   { label: "Confidence score", icon: <ShieldCheck className="h-4 w-4" /> },
   { label: "Incident timeline", icon: <Clock className="h-4 w-4" /> },
   { label: "Evidence bundle", icon: <Link2 className="h-4 w-4" /> },
@@ -22,19 +22,22 @@ export function RCAOutputPacketVisual() {
   return (
     <div>
       <h3 className="text-xl font-semibold tracking-tight text-white sm:text-2xl">
-        What every RCA job produces
+        Standard investigation deliverables
       </h3>
+      <p className="mt-2 text-sm leading-6 text-slate-400">
+        Structured outputs teams can review, share, and act on after each analysis.
+      </p>
 
-      <div className="mt-6 max-w-lg rounded-2xl border border-cyan-300/25 bg-gradient-to-b from-cyan-300/8 to-transparent p-6 shadow-lg shadow-cyan-950/20">
+      <div className="mt-6 rounded-2xl border border-cyan-300/25 bg-gradient-to-b from-cyan-300/8 to-transparent p-6 shadow-lg shadow-cyan-950/20">
         <div className="flex items-center gap-3 border-b border-white/10 pb-4">
           <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-300/10 text-cyan-300 ring-1 ring-cyan-300/20">
             <FileText className="h-5 w-5" />
           </div>
           <div>
             <p className="text-xs font-semibold uppercase tracking-widest text-cyan-300">
-              Output
+              Deliverables
             </p>
-            <p className="text-base font-semibold text-white">RCA Output Packet</p>
+            <p className="text-base font-semibold text-white">Investigation output packet</p>
           </div>
         </div>
 

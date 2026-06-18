@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
-import { Box, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
 import PlatformPilotContact from "../components/PlatformPilotContact";
+import { CapabilityStackVisual } from "../components/platforms/CapabilityStackVisual";
 import { DeploymentOptionsVisual } from "../components/platforms/DeploymentOptionsVisual";
 import { DifferentiationVisual } from "../components/platforms/DifferentiationVisual";
 import { HowItWorksFlow } from "../components/platforms/HowItWorksFlow";
+import { OperationalWorkflowVisual } from "../components/platforms/OperationalWorkflowVisual";
 import { ProductPackagingLadder } from "../components/platforms/ProductPackagingLadder";
 import { RCAOutputPacketVisual } from "../components/platforms/RCAOutputPacketVisual";
 import { EMAIL_PLATFORMS } from "../components/contact";
@@ -141,6 +143,13 @@ export default function PlatformsPage() {
           </div>
         </section>
 
+        {/* Capability stack */}
+        <section className="border-t border-white/10 bg-white/[0.02]">
+          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+            <CapabilityStackVisual />
+          </div>
+        </section>
+
         {/* Deployment Options */}
         <section className="border-t border-white/10 bg-white/[0.02]">
           <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
@@ -166,6 +175,9 @@ export default function PlatformsPage() {
             <div className="mt-10">
               <HowItWorksFlow />
             </div>
+            <div className="mt-10">
+              <OperationalWorkflowVisual />
+            </div>
           </div>
         </section>
 
@@ -182,26 +194,6 @@ export default function PlatformsPage() {
               turning the signals teams already collect into root-cause findings, evidence-backed
               reports, and guided next steps.
             </p>
-          </div>
-        </section>
-
-        {/* Start Small, Scale When Ready */}
-        <section className="border-t border-white/10">
-          <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
-            <div className="rounded-2xl border border-cyan-300/20 bg-cyan-300/5 p-8">
-              <div className="inline-flex rounded-xl bg-cyan-300/10 p-3 text-cyan-300 ring-1 ring-cyan-300/20">
-                <Box className="h-6 w-6" />
-              </div>
-              <h2 className="mt-5 text-3xl font-semibold tracking-tight sm:text-4xl">
-                Start Small, Scale When Ready
-              </h2>
-              <p className="mt-6 text-base leading-8 text-slate-300">
-                Customers can start with RCA Core for lightweight local analysis, move to RCA Assist
-                for AI-assisted investigation and reporting, and scale into the full ShandayAI
-                Reliability Intelligence Platform when they need governance, integrations,
-                auditability, and enterprise deployment options.
-              </p>
-            </div>
           </div>
         </section>
 
