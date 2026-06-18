@@ -9,7 +9,7 @@ export function ShandayaiLogo() {
         alt="ShandayAI"
         width={360}
         height={108}
-        className="h-14 w-auto bg-transparent md:h-16"
+        className="h-10 w-auto bg-transparent md:h-12"
         priority
       />
     </Link>

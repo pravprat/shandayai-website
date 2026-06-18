@@ -163,20 +163,22 @@ After review, the homepage felt **crowded**:
 | Image had navy matte background visible on header | Flood-fill transparency + `#030712` header match | `75eee48`, `7ae6240` |
 | White corner artifact pixels | Removed + size bump | `6a9bf55` |
 
-**Current implementation:** `ShandayaiLogo.tsx` — single image, `h-14 md:h-16`, transparent PNG, header `bg-[#030712]`.
+**Current implementation:** `ShandayaiLogo.tsx` — single `ShandayAI.png`, `h-10 md:h-12`, link wrapper `bg-[#030712]`, header `bg-[#030712]`.
 
-**Do not:** Re-upload a PNG with baked-in background without re-processing transparency.
+**Do not:** Re-upload a PNG with baked-in background without re-processing transparency. Do not shrink logo to `h-8` without checking header blend.
 
 ### Contact email split
 
-| Address | Vertical | Gmail routing |
-|---------|----------|---------------|
-| `hello@shandayai.com` | AI Strategy & Architecture | Cloudflare Email Routing → personal Gmail |
-| `sales@shandayai.com` | Semantic Platforms & Pilots (SCRCA/SIP) | Same |
-
-**Setup:** Cloudflare Email Routing (free, inbound only). Sending as `@shandayai.com` from Gmail uses Gmail SMTP + App Password — not a Cloudflare password.
+| Address | Vertical |
+|---------|----------|
+| `advisory@shandayai.com` | AI Strategy & Architecture |
+| `platforms@shandayai.com` | Semantic Platforms & Pilots (SCRCA/SIP) |
 
 **Constants:** `src/app/components/contact.ts`
+
+### Branch hygiene (2026)
+
+Logo-only work on `cursor/single-logo-image-87ab` diverged from `main` and reintroduced legacy nav. **All site content lives on `main`.** Merge `main` before any logo or packaging change; see `AGENTS.md`.
 
 ---
 
