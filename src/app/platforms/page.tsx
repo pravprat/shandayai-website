@@ -3,8 +3,8 @@ import { Mail } from "lucide-react";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
 import PlatformPilotContact from "../components/PlatformPilotContact";
-import { CapabilityStackVisual } from "../components/platforms/CapabilityStackVisual";
 import { DeploymentOptionsVisual } from "../components/platforms/DeploymentOptionsVisual";
+import { PlatformsHeroBanner } from "../components/platforms/PlatformsHeroBanner";
 import { DifferentiationVisual } from "../components/platforms/DifferentiationVisual";
 import { HowItWorksFlow } from "../components/platforms/HowItWorksFlow";
 import { OperationalWorkflowVisual } from "../components/platforms/OperationalWorkflowVisual";
@@ -82,6 +82,8 @@ export default function PlatformsPage() {
               </p>
             </div>
 
+            <PlatformsHeroBanner />
+
             <ProductPackagingLadder />
 
             <div className="mx-auto mt-12 max-w-4xl text-center">
@@ -140,13 +142,6 @@ export default function PlatformsPage() {
                 <RCAOutputPacketVisual />
               </div>
             </div>
-          </div>
-        </section>
-
-        {/* Capability stack */}
-        <section className="border-t border-white/10 bg-white/[0.02]">
-          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-            <CapabilityStackVisual />
           </div>
         </section>
 

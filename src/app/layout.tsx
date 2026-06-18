@@ -24,6 +24,14 @@ export const metadata: Metadata = {
     url: "https://shandayai.com",
     siteName: "ShandayAI",
     type: "website",
+    images: [
+      {
+        url: "/Shandayai_banner.png",
+        width: 1600,
+        height: 640,
+        alt: "ShandayAI Reliability Intelligence Platform",
+      },
+    ],
   },
   twitter: {
     card: "summary",
@@ -32,7 +40,8 @@ export const metadata: Metadata = {
       "Enterprise AI strategy and reliability intelligence — evidence-backed RCA, AI-assisted reports, and governed AI systems.",
   },
   icons: {
-    icon: "/icon.png",
+    icon: "/Shandayai_icon.png",
+    apple: "/Shandayai_icon.png",
   },
 };
 

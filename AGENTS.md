@@ -48,9 +48,11 @@ Cloudflare Pages deploys from **`main`**. Unpushed commits or commits on orphan 
 
 **Emails:** `advisory@shandayai.com` (advisory), `platforms@shandayai.com` (platforms). See `src/app/components/contact.ts`.
 
-## Logo and header
+## Logo and brand assets
 
-- Logo file: `public/ShandayAI.png` (transparent PNG, navy `#030712` header)
+- Header wordmark: `public/ShandayAI.png` (transparent PNG, navy `#030712` header)
+- Site icon: `public/Shandayai_icon.png` (favicon / apple touch)
+- Platforms banner: `public/Shandayai_banner.png` (hero on `/platforms/`, Open Graph)
 - Component: `src/app/components/ShandayaiLogo.tsx`
 - Header: `src/app/components/SiteHeader.tsx` — must use AI Strategy / Platforms nav, not legacy anchor links
 - Match header background `#030712` to logo; do not reintroduce a PNG with baked-in matte background
