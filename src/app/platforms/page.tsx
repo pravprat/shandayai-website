@@ -13,9 +13,9 @@ import { SampleInvestigationReport } from "../components/platforms/SampleInvesti
 import { EMAIL_PLATFORMS } from "../components/contact";
 
 export const metadata: Metadata = {
-  title: "Incident RCA Software | ShandayAI",
+  title: "ShandayAI Reliability Intelligence Platform",
   description:
-    "Evidence-backed root cause analysis from incident logs. RCA Core available today in a local container. Assist and enterprise platform through design partner pilots.",
+    "Incident intelligence for operations and SRE teams. Evidence-backed root cause analysis from logs and incident data. RCA Core available today.",
 };
 
 const availabilityItems = [
@@ -37,19 +37,21 @@ export default function PlatformsPage() {
           <div className="relative mx-auto max-w-7xl px-6 py-16 lg:px-8 lg:py-24">
             <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
               <div className="text-center lg:text-left">
-                <p className="text-sm font-semibold uppercase tracking-widest text-cyan-300">
-                  Incident RCA software
-                </p>
-                <h1 className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl lg:leading-tight">
-                  Evidence-backed root cause analysis from incident logs
+                <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl lg:text-[3.25rem] lg:leading-tight">
+                  ShandayAI Reliability Intelligence Platform
                 </h1>
                 <p className="mt-6 text-lg leading-8 text-slate-300">
-                  ShandayAI ingests logs and incident data, ranks likely root causes with supporting
-                  evidence, and produces reports your operations and SRE teams can review and act on.
+                  Incident intelligence for operations, SRE, platform, and infrastructure teams.
+                  Move from raw logs and alerts to clear root-cause findings, evidence-backed
+                  reports, and guided next steps without replacing your observability stack.
                 </p>
-                <p className="mt-4 text-base leading-7 text-slate-400">
-                  Runs in a local container today. Expands to AI-assisted investigation and private
-                  enterprise deployment through design partner pilots.
+                <p className="mt-5 text-base font-medium leading-7 text-cyan-100">
+                  Evidence-backed root cause analysis from incident logs
+                </p>
+                <p className="mt-3 text-base leading-7 text-slate-400">
+                  Ingest logs and incident data, rank likely root causes with supporting evidence,
+                  and produce reports your teams can review and act on. Start with a local container
+                  today; expand through design partner pilots as requirements grow.
                 </p>
 
                 <div className="mt-8 flex flex-wrap justify-center gap-2 lg:justify-start">

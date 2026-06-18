@@ -4,7 +4,14 @@
 
 ## One-line pitch (10 seconds)
 
-**ShandayAI is incident RCA software:** it ingests logs and incident data, ranks likely root causes with supporting evidence, and produces reports operations and SRE teams can review and act on.
+**ShandayAI Reliability Intelligence Platform** helps operations and SRE teams move from logs and alerts to evidence-backed root-cause findings and reports. Core capability: **evidence-backed RCA from incident logs.**
+
+## Hero hierarchy
+
+1. **H1:** ShandayAI Reliability Intelligence Platform
+2. **Purpose:** Incident intelligence for ops/SRE teams; complements observability
+3. **Core capability:** Evidence-backed root cause analysis from incident logs
+4. **How to start:** Local container today; pilots for Assist and enterprise
 
 ## Who it is for
 
@@ -54,7 +61,7 @@ Customers start at the tier that matches their maturity. Each tier builds on the
 
 ## Page structure (do not duplicate)
 
-1. Hero — pitch + sample report visual + availability strip + CTA
+1. Hero — platform name + purpose + evidence-backed RCA + sample report + availability + CTA
 2. Proof strip — why teams evaluate (honest, no fake logos)
 3. Product tiers — one section only; each card shows today vs future releases
 4. How it works — one flow diagram
