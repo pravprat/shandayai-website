@@ -77,4 +77,6 @@ Cloudflare: build command `npm run build`, output directory `out`. See `CLOUDFLA
 
 ## Institutional memory
 
+See `docs/PLATFORMS_NARRATIVE.md` for platforms page narrative, availability language, and structure rules.
+
 See `docs/WEBSITE_EVOLUTION.md` for positioning history and decisions.

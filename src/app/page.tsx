@@ -304,44 +304,31 @@ export default function HomePage() {
           <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
             <div className="max-w-3xl">
               <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-                Reliability intelligence from logs to root cause.
+                Incident RCA software for operations and SRE teams
               </h2>
               <p className="mt-5 text-base leading-8 text-slate-400">
-                ShandayAI helps teams move from raw logs and alerts to evidence-backed RCA,
-                AI-assisted reports, and enterprise deployment options.
+                Evidence-backed root cause analysis from logs and incident data. RCA Core available
+                today; Assist and enterprise platform through design partner pilots.
               </p>
             </div>
 
             <div className="mt-12 grid gap-6 lg:grid-cols-3">
               <div className="rounded-2xl border border-cyan-300/25 bg-cyan-300/5 p-7">
                 <h3 className="text-lg font-semibold">ShandayAI RCA Core</h3>
-                <p className="mt-2 text-sm font-medium text-slate-300">Run deterministic RCA locally.</p>
-                <p className="mt-4 text-sm leading-6 text-slate-400">
-                  Lightweight container for evidence-backed root-cause findings from logs and
-                  incident data.
-                </p>
+                <p className="mt-2 text-sm font-medium text-slate-300">Deterministic RCA in a local container.</p>
+                <p className="mt-3 text-xs font-semibold text-emerald-300">Available today</p>
               </div>
 
               <div className="rounded-2xl border border-teal-300/25 bg-teal-300/5 p-7">
                 <h3 className="text-lg font-semibold">ShandayAI RCA Assist</h3>
-                <p className="mt-2 text-sm font-medium text-slate-300">
-                  Add AI-assisted investigation and reporting.
-                </p>
-                <p className="mt-4 text-sm leading-6 text-slate-400">
-                  RCA Core plus AI-assisted summaries, hypotheses, remediation suggestions, and
-                  support-ready incident reports.
-                </p>
+                <p className="mt-2 text-sm font-medium text-slate-300">AI-assisted investigation and reporting.</p>
+                <p className="mt-3 text-xs font-semibold text-amber-300">Design partner pilot</p>
               </div>
 
               <div className="rounded-2xl border border-violet-300/25 bg-violet-300/5 p-7">
                 <h3 className="text-lg font-semibold">ShandayAI Reliability Intelligence Platform</h3>
-                <p className="mt-2 text-sm font-medium text-slate-300">
-                  Scale incident intelligence across the enterprise.
-                </p>
-                <p className="mt-4 text-sm leading-6 text-slate-400">
-                  Governed incident workflows with evidence bundles, auditability, integrations,
-                  and enterprise deployment options.
-                </p>
+                <p className="mt-2 text-sm font-medium text-slate-300">Enterprise governance and integrations.</p>
+                <p className="mt-3 text-xs font-semibold text-slate-400">Pilot and roadmap</p>
               </div>
             </div>
 
