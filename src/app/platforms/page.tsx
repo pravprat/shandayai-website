@@ -4,7 +4,6 @@ import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
 import PlatformPilotContact from "../components/PlatformPilotContact";
 import { DeploymentOptionsVisual } from "../components/platforms/DeploymentOptionsVisual";
-import { PlatformsHeroBanner } from "../components/platforms/PlatformsHeroBanner";
 import { DifferentiationVisual } from "../components/platforms/DifferentiationVisual";
 import { HowItWorksFlow } from "../components/platforms/HowItWorksFlow";
 import { OperationalWorkflowVisual } from "../components/platforms/OperationalWorkflowVisual";
@@ -81,8 +80,6 @@ export default function PlatformsPage() {
                 reliability intelligence platform as their needs mature.
               </p>
             </div>
-
-            <PlatformsHeroBanner />
 
             <ProductPackagingLadder />
 

@@ -26,10 +26,10 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/Shandayai_banner.png",
-        width: 1600,
-        height: 640,
-        alt: "ShandayAI Reliability Intelligence Platform",
+        url: "/ShandayAI.png",
+        width: 1200,
+        height: 630,
+        alt: "ShandayAI",
       },
     ],
   },
@@ -40,8 +40,8 @@ export const metadata: Metadata = {
       "Enterprise AI strategy and reliability intelligence — evidence-backed RCA, AI-assisted reports, and governed AI systems.",
   },
   icons: {
-    icon: "/Shandayai_icon.png",
-    apple: "/Shandayai_icon.png",
+    icon: "/icon.png",
+    apple: "/icon.png",
   },
 };
 
