@@ -26,7 +26,7 @@ const navLinks: NavLink[] = [
   },
   {
     href: "/platforms",
-    label: "Semantic Platforms",
+    label: "Platforms",
     isActive: (pathname) => pathname === "/platforms" || pathname.startsWith("/platforms/"),
     activeClass: "bg-cyan-400/15 text-cyan-200 ring-1 ring-cyan-400/30",
   },

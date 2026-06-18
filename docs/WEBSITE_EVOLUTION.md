@@ -373,4 +373,22 @@ The **Runtime RCA Pack** (customer-hosted Docker API for Spark/JVM/Kubernetes) i
 **V1:** "We are a company with advisory + platforms" *(but homepage too busy)*.  
 **V3:** "We help enterprises with AI strategy and semantic intelligence pilots" *(clean, credible, two offerings)*.
 
+---
+
+## 15. Platform naming revamp (2026-06)
+
+Public platform copy now uses **Reliability Intelligence** product language:
+
+| Public name | Role |
+|-------------|------|
+| ShandayAI RCA Core | Lightweight local RCA container |
+| ShandayAI RCA Assist | RCA Core + AI-assisted investigation |
+| ShandayAI Reliability Intelligence Platform | Full enterprise incident intelligence |
+
+**Do not use publicly:** SCRCA, SIP, OSIP, OES, AI Gateway, Model Gateway, Agent Gateway, Control Plane.
+
+Legacy URLs `/platforms/scrca/` and `/platforms/sip/` redirect to `/platforms/`.
+
+Nav label: **Platforms** (was Semantic Platforms).
+
 When in doubt, read this doc, look at commit `fecd6cf`, and prefer **moving content down** over **adding more homepage sections**.

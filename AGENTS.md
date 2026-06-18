@@ -39,11 +39,11 @@ Cloudflare Pages deploys from **`main`**. Unpushed commits or commits on orphan 
 
 | Path | Purpose |
 |------|---------|
-| `/` | Homepage — two business lines + SCRCA/SIP preview |
+| `/` | Homepage — two business lines + platform preview |
 | `/advisory/` | AI Strategy & Architecture |
-| `/platforms/` | Semantic platforms overview |
-| `/platforms/scrca/` | SCRCA pilot |
-| `/platforms/sip/` | SIP pilot |
+| `/platforms/` | ShandayAI Reliability Intelligence Platform (RCA Core, RCA Assist, full platform) |
+| `/platforms/scrca/` | Redirects to `/platforms/` (legacy URL) |
+| `/platforms/sip/` | Redirects to `/platforms/` (legacy URL) |
 | `/blog/` | Technical notes |
 
 **Emails:** `advisory@shandayai.com` (advisory), `platforms@shandayai.com` (platforms). See `src/app/components/contact.ts`.
@@ -52,7 +52,7 @@ Cloudflare Pages deploys from **`main`**. Unpushed commits or commits on orphan 
 
 - Logo file: `public/ShandayAI.png` (transparent PNG, navy `#030712` header)
 - Component: `src/app/components/ShandayaiLogo.tsx`
-- Header: `src/app/components/SiteHeader.tsx` — must use AI Strategy / Semantic Platforms nav, not legacy anchor links
+- Header: `src/app/components/SiteHeader.tsx` — must use AI Strategy / Platforms nav, not legacy anchor links
 - Match header background `#030712` to logo; do not reintroduce a PNG with baked-in matte background
 
 ## Build and deploy
@@ -69,7 +69,9 @@ Cloudflare: build command `npm run build`, output directory `out`. See `CLOUDFLA
 
 - No em dashes in user-facing copy
 - Use **ShandayAI** (capital AI)
-- SCRCA/SIP are **pilots**, not mature marketplace products
+- Public platform names: **ShandayAI Reliability Intelligence Platform**, **ShandayAI RCA Core**, **ShandayAI RCA Assist**
+- Do not use SCRCA, SIP, OSIP, OES, AI Gateway, Model Gateway, Agent Gateway, or Control Plane as public product names
+- Use phrases like "designed for," "available through scoped pilots," and "deployment options" rather than claiming full production readiness
 
 ## Institutional memory
 

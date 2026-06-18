@@ -18,7 +18,6 @@ import {
 } from "lucide-react";
 import SiteHeader from "./components/SiteHeader";
 import SiteFooter from "./components/SiteFooter";
-import { MiniFlowStrip } from "./components/PlatformFlowVisual";
 import { EMAIL_ADVISORY, EMAIL_PLATFORMS } from "./components/contact";
 
 const thesisBlocks = [
@@ -70,21 +69,20 @@ const businessLines = [
     email: EMAIL_ADVISORY,
   },
   {
-    title: "Semantic Intelligence Platforms & Pilots",
+    title: "Reliability Intelligence Platform",
     accent: "cyan",
     forLabel:
-      "Teams building operational intelligence, enterprise knowledge intelligence, evidence-backed AI, and agent-ready context.",
+      "Operations, SRE, platform, and infrastructure teams that need evidence-backed root-cause analysis from logs and incident data.",
     helps: [
-      "Semantic enrichment",
-      "Evidence-backed reasoning",
-      "Knowledge and incident context",
-      "Governed retrieval",
-      "RCA intelligence",
-      "Agent-ready enterprise context",
-      "Targeted pilots and design partner programs",
+      "Evidence-backed RCA from logs and alerts",
+      "Local container trials and pilots",
+      "AI-assisted investigation and reporting",
+      "Enterprise deployment options",
+      "Governance, auditability, and integrations",
+      "Scoped pilots and design partner programs",
     ],
     outcome:
-      "Move from generic AI answers to evidence-backed context, reasoning, and validated action.",
+      "Move from alert noise to clear root-cause findings, evidence-backed reports, and guided next steps.",
     href: "/platforms",
     cta: "Explore Platforms",
     email: EMAIL_PLATFORMS,
@@ -178,7 +176,7 @@ export default function HomePage() {
                   href="/platforms"
                   className="inline-flex items-center gap-2 rounded-2xl border border-white/10 bg-white/[0.04] px-6 py-3 font-semibold text-white hover:bg-white/[0.08]"
                 >
-                  Explore Semantic Platforms
+                  Explore Platforms
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
@@ -306,99 +304,54 @@ export default function HomePage() {
           <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
             <div className="max-w-3xl">
               <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-                Semantic intelligence for operations and enterprise knowledge.
+                Reliability intelligence from logs to root cause.
               </h2>
               <p className="mt-5 text-base leading-8 text-slate-400">
-                ShandayAI&apos;s platform work focuses on making enterprise signals and knowledge
-                usable by AI systems through context, evidence, explainability, and governance.
+                ShandayAI helps teams move from raw logs and alerts to evidence-backed RCA,
+                AI-assisted reports, and enterprise deployment options.
               </p>
             </div>
 
-            <div className="mt-12 rounded-2xl border border-white/10 bg-white/[0.03] p-8">
-              <div className="text-center">
-                <p className="text-sm font-semibold uppercase tracking-widest text-slate-400">
-                  Semantic Intelligence Foundation
-                </p>
-                <p className="mt-2 text-sm text-slate-300">
-                  Context · Evidence · Graphs · Governance · Evaluation
+            <div className="mt-12 grid gap-6 lg:grid-cols-3">
+              <div className="rounded-2xl border border-cyan-300/25 bg-cyan-300/5 p-7">
+                <h3 className="text-lg font-semibold">ShandayAI RCA Core</h3>
+                <p className="mt-2 text-sm font-medium text-slate-300">Run deterministic RCA locally.</p>
+                <p className="mt-4 text-sm leading-6 text-slate-400">
+                  Lightweight container for evidence-backed root-cause findings from logs and
+                  incident data.
                 </p>
               </div>
 
-              <div className="mx-auto mt-8 h-8 w-px bg-gradient-to-b from-slate-600 to-transparent" />
+              <div className="rounded-2xl border border-teal-300/25 bg-teal-300/5 p-7">
+                <h3 className="text-lg font-semibold">ShandayAI RCA Assist</h3>
+                <p className="mt-2 text-sm font-medium text-slate-300">
+                  Add AI-assisted investigation and reporting.
+                </p>
+                <p className="mt-4 text-sm leading-6 text-slate-400">
+                  RCA Core plus AI-assisted summaries, hypotheses, remediation suggestions, and
+                  support-ready incident reports.
+                </p>
+              </div>
 
-              <div className="mt-8 grid gap-8 lg:grid-cols-2">
-                <div className="rounded-2xl border border-cyan-300/25 bg-cyan-300/5 p-7">
-                  <p className="text-xs font-semibold uppercase tracking-widest text-cyan-300">
-                    Branch 1
-                  </p>
-                  <h3 className="mt-2 text-xl font-semibold">SCRCA</h3>
-                  <p className="mt-1 text-sm font-medium text-slate-300">
-                    Semantic Root Cause Analysis for operational intelligence.
-                  </p>
-                  <p className="mt-4 text-sm leading-6 text-slate-400">
-                    Logs, events, traces, metrics, tickets, and incidents become RCA candidates,
-                    timelines, evidence bundles, and escalation packets.
-                  </p>
-                  <div className="mt-5">
-                    <MiniFlowStrip
-                      accent="cyan"
-                      steps={[
-                        "Signals",
-                        "Eventization",
-                        "Incident windows",
-                        "Evidence",
-                        "RCA packet",
-                      ]}
-                    />
-                  </div>
-                  <Link
-                    href="/platforms/scrca"
-                    className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-cyan-300 hover:text-cyan-200"
-                  >
-                    View SCRCA
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </div>
-
-                <div className="rounded-2xl border border-purple-300/25 bg-purple-300/5 p-7">
-                  <p className="text-xs font-semibold uppercase tracking-widest text-purple-300">
-                    Branch 2
-                  </p>
-                  <h3 className="mt-2 text-xl font-semibold">SIP</h3>
-                  <p className="mt-1 text-sm font-medium text-slate-300">
-                    Semantic Intelligence Platform for enterprise knowledge.
-                  </p>
-                  <p className="mt-4 text-sm leading-6 text-slate-400">
-                    Documents, metadata, policies, customer cases, product knowledge, and data
-                    assets become governed, evidence-backed, agent-ready context.
-                  </p>
-                  <div className="mt-5">
-                    <MiniFlowStrip
-                      accent="purple"
-                      steps={[
-                        "Sources",
-                        "Enrichment",
-                        "Knowledge map",
-                        "Retrieval",
-                        "Agent context",
-                      ]}
-                    />
-                  </div>
-                  <Link
-                    href="/platforms/sip"
-                    className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-purple-300 hover:text-purple-200"
-                  >
-                    View SIP
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </div>
+              <div className="rounded-2xl border border-violet-300/25 bg-violet-300/5 p-7">
+                <h3 className="text-lg font-semibold">ShandayAI Reliability Intelligence Platform</h3>
+                <p className="mt-2 text-sm font-medium text-slate-300">
+                  Scale incident intelligence across the enterprise.
+                </p>
+                <p className="mt-4 text-sm leading-6 text-slate-400">
+                  Governed incident workflows with evidence bundles, auditability, integrations,
+                  and enterprise deployment options.
+                </p>
               </div>
             </div>
 
-            <p className="mt-8 max-w-3xl text-sm leading-7 text-slate-300">
-              SCRCA turns operational signals into evidence-backed RCA packets. SIP turns enterprise
-              knowledge into agent-ready semantic context.
-            </p>
+            <Link
+              href="/platforms"
+              className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-cyan-300 hover:text-cyan-200"
+            >
+              View all platform offerings
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
         </section>
 
@@ -493,7 +446,7 @@ export default function HomePage() {
                 </a>
               </div>
               <div className="rounded-2xl border border-cyan-300/25 bg-cyan-300/5 p-6">
-                <h3 className="font-semibold text-white">Semantic Platforms & Pilots</h3>
+                <h3 className="font-semibold text-white">Reliability Intelligence Platform</h3>
                 <Link
                   href="/platforms"
                   className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-cyan-300 px-5 py-3 text-sm font-semibold text-slate-950 hover:bg-cyan-200"

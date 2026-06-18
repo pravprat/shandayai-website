@@ -1,125 +1,106 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import {
-  ArrowRight,
-  BookOpen,
-  Database,
-  Eye,
-  GitBranch,
+  Box,
+  Building2,
+  Cloud,
+  Container,
   Layers3,
   Mail,
-  ShieldCheck,
+  Search,
   Sparkles,
-  Target,
-  Users,
-  Zap,
+  TrendingUp,
 } from "lucide-react";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
 import PlatformPilotContact from "../components/PlatformPilotContact";
-import { MiniFlowStrip, PlatformFlowVisual } from "../components/PlatformFlowVisual";
 import { EMAIL_PLATFORMS } from "../components/contact";
 
 export const metadata: Metadata = {
-  title: "Semantic Intelligence Platforms & Pilots | ShandayAI",
+  title: "ShandayAI Reliability Intelligence Platform",
   description:
-    "ShandayAI semantic intelligence platform services: evidence-backed operational RCA and enterprise knowledge intelligence through targeted SCRCA and SIP pilots.",
+    "Find root cause faster from logs and incident data, with evidence-backed RCA, AI-assisted reports, and enterprise deployment options.",
 };
 
-const foundationFlow = [
+const offerings = [
   {
-    label: "Raw enterprise signals and knowledge",
-    desc: "Logs, events, traces, metrics, tickets, documents, metadata, policies, cases, data assets, and operational workflows.",
+    tier: "Entry",
+    headline: "ShandayAI RCA Core",
+    subHeadline: "Run deterministic RCA locally.",
+    body: "For teams that want a lightweight container to analyze logs and generate evidence-backed root-cause findings. RCA Core ingests logs, detects incident windows, clusters related failures, ranks root-cause candidates, and produces RCA reports with supporting evidence.",
+    bestFor:
+      "SMBs, technical teams, local trials, simple pilots, and teams that want the core RCA pipeline without the full agentic workflow.",
+    deployment: "Local Container Deployment or customer-managed environment.",
+    accent: "border-cyan-300/25 bg-gradient-to-b from-cyan-300/5 to-transparent",
+    labelColor: "text-cyan-300",
   },
   {
-    label: "Semantic enrichment",
-    desc: "Entities, relationships, ownership, lineage, definitions, source authority, access boundaries, and business context.",
+    tier: "Mid",
+    headline: "ShandayAI RCA Assist",
+    subHeadline: "Add AI-assisted investigation and reporting.",
+    body: "For teams that want RCA plus AI-assisted summaries, hypotheses, evidence packaging, remediation suggestions, and support-ready incident reports. RCA Assist builds on RCA Core and adds selected agentic workflow capabilities without requiring the full enterprise platform.",
+    bestFor:
+      "Operations, SRE, support, and platform teams that want faster incident investigation and clearer handoff reports.",
+    deployment:
+      "Local Container Deployment, Private Enterprise Deployment, or scoped customer-hosted pilot.",
+    accent: "border-teal-300/25 bg-gradient-to-b from-teal-300/5 to-transparent",
+    labelColor: "text-teal-300",
   },
   {
-    label: "Evidence and graph context",
-    desc: "Timelines, clusters, knowledge maps, dependency graphs, evidence bundles, confidence signals, and alternative hypotheses.",
-  },
-  {
-    label: "Model and agent reasoning",
-    desc: "RAG, semantic retrieval, LLM reasoning, agent workflows, tool access, evaluation gates, and human review.",
-  },
-  {
-    label: "Validated action",
-    desc: "RCA packets, evidence-backed answers, support escalation, workflow context, remediation guidance, and production-readiness roadmap.",
-  },
-];
-
-const differentiation = [
-  {
-    icon: <Sparkles className="h-6 w-6" />,
-    title: "Not generic AI answers",
-    desc: "Generic AI produces plausible outputs. ShandayAI platforms focus on evidence, context, traceability, and reviewable reasoning.",
-  },
-  {
-    icon: <BookOpen className="h-6 w-6" />,
-    title: "Not brittle RAG",
-    desc: "Generic RAG retrieves chunks. ShandayAI platforms build semantic context with metadata, relationships, source authority, access boundaries, and evaluation.",
-  },
-  {
-    icon: <Eye className="h-6 w-6" />,
-    title: "Not another dashboard",
-    desc: "Operational teams do not need more noise. SCRCA converts operational signals into incident structure, RCA evidence, and escalation-ready context.",
+    tier: "Enterprise",
+    headline: "ShandayAI Reliability Intelligence Platform",
+    subHeadline: "Scale incident intelligence across the enterprise.",
+    body: "For enterprise teams that need complete incident intelligence workflow across root-cause analysis, evidence bundles, causal timelines, remediation guidance, governance, auditability, integrations, and private or marketplace deployment options.",
+    bestFor:
+      "Enterprise platform, infrastructure, reliability, and operations teams that need governed incident workflows and integration with existing operational systems.",
+    deployment: "Private Enterprise Deployment or Marketplace Deployment.",
+    accent: "border-violet-300/25 bg-gradient-to-b from-violet-300/5 to-transparent",
+    labelColor: "text-violet-300",
   },
 ];
 
-const principles = [
+const deploymentOptions = [
   {
-    icon: <ShieldCheck className="h-5 w-5" />,
-    title: "Evidence before narrative",
-    desc: "AI outputs should be backed by source data, timelines, metadata, relationships, and confidence signals.",
+    icon: <Container className="h-6 w-6" />,
+    title: "Local Container Deployment",
+    desc: "Run RCA Core or RCA Assist locally or inside a customer-managed environment. Best for lightweight trials, SMBs, technical evaluations, and early pilots.",
   },
   {
+    icon: <Building2 className="h-6 w-6" />,
+    title: "Private Enterprise Deployment",
+    desc: "Deploy inside the customer's VPC, Kubernetes environment, or private infrastructure. Best for enterprises that need data locality, security review, auditability, and controlled access to logs and RCA artifacts.",
+  },
+  {
+    icon: <Cloud className="h-6 w-6" />,
+    title: "Marketplace Deployment",
+    desc: "Use the same product family through AWS, Azure, or GCP marketplace channels when marketplace procurement, private offers, metering, or standardized deployment are required. Marketplace is a deployment and procurement option, not a separate product.",
+  },
+];
+
+const howItWorks = [
+  {
+    step: 1,
+    title: "Bring logs and incident data",
+    text: "Start with operational logs, incident artifacts, or customer-provided failure data.",
     icon: <Layers3 className="h-5 w-5" />,
-    title: "Semantic context before generation",
-    desc: "Raw data and documents need business meaning, source authority, relationships, and retrieval boundaries before LLMs are asked to reason.",
   },
   {
-    icon: <Database className="h-5 w-5" />,
-    title: "Customer data boundaries",
-    desc: "Platform pilots should respect data locality, access controls, and customer-managed deployment patterns where needed.",
+    step: 2,
+    title: "Run evidence-backed RCA",
+    text: "The RCA pipeline detects incident windows, clusters related failures, ranks likely root causes, and links findings to supporting evidence.",
+    icon: <Search className="h-5 w-5" />,
   },
   {
-    icon: <Users className="h-5 w-5" />,
-    title: "Human review for higher-risk actions",
-    desc: "The platform should support human-in-the-loop approval for remediation, escalation, and workflow execution.",
+    step: 3,
+    title: "Add assisted investigation",
+    text: "Optional AI-assisted workflows generate summaries, hypotheses, remediation suggestions, and support-ready reports.",
+    icon: <Sparkles className="h-5 w-5" />,
   },
   {
-    icon: <GitBranch className="h-5 w-5" />,
-    title: "Explainability and auditability",
-    desc: "Every answer, RCA, or recommendation should be traceable to the evidence used.",
+    step: 4,
+    title: "Deploy at the right level",
+    text: "Start with a local container, move to a private enterprise deployment, or use marketplace deployment when procurement and scale require it.",
+    icon: <TrendingUp className="h-5 w-5" />,
   },
-  {
-    icon: <Target className="h-5 w-5" />,
-    title: "Pilot-first deployment",
-    desc: "Start with a scoped pilot, validate value, then decide whether to expand into production patterns.",
-  },
-];
-
-const scrcaPilotOutputs = [
-  "Signal inventory",
-  "Event clusters",
-  "Incident windows",
-  "Root cause candidates",
-  "Evidence bundle",
-  "RCA summary",
-  "Escalation packet",
-  "Production-readiness roadmap",
-];
-
-const sipPilotOutputs = [
-  "Source inventory",
-  "Knowledge map",
-  "Semantic enrichment approach",
-  "Retrieval baseline",
-  "Evidence-backed answer workflow",
-  "Governance model",
-  "Agent-ready context plan",
-  "Production-readiness roadmap",
 ];
 
 export default function PlatformsPage() {
@@ -134,23 +115,25 @@ export default function PlatformsPage() {
           <div className="relative mx-auto max-w-7xl px-6 py-24 lg:px-8 lg:py-32">
             <div className="mx-auto max-w-4xl text-center">
               <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
-                Semantic Intelligence Platforms & Pilots
+                ShandayAI Reliability Intelligence Platform
               </h1>
               <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300">
-                ShandayAI builds platform services that convert operational signals, documents,
-                metadata, and enterprise knowledge into evidence-backed AI workflows.
+                Find root cause faster from logs and incident data, with evidence-backed RCA,
+                AI-assisted reports, and enterprise deployment options.
               </p>
               <p className="mx-auto mt-5 max-w-3xl text-base leading-7 text-slate-400">
-                Semantic intelligence connects raw enterprise data to business meaning, context,
-                evidence, and action. It helps teams move beyond generic chat, brittle RAG, and
-                alert noise toward explainable, auditable, and domain-grounded AI systems.
+                ShandayAI helps operations, SRE, platform, and infrastructure teams move from raw
+                logs and alerts to clear root-cause findings, evidence-backed reports, and guided
+                next steps. Teams can start small with a lightweight local RCA container, add
+                AI-assisted investigation and reporting, and scale into a full enterprise
+                reliability intelligence platform as their needs mature.
               </p>
               <a
-                href={`mailto:${EMAIL_PLATFORMS}?subject=${encodeURIComponent("Platform pilot inquiry")}`}
+                href={`mailto:${EMAIL_PLATFORMS}?subject=${encodeURIComponent("Reliability Intelligence inquiry")}`}
                 className="mt-10 inline-flex items-center gap-2 rounded-2xl bg-cyan-300 px-7 py-3.5 font-semibold text-slate-950 hover:bg-cyan-200"
               >
                 <Mail className="h-5 w-5" />
-                Discuss a Platform Pilot
+                Discuss Your Use Case
               </a>
               <p className="mt-5 text-sm text-slate-500">
                 <a href={`mailto:${EMAIL_PLATFORMS}`} className="text-slate-400 hover:text-cyan-300">
@@ -161,242 +144,129 @@ export default function PlatformsPage() {
           </div>
         </section>
 
-        {/* Why semantic intelligence */}
-        <section className="border-t border-white/10">
-          <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
-            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-              Why semantic intelligence
-            </h2>
-            <p className="mt-6 text-base leading-8 text-slate-400">
-              Most AI systems fail when they reason over raw fragments without enough context,
-              ownership, lineage, source authority, relationships, or workflow boundaries.
-              Semantic intelligence adds the missing layer between enterprise data and AI action:
-              metadata, business meaning, graph context, evidence, access boundaries, and
-              evaluation.
-            </p>
-            <p className="mt-5 text-base font-medium leading-8 text-slate-300">
-              The goal is not just generation. The goal is evidence-backed reasoning that teams
-              can inspect, trust, and act on.
-            </p>
-            <p className="mt-5 rounded-xl border border-cyan-300/20 bg-cyan-300/5 px-5 py-4 text-sm leading-7 text-slate-300">
-              Generic AI produces answers. ShandayAI platforms produce evidence-backed context,
-              reasoning, and validated action.
-            </p>
-          </div>
-        </section>
-
-        {/* Foundation flow */}
-        <section className="border-t border-white/10 bg-white/[0.02]">
-          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-            <PlatformFlowVisual
-              badge="Platform Foundation"
-              title="Semantic Intelligence Platform Foundation"
-              subtitle="A common architecture path from raw enterprise signals and knowledge to validated action."
-              stages={foundationFlow}
-              accent="cyan"
-            />
-          </div>
-        </section>
-
-        {/* Two pilot paths */}
+        {/* Three offerings */}
         <section className="border-t border-white/10">
           <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
             <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-              One semantic foundation. Two pilot paths.
+              Three ways to start and scale
             </h2>
             <p className="mt-4 max-w-3xl text-slate-400">
-              Both SCRCA and SIP are emerging platform capabilities available as targeted pilots,
-              designed with future cloud and marketplace deployment patterns in mind.
+              Choose the level that matches your team today. Each offering builds on the same
+              evidence-backed RCA foundation.
             </p>
 
-            <div className="mt-10 rounded-2xl border border-white/10 bg-white/[0.03] p-6 text-center">
-              <p className="text-sm font-semibold uppercase tracking-widest text-slate-400">
-                Semantic Intelligence Foundation
-              </p>
-            </div>
-
-            <div className="mt-6 grid gap-8 lg:grid-cols-2">
-              {/* SCRCA path */}
-              <div className="rounded-2xl border border-cyan-300/25 bg-gradient-to-b from-cyan-300/5 to-transparent p-8">
-                <p className="text-xs font-semibold uppercase tracking-widest text-cyan-300">
-                  Pilot path 1
-                </p>
-                <h3 className="mt-2 text-2xl font-semibold">SCRCA: Semantic RCA for Operations</h3>
-                <div className="mt-6">
-                  <MiniFlowStrip
-                    accent="cyan"
-                    steps={[
-                      "Logs, events, traces",
-                      "Eventization",
-                      "Incident windows",
-                      "Causal graph",
-                      "Evidence bundle",
-                      "Escalation packet",
-                    ]}
-                  />
+            <div className="mt-12 grid gap-8 lg:grid-cols-3">
+              {offerings.map((item) => (
+                <div key={item.headline} className={`rounded-2xl border p-8 ${item.accent}`}>
+                  <p className={`text-xs font-semibold uppercase tracking-widest ${item.labelColor}`}>
+                    {item.tier}
+                  </p>
+                  <h3 className="mt-3 text-xl font-semibold leading-snug">{item.headline}</h3>
+                  <p className="mt-2 text-sm font-medium text-slate-300">{item.subHeadline}</p>
+                  <p className="mt-5 text-sm leading-7 text-slate-400">{item.body}</p>
+                  <p className="mt-5 text-xs font-semibold uppercase tracking-wider text-slate-500">
+                    Best for
+                  </p>
+                  <p className="mt-1 text-sm leading-6 text-slate-300">{item.bestFor}</p>
+                  <p className="mt-5 text-xs font-semibold uppercase tracking-wider text-slate-500">
+                    Deployment
+                  </p>
+                  <p className="mt-1 text-sm leading-6 text-slate-400">{item.deployment}</p>
                 </div>
-                <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-slate-500">
-                  For
-                </p>
-                <p className="mt-1 text-sm text-slate-300">
-                  Observability, SRE, platform, support, and infrastructure teams.
-                </p>
-                <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-slate-500">
-                  Use it when
-                </p>
-                <p className="mt-1 text-sm leading-6 text-slate-400">
-                  Teams need to convert logs, events, traces, metrics, tickets, alerts, and
-                  incident data into root cause candidates, timelines, evidence bundles, and
-                  escalation context.
-                </p>
-                <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-cyan-300/80">
-                  Primary outcome
-                </p>
-                <p className="mt-1 text-sm leading-6 text-slate-300">
-                  Faster incident understanding, stronger escalation packets, better RCA discipline,
-                  and a foundation for future human-reviewed remediation workflows.
-                </p>
-                <Link
-                  href="/platforms/scrca"
-                  className="mt-6 inline-flex items-center gap-2 text-cyan-300 hover:text-cyan-200"
-                >
-                  Explore SCRCA
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </div>
-
-              {/* SIP path */}
-              <div className="rounded-2xl border border-purple-300/25 bg-gradient-to-b from-purple-300/5 to-transparent p-8">
-                <p className="text-xs font-semibold uppercase tracking-widest text-purple-300">
-                  Pilot path 2
-                </p>
-                <h3 className="mt-2 text-2xl font-semibold">
-                  SIP: Semantic Intelligence for Enterprise Knowledge
-                </h3>
-                <div className="mt-6">
-                  <MiniFlowStrip
-                    accent="purple"
-                    steps={[
-                      "Documents, metadata",
-                      "Semantic enrichment",
-                      "Knowledge map",
-                      "Governed retrieval",
-                      "Evidence answers",
-                      "Agent-ready context",
-                    ]}
-                  />
-                </div>
-                <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-slate-500">
-                  For
-                </p>
-                <p className="mt-1 text-sm text-slate-300">
-                  Enterprise knowledge, data, product, support, compliance, operations, and business
-                  workflow teams.
-                </p>
-                <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-slate-500">
-                  Use it when
-                </p>
-                <p className="mt-1 text-sm leading-6 text-slate-400">
-                  Teams need governed retrieval, semantic context, source authority,
-                  evidence-backed answers, knowledge maps, and agent-ready enterprise context.
-                </p>
-                <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-purple-300/80">
-                  Primary outcome
-                </p>
-                <p className="mt-1 text-sm leading-6 text-slate-300">
-                  More trusted enterprise AI answers, stronger retrieval quality, clearer access
-                  boundaries, and better context for assistants and agents.
-                </p>
-                <Link
-                  href="/platforms/sip"
-                  className="mt-6 inline-flex items-center gap-2 text-purple-300 hover:text-purple-200"
-                >
-                  Explore SIP
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* Why different */}
+        {/* Deployment Options */}
         <section className="border-t border-white/10 bg-white/[0.02]">
           <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">Why this is different</h2>
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">Deployment Options</h2>
+            <p className="mt-4 max-w-3xl text-base leading-8 text-slate-400">
+              ShandayAI products are designed to meet customers where they are, from local container
+              trials to private enterprise deployments and future marketplace-based procurement.
+            </p>
             <div className="mt-12 grid gap-6 lg:grid-cols-3">
-              {differentiation.map((item) => (
+              {deploymentOptions.map((option) => (
                 <div
-                  key={item.title}
+                  key={option.title}
                   className="rounded-2xl border border-white/10 bg-white/[0.04] p-7"
                 >
                   <div className="inline-flex rounded-xl bg-cyan-300/10 p-3 text-cyan-300 ring-1 ring-cyan-300/20">
-                    {item.icon}
+                    {option.icon}
                   </div>
-                  <h3 className="mt-5 text-lg font-semibold text-white">{item.title}</h3>
-                  <p className="mt-3 text-sm leading-6 text-slate-400">{item.desc}</p>
+                  <h3 className="mt-5 text-lg font-semibold text-white">{option.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-slate-400">{option.desc}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Principles */}
+        {/* How It Works */}
         <section className="border-t border-white/10">
           <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-              Shared platform principles
-            </h2>
-            <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {principles.map((item) => (
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">How It Works</h2>
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {howItWorks.map((item) => (
                 <div
-                  key={item.title}
+                  key={item.step}
                   className="rounded-2xl border border-white/10 bg-white/[0.04] p-6"
                 >
-                  <div className="inline-flex rounded-lg bg-cyan-300/10 p-2.5 text-cyan-300 ring-1 ring-cyan-300/20">
-                    {item.icon}
+                  <div className="flex items-center gap-3">
+                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-cyan-300/10 text-sm font-semibold text-cyan-300 ring-1 ring-cyan-300/20">
+                      {item.step}
+                    </span>
+                    <div className="rounded-lg bg-cyan-300/10 p-2 text-cyan-300 ring-1 ring-cyan-300/20">
+                      {item.icon}
+                    </div>
                   </div>
-                  <h3 className="mt-4 font-semibold text-white">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-6 text-slate-400">{item.desc}</p>
+                  <h3 className="mt-5 font-semibold text-white">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-slate-400">{item.text}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Pilot outputs */}
+        {/* What This Is Not */}
         <section className="border-t border-white/10 bg-white/[0.02]">
-          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-              What a pilot produces
-            </h2>
-            <div className="mt-12 grid gap-8 lg:grid-cols-2">
-              <div className="rounded-2xl border border-cyan-300/20 bg-cyan-300/5 p-7">
-                <h3 className="text-lg font-semibold text-cyan-200">SCRCA pilot outputs</h3>
-                <ul className="mt-5 space-y-2">
-                  {scrcaPilotOutputs.map((item) => (
-                    <li key={item} className="flex items-center gap-2 text-sm text-slate-300">
-                      <Zap className="h-3.5 w-3.5 shrink-0 text-cyan-300" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+          <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">What This Is Not</h2>
+            <p className="mt-6 text-base leading-8 text-slate-400">
+              ShandayAI Reliability Intelligence is not another dashboarding tool and not a generic
+              chatbot. It is designed to complement existing observability and incident systems by
+              turning the signals teams already collect into root-cause findings, evidence-backed
+              reports, and guided next steps.
+            </p>
+          </div>
+        </section>
+
+        {/* Start Small, Scale When Ready */}
+        <section className="border-t border-white/10">
+          <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
+            <div className="rounded-2xl border border-cyan-300/20 bg-cyan-300/5 p-8">
+              <div className="inline-flex rounded-xl bg-cyan-300/10 p-3 text-cyan-300 ring-1 ring-cyan-300/20">
+                <Box className="h-6 w-6" />
               </div>
-              <div className="rounded-2xl border border-purple-300/20 bg-purple-300/5 p-7">
-                <h3 className="text-lg font-semibold text-purple-200">SIP pilot outputs</h3>
-                <ul className="mt-5 space-y-2">
-                  {sipPilotOutputs.map((item) => (
-                    <li key={item} className="flex items-center gap-2 text-sm text-slate-300">
-                      <Zap className="h-3.5 w-3.5 shrink-0 text-purple-300" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <h2 className="mt-5 text-3xl font-semibold tracking-tight sm:text-4xl">
+                Start Small, Scale When Ready
+              </h2>
+              <p className="mt-6 text-base leading-8 text-slate-300">
+                Customers can start with RCA Core for lightweight local analysis, move to RCA Assist
+                for AI-assisted investigation and reporting, and scale into the full ShandayAI
+                Reliability Intelligence Platform when they need governance, integrations,
+                auditability, and enterprise deployment options.
+              </p>
             </div>
           </div>
         </section>
 
-        <PlatformPilotContact product="platforms" />
+        <PlatformPilotContact
+          headline="Start with the right reliability intelligence level."
+          body="Whether you need a local RCA trial, AI-assisted investigation, or a scoped enterprise pilot, ShandayAI can help you choose the right starting point."
+          ctaLabel="Discuss Your Use Case"
+        />
       </main>
 
       <SiteFooter />

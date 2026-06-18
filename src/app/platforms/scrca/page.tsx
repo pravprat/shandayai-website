@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import ScrcaPageContent from "./ScrcaPageContent";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
-  title: "SCRCA: Semantic RCA Pilot | ShandayAI",
+  title: "ShandayAI Reliability Intelligence Platform",
   description:
-    "Pilot service for evidence-backed root cause analysis across observability, logs, incidents, and operational intelligence.",
+    "Find root cause faster from logs and incident data, with evidence-backed RCA, AI-assisted reports, and enterprise deployment options.",
 };
 
-export default function ScrcaPage() {
-  return <ScrcaPageContent />;
+export default function ScrcaRedirectPage() {
+  redirect("/platforms/");
 }

@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "ShandayAI",
     description:
-      "Enterprise AI strategy and semantic intelligence pilots — SCRCA, SIP, and governed AI systems.",
+      "Enterprise AI strategy and reliability intelligence — evidence-backed RCA, AI-assisted reports, and governed AI systems.",
   },
   icons: {
     icon: "/icon.png",
