@@ -1,0 +1,612 @@
+{
+  "job_id": "job-588ab3f60975",
+  "status": "completed",
+  "product_tier": "rca_assist",
+  "fixture_dir": "Validate/fixtures/k8s_authz_403",
+  "log_path": "Validate/fixtures/k8s_authz_403/inputs/logs/k8s_audit_v1.log",
+  "pipeline_flow": {
+    "job_id": "job-588ab3f60975",
+    "status": "completed",
+    "product_tier": "rca_assist",
+    "incident_id": "I1",
+    "log_path": "/Users/chaitanyagayatri/PycharmProjects/scrca-agentic-platform/Validate/fixtures/k8s_authz_403/inputs/logs/k8s_audit_v1.log",
+    "flow_groups": [
+      "ingest",
+      "engine",
+      "investigate",
+      "assist",
+      "platform",
+      "deliver"
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "agent": "incident-intake",
+        "title": "Scope incident",
+        "subtitle": "Define time window and log sources",
+        "group": "ingest",
+        "status": "completed",
+        "audit": [
+          {
+            "action": "write",
+            "artifact_kind": "incident_boundary",
+            "artifact_path": "boundary/incident_boundary.json",
+            "timestamp": "2026-06-19T01:23:34.838797+00:00"
+          }
+        ],
+        "highlights": {
+          "artifacts_written": 1,
+          "incident_id": "I1",
+          "window": {
+            "start": "2023-01-27T18:28:08.127428Z",
+            "end": "2023-01-27T18:32:18.127428Z"
+          },
+          "source_refs": [
+            "/Users/chaitanyagayatri/PycharmProjects/scrca-agentic-platform/Validate/fixtures/k8s_authz_403/inputs/logs/k8s_audit_v1.log"
+          ]
+        }
+      },
+      {
+        "order": 2,
+        "agent": "log-format",
+        "title": "Detect log format",
+        "subtitle": "Identify structure (Kubernetes audit, JSONL, etc.)",
+        "group": "ingest",
+        "status": "completed",
+        "audit": [
+          {
+            "action": "write",
+            "artifact_kind": "log_format_profile",
+            "artifact_path": "format/log_format_profile.json",
+            "timestamp": "2026-06-19T01:23:34.839601+00:00"
+          }
+        ],
+        "highlights": {
+          "artifacts_written": 1,
+          "log_format_id": "k8s_audit_csv",
+          "display_name": "Kubernetes audit CSV",
+          "detection_confidence": 0.95
+        }
+      },
+      {
+        "order": 3,
+        "agent": "schema-drift",
+        "title": "Check schema drift",
+        "subtitle": "Compare log fields to the normalization schema",
+        "group": "ingest",
+        "status": "completed",
+        "audit": [
+          {
+            "action": "write",
+            "artifact_kind": "schema_drift_report",
+            "artifact_path": "drift/schema_drift_report.json",
+            "timestamp": "2026-06-19T01:23:34.840197+00:00"
+          },
+          {
+            "action": "write",
+            "artifact_kind": "schema_evolution",
+            "artifact_path": "drift/schema_evolution.json",
+            "timestamp": "2026-06-19T01:23:34.840296+00:00"
+          }
+        ],
+        "highlights": {
+          "artifacts_written": 2,
+          "drift_detected": false,
+          "schema_version_after": "1.0.0"
+        }
+      },
+      {
+        "order": 4,
+        "agent": "signal-normalization",
+        "title": "Normalize events",
+        "subtitle": "Parse raw lines into structured observability events",
+        "group": "ingest",
+        "status": "completed",
+        "audit": [
+          {
+            "action": "write",
+            "artifact_kind": "normalized_event",
+            "artifact_path": "events/normalized_events.json",
+            "timestamp": "2026-06-19T01:23:34.840785+00:00"
+          }
+        ],
+        "highlights": {
+          "artifacts_written": 1,
+          "event_count": 5,
+          "sample_events": [
+            {
+              "event_id": "evt-1",
+              "timestamp": "2023-01-27T18:28:08.129781+00:00",
+              "service": "system:node:k8s-node-1-perfspec",
+              "response_code": 403,
+              "message": "/api/v1/namespaces/kube-flannel/configmaps?watch=true"
+            },
+            {
+              "event_id": "evt-2",
+              "timestamp": "2023-01-27T18:28:08.131024+00:00",
+              "service": "system:node:k8s-node-1-perfspec",
+              "response_code": 403,
+              "message": "/api/v1/namespaces/kube-system/configmaps?watch=true"
+            },
+            {
+              "event_id": "evt-3",
+              "timestamp": "2023-01-27T18:28:08.130396+00:00",
+              "service": "system:node:k8s-node-1-perfspec",
+              "response_code": 403,
+              "message": "/api/v1/namespaces/kube-system/configmaps?watch=true"
+            }
+          ]
+        }
+      },
+      {
+        "order": 5,
+        "agent": "rca-engine",
+        "title": "Run RCA Core",
+        "subtitle": "Cluster failures, rank root-cause candidates, score confidence",
+        "group": "engine",
+        "status": "completed",
+        "audit": [
+          {
+            "action": "write",
+            "artifact_kind": "rca_engine_bundle",
+            "artifact_path": "engine/canonical_bundle.json",
+            "timestamp": "2026-06-19T01:23:34.844573+00:00"
+          }
+        ],
+        "highlights": {
+          "artifacts_written": 1,
+          "engine_context": {
+            "candidate_type": "authz",
+            "root_cause_title": "Authorization / RBAC failure",
+            "confidence": 0.99
+          },
+          "bundle_path": "engine/canonical_bundle.json"
+        }
+      },
+      {
+        "order": 6,
+        "agent": "hypothesis",
+        "title": "Generate hypotheses",
+        "subtitle": "Translate engine findings into ranked RCA hypotheses",
+        "group": "assist",
+        "status": "completed",
+        "audit": [
+          {
+            "action": "write",
+            "artifact_kind": "hypothesis",
+            "artifact_path": "hypotheses/H1.json",
+            "timestamp": "2026-06-19T01:23:34.845341+00:00"
+          }
+        ],
+        "highlights": {
+          "artifacts_written": 1,
+          "hypothesis_count": 1,
+          "top_hypothesis": {
+            "schema_version": "1.0.0",
+            "job_id": "job-588ab3f60975",
+            "artifact_id": "hyp-0880464c4ae0",
+            "created_at": "2026-06-19T01:23:34.844955Z",
+            "hypothesis_id": "H1",
+            "incident_id": "I1",
+            "title": "Authorization / RBAC failure",
+            "description": "Repeated authorization failures were detected. The earliest pattern is watch configmaps with 4xx. The failure affects 5 actor(s), including 7 control-plane pattern(s).",
+            "status": "supported",
+            "confidence": 0.99,
+            "related_pattern_ids": [
+              "P224",
+              "P226",
+              "P44",
+              "P225",
+              "P215",
+              "P40",
+              "P204"
+            ],
+            "proposer": "semantic-rca-adapter"
+          }
+        }
+      },
+      {
+        "order": 7,
+        "agent": "evidence",
+        "title": "Package evidence",
+        "subtitle": "Link patterns and events to each hypothesis",
+        "group": "assist",
+        "status": "completed",
+        "audit": [
+          {
+            "action": "write",
+            "artifact_kind": "evidence_bundle",
+            "artifact_path": "evidence/evidence_bundle.json",
+            "timestamp": "2026-06-19T01:23:34.846296+00:00"
+          }
+        ],
+        "highlights": {
+          "artifacts_written": 1,
+          "item_count": 7,
+          "hypothesis_ids": [
+            "H1"
+          ]
+        }
+      },
+      {
+        "order": 8,
+        "agent": "remediation",
+        "title": "Propose fixes",
+        "subtitle": "Draft observe-only and human-approved remediation actions",
+        "group": "assist",
+        "status": "completed",
+        "audit": [
+          {
+            "action": "write",
+            "artifact_kind": "remediation_plan",
+            "artifact_path": "remediation/remediation_plan.json",
+            "timestamp": "2026-06-19T01:23:34.846899+00:00"
+          }
+        ],
+        "highlights": {
+          "artifacts_written": 1,
+          "action_count": 2,
+          "actions_preview": [
+            {
+              "action_id": "A1",
+              "title": "Correlate ranked cluster with service owner logs",
+              "description": "Escalate to owning team with engine evidence bundle attached.",
+              "priority": 2,
+              "action_class": "observe_only",
+              "rollback_steps": [],
+              "metadata": {}
+            },
+            {
+              "action_id": "A9",
+              "title": "Open incident ticket with RCA evidence",
+              "description": "Attach detailed engine report and hypothesis confidence to tracker.",
+              "priority": 3,
+              "action_class": "draft",
+              "rollback_steps": [],
+              "metadata": {}
+            }
+          ]
+        }
+      },
+      {
+        "order": 9,
+        "agent": "report",
+        "title": "Publish report",
+        "subtitle": "Incident summary, reasoning, and customer-ready markdown",
+        "group": "deliver",
+        "status": "completed",
+        "audit": [
+          {
+            "action": "write",
+            "artifact_kind": "incident_report",
+            "artifact_path": "reports/incident_report.json",
+            "timestamp": "2026-06-19T01:23:34.847515+00:00"
+          }
+        ],
+        "highlights": {
+          "artifacts_written": 1,
+          "title": "Authorization / RBAC failure",
+          "summary": "Repeated authorization failures were detected. The earliest pattern is watch configmaps with 4xx. The failure affects 5 actor(s), including 7 control-plane pattern(s).",
+          "root_cause_hypothesis_id": "H1"
+        }
+      }
+    ],
+    "report_preview": {
+      "summary_markdown": "# Authorization / RBAC failure\n\n## Summary\nRepeated authorization failures were detected. The earliest pattern is watch configmaps with 4xx. The failure affects 5 actor(s), including 7 control-plane pattern(s).\n\n## Timeline\nIncident I1: Repeated authorization failures were detected. The earliest pattern is watch configmaps with 4xx. The failure affects 5 actor(s), including 7 control-plane pattern(s). (confidence 0.99)\n\n## Top hypotheses\n- Authorization / RBAC failure (0.99)\n\n## Evidence\nPatterns: P224, P226, P44, P225, P215, P40, P204\n\n## Root cause\nPrimary hypothesis: `H1`\n",
+      "detailed_markdown": null
+    },
+    "artifact_index": {
+      "incident_boundary": "boundary/incident_boundary.json",
+      "schema_drift_report": "drift/schema_drift_report.json",
+      "schema_evolution": "drift/schema_evolution.json",
+      "normalized_events": "events/normalized_events.json",
+      "hypothesis:H1": "hypotheses/H1.json",
+      "evidence_bundle": "evidence/evidence_bundle.json",
+      "remediation_plan": "remediation/remediation_plan.json",
+      "incident_report": "reports/incident_report.json"
+    }
+  },
+  "assist_summary": {
+    "job_id": "job-588ab3f60975",
+    "incident_id": "I1",
+    "product_tier": "rca_assist",
+    "engine_context": {
+      "candidate_type": "authz",
+      "root_cause_title": "Authorization / RBAC failure",
+      "confidence": 0.99
+    },
+    "reasoning": {
+      "hypotheses": [
+        {
+          "schema_version": "1.0.0",
+          "job_id": "job-588ab3f60975",
+          "artifact_id": "hyp-0880464c4ae0",
+          "created_at": "2026-06-19T01:23:34.844955Z",
+          "hypothesis_id": "H1",
+          "incident_id": "I1",
+          "title": "Authorization / RBAC failure",
+          "description": "Repeated authorization failures were detected. The earliest pattern is watch configmaps with 4xx. The failure affects 5 actor(s), including 7 control-plane pattern(s).",
+          "status": "supported",
+          "confidence": 0.99,
+          "related_pattern_ids": [
+            "P224",
+            "P226",
+            "P44",
+            "P225",
+            "P215",
+            "P40",
+            "P204"
+          ],
+          "proposer": "semantic-rca-adapter"
+        }
+      ],
+      "evidence": {
+        "schema_version": "1.0.0",
+        "job_id": "job-588ab3f60975",
+        "artifact_id": "evidence-1f20d6d492f0",
+        "created_at": "2026-06-19T01:23:34.845910Z",
+        "incident_id": "I1",
+        "hypothesis_ids": [
+          "H1"
+        ],
+        "items": [
+          {
+            "item_id": "ev-P224",
+            "kind": "pattern",
+            "ref_id": "P224",
+            "summary": "Supporting pattern P224",
+            "weight": 1.0,
+            "metadata": {}
+          },
+          {
+            "item_id": "ev-P226",
+            "kind": "pattern",
+            "ref_id": "P226",
+            "summary": "Supporting pattern P226",
+            "weight": 1.0,
+            "metadata": {}
+          },
+          {
+            "item_id": "ev-P44",
+            "kind": "pattern",
+            "ref_id": "P44",
+            "summary": "Supporting pattern P44",
+            "weight": 1.0,
+            "metadata": {}
+          },
+          {
+            "item_id": "ev-P225",
+            "kind": "pattern",
+            "ref_id": "P225",
+            "summary": "Supporting pattern P225",
+            "weight": 1.0,
+            "metadata": {}
+          },
+          {
+            "item_id": "ev-P215",
+            "kind": "pattern",
+            "ref_id": "P215",
+            "summary": "Supporting pattern P215",
+            "weight": 1.0,
+            "metadata": {}
+          },
+          {
+            "item_id": "ev-P40",
+            "kind": "pattern",
+            "ref_id": "P40",
+            "summary": "Supporting pattern P40",
+            "weight": 1.0,
+            "metadata": {}
+          },
+          {
+            "item_id": "ev-P204",
+            "kind": "pattern",
+            "ref_id": "P204",
+            "summary": "Supporting pattern P204",
+            "weight": 1.0,
+            "metadata": {}
+          }
+        ],
+        "metadata": {}
+      },
+      "reasoning_chain": [
+        {
+          "step_id": "engine-root-cause",
+          "agent": "rca-engine",
+          "label": "RCA Core ranked root cause",
+          "summary": "Authorization / RBAC failure (authz) \u2014 HTTP ? via unknown",
+          "confidence": 0.99
+        },
+        {
+          "step_id": "hypothesis-H1",
+          "agent": "hypothesis",
+          "label": "Hypothesis H1: supported",
+          "summary": "Repeated authorization failures were detected. The earliest pattern is watch configmaps with 4xx. The failure affects 5 actor(s), including 7 control-plane pattern(s).",
+          "confidence": 0.99,
+          "related_pattern_ids": [
+            "P224",
+            "P226",
+            "P44",
+            "P225",
+            "P215",
+            "P40",
+            "P204"
+          ]
+        },
+        {
+          "step_id": "evidence-bundle",
+          "agent": "evidence",
+          "label": "Evidence linked to hypotheses",
+          "summary": "7 evidence items support H1",
+          "top_items": [
+            {
+              "item_id": "ev-P224",
+              "kind": "pattern",
+              "ref_id": "P224",
+              "summary": "Supporting pattern P224",
+              "weight": 1.0,
+              "metadata": {}
+            },
+            {
+              "item_id": "ev-P226",
+              "kind": "pattern",
+              "ref_id": "P226",
+              "summary": "Supporting pattern P226",
+              "weight": 1.0,
+              "metadata": {}
+            },
+            {
+              "item_id": "ev-P44",
+              "kind": "pattern",
+              "ref_id": "P44",
+              "summary": "Supporting pattern P44",
+              "weight": 1.0,
+              "metadata": {}
+            },
+            {
+              "item_id": "ev-P225",
+              "kind": "pattern",
+              "ref_id": "P225",
+              "summary": "Supporting pattern P225",
+              "weight": 1.0,
+              "metadata": {}
+            },
+            {
+              "item_id": "ev-P215",
+              "kind": "pattern",
+              "ref_id": "P215",
+              "summary": "Supporting pattern P215",
+              "weight": 1.0,
+              "metadata": {}
+            }
+          ]
+        },
+        {
+          "step_id": "remediation-plan",
+          "agent": "remediation",
+          "label": "Recommended actions",
+          "summary": "2 remediation steps drafted (observe-only and human-approved tiers)",
+          "actions": [
+            {
+              "action_id": "A1",
+              "title": "Correlate ranked cluster with service owner logs",
+              "description": "Escalate to owning team with engine evidence bundle attached.",
+              "priority": 2,
+              "action_class": "observe_only",
+              "rollback_steps": [],
+              "metadata": {}
+            },
+            {
+              "action_id": "A9",
+              "title": "Open incident ticket with RCA evidence",
+              "description": "Attach detailed engine report and hypothesis confidence to tracker.",
+              "priority": 3,
+              "action_class": "draft",
+              "rollback_steps": [],
+              "metadata": {}
+            }
+          ]
+        }
+      ]
+    },
+    "remediation": {
+      "actions": [
+        {
+          "action_id": "A1",
+          "title": "Correlate ranked cluster with service owner logs",
+          "description": "Escalate to owning team with engine evidence bundle attached.",
+          "priority": 2,
+          "action_class": "observe_only",
+          "rollback_steps": [],
+          "metadata": {}
+        },
+        {
+          "action_id": "A9",
+          "title": "Open incident ticket with RCA evidence",
+          "description": "Attach detailed engine report and hypothesis confidence to tracker.",
+          "priority": 3,
+          "action_class": "draft",
+          "rollback_steps": [],
+          "metadata": {}
+        }
+      ],
+      "metadata": {}
+    },
+    "report": {
+      "schema_version": "1.0.0",
+      "job_id": "job-588ab3f60975",
+      "artifact_id": "report-f92329c05c72",
+      "created_at": "2026-06-19T01:23:34.847209Z",
+      "incident_id": "I1",
+      "title": "Authorization / RBAC failure",
+      "summary": "Repeated authorization failures were detected. The earliest pattern is watch configmaps with 4xx. The failure affects 5 actor(s), including 7 control-plane pattern(s).",
+      "root_cause_hypothesis_id": "H1",
+      "sections": [
+        {
+          "heading": "Timeline",
+          "body": "Incident I1: Repeated authorization failures were detected. The earliest pattern is watch configmaps with 4xx. The failure affects 5 actor(s), including 7 control-plane pattern(s). (confidence 0.99)",
+          "metadata": {}
+        },
+        {
+          "heading": "Top hypotheses",
+          "body": "- Authorization / RBAC failure (0.99)",
+          "metadata": {}
+        },
+        {
+          "heading": "Evidence",
+          "body": "Patterns: P224, P226, P44, P225, P215, P40, P204",
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "candidate_type": "authz"
+      }
+    },
+    "audit_highlights": [
+      {
+        "agent": "hypothesis",
+        "writes": [
+          {
+            "action": "write",
+            "artifact_kind": "hypothesis",
+            "artifact_path": "hypotheses/H1.json",
+            "timestamp": "2026-06-19T01:23:34.845341+00:00"
+          }
+        ]
+      },
+      {
+        "agent": "evidence",
+        "writes": [
+          {
+            "action": "write",
+            "artifact_kind": "evidence_bundle",
+            "artifact_path": "evidence/evidence_bundle.json",
+            "timestamp": "2026-06-19T01:23:34.846296+00:00"
+          }
+        ]
+      },
+      {
+        "agent": "remediation",
+        "writes": [
+          {
+            "action": "write",
+            "artifact_kind": "remediation_plan",
+            "artifact_path": "remediation/remediation_plan.json",
+            "timestamp": "2026-06-19T01:23:34.846899+00:00"
+          }
+        ]
+      },
+      {
+        "agent": "report",
+        "writes": [
+          {
+            "action": "write",
+            "artifact_kind": "incident_report",
+            "artifact_path": "reports/incident_report.json",
+            "timestamp": "2026-06-19T01:23:34.847515+00:00"
+          }
+        ]
+      }
+    ]
+  }
+}

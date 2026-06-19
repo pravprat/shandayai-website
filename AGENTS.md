@@ -33,6 +33,8 @@ git commit -m "Clear descriptive message"
 git push origin main
 ```
 
+**Co-author policy:** Cursor must not appear as product owner. Run `./scripts/install-git-hooks.sh` once per clone; the hook replaces `Co-authored-by: Cursor <cursoragent@cursor.com>` with `Co-authored-by: ShandayAI Agent <shandayaiagent@shandayai.com>` on agent commits.
+
 Cloudflare Pages deploys from **`main`**. Unpushed commits or commits on orphan branches will **not** appear on shandayai.com.
 
 ## Site structure (current)

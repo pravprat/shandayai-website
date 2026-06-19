@@ -7,6 +7,7 @@ import { DeploymentOptionsVisual } from "../components/platforms/DeploymentOptio
 import { DifferentiationVisual } from "../components/platforms/DifferentiationVisual";
 import { HowItWorksFlow } from "../components/platforms/HowItWorksFlow";
 import { InvestigationDeliverables } from "../components/platforms/InvestigationDeliverables";
+import { PlatformDemosSection } from "../components/platforms/PlatformDemosSection";
 import { PlatformProofStrip } from "../components/platforms/PlatformProofStrip";
 import { ProductTierSection } from "../components/platforms/ProductTierSection";
 import { SampleInvestigationReport } from "../components/platforms/SampleInvestigationReport";
@@ -87,6 +88,8 @@ export default function PlatformsPage() {
         </section>
 
         <PlatformProofStrip />
+
+        <PlatformDemosSection />
 
         {/* Product tiers */}
         <section className="border-b border-white/10">

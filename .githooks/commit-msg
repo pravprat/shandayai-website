@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# Replace Cursor co-author with ShandayAI Agent (product attribution).
+set -euo pipefail
+
+MSG_FILE="${1:?}"
+SHANDAYAI="Co-authored-by: ShandayAI Agent <shandayaiagent@shandayai.com>"
+
+[[ -f "$MSG_FILE" ]] || exit 0
+
+python3 - "$MSG_FILE" "$SHANDAYAI" << 'PY'
+import re
+import sys
+from pathlib import Path
+
+path = Path(sys.argv[1])
+shandayai = sys.argv[2]
+text = path.read_text(encoding="utf-8")
+had_cursor = bool(
+    re.search(r"^Co-authored-by:.*cursoragent@cursor\.com", text, re.I | re.M)
+    or re.search(r"^Co-authored-by: Cursor\b", text, re.I | re.M)
+)
+text = re.sub(r"^Co-authored-by:.*cursoragent@cursor\.com.*\n?", "", text, flags=re.I | re.M)
+text = re.sub(r"^Co-authored-by: Cursor\b.*\n?", "", text, flags=re.I | re.M)
+text = text.rstrip("\n")
+if had_cursor and shandayai not in text:
+    text = text + "\n\n" + shandayai + "\n"
+else:
+    text = text + "\n"
+path.write_text(text, encoding="utf-8")
+PY
