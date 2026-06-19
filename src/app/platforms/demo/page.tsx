@@ -12,10 +12,19 @@ export const metadata: Metadata = {
 
 const demos = [
   {
+    href: "/platforms/demo/play/",
+    title: "Play full demo",
+    description:
+      "Auto-play pipeline and RCA Assist on one reference incident. Best starting point.",
+    icon: FileText,
+    badge: "Recommended",
+    primary: true,
+  },
+  {
     href: "/platforms/demo/pipeline/",
     title: "Raw logs to RCA report",
     description:
-      "Step through ingest, normalization, RCA Core, and final incident report on Kubernetes audit logs.",
+      "Focused view: ingest, normalization, RCA Core, and final incident report.",
     icon: FileText,
     badge: "RCA Core + pipeline",
   },
@@ -23,7 +32,7 @@ const demos = [
     href: "/platforms/demo/rca-assist/",
     title: "RCA Assist reasoning and fixes",
     description:
-      "Follow the reasoning chain from root-cause ranking to hypotheses, evidence, and recommended actions.",
+      "Focused view: agent orchestration, evidence chain, and recommended actions.",
     icon: Sparkles,
     badge: "RCA Assist",
   },
@@ -47,12 +56,16 @@ export default function DemoIndexPage() {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
+        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {demos.map((demo) => (
             <Link
               key={demo.href}
               href={demo.href}
-              className="group rounded-[1.5rem] border border-white/10 bg-white/[0.03] p-6 transition hover:border-cyan-400/30 hover:bg-cyan-400/5"
+              className={`group rounded-[1.5rem] border p-6 transition ${
+                "primary" in demo && demo.primary
+                  ? "border-cyan-400/40 bg-cyan-400/10 hover:border-cyan-300/60"
+                  : "border-white/10 bg-white/[0.03] hover:border-cyan-400/30 hover:bg-cyan-400/5"
+              }`}
             >
               <div className="flex items-start justify-between gap-4">
                 <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-cyan-300/10 text-cyan-300 ring-1 ring-cyan-300/20">

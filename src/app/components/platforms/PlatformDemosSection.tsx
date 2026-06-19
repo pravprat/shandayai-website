@@ -19,11 +19,11 @@ export function PlatformDemosSection() {
             </p>
           </div>
           <Link
-            href="/platforms/demo/"
+            href="/platforms/demo/play/"
             className="inline-flex shrink-0 items-center gap-2 rounded-2xl bg-cyan-300 px-6 py-3.5 font-semibold text-slate-950 hover:bg-cyan-200"
           >
             <PlayCircle className="h-5 w-5" />
-            Open demos
+            Play demo
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
@@ -32,15 +32,15 @@ export function PlatformDemosSection() {
             href="/platforms/demo/pipeline/"
             className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition hover:border-cyan-400/30"
           >
-            <p className="text-sm font-semibold text-white">Raw logs to RCA report</p>
-            <p className="mt-1 text-xs text-slate-400">9-step pipeline on k8s authz reference case</p>
+            <p className="text-sm font-semibold text-white">Pipeline only</p>
+            <p className="mt-1 text-xs text-slate-400">Raw logs to RCA report</p>
           </Link>
           <Link
             href="/platforms/demo/rca-assist/"
             className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition hover:border-amber-400/30"
           >
-            <p className="text-sm font-semibold text-white">RCA Assist reasoning and fixes</p>
-            <p className="mt-1 text-xs text-slate-400">Hypotheses, evidence, and draft actions</p>
+            <p className="text-sm font-semibold text-white">RCA Assist only</p>
+            <p className="mt-1 text-xs text-slate-400">Reasoning and recommended actions</p>
           </Link>
         </div>
       </div>

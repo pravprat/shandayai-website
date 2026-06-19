@@ -47,7 +47,27 @@ export function DemoShell({ title, subtitle, children }: DemoShellProps) {
   }
 
   useEffect(() => {
-    void run(false);
+    let cancelled = false;
+    (async () => {
+      try {
+        const snapshot = await loadDemoData();
+        if (!cancelled) {
+          setData(snapshot);
+          setLive(false);
+        }
+      } catch (e) {
+        if (!cancelled) {
+          setError(e instanceof Error ? e.message : "Failed to load demo");
+        }
+      } finally {
+        if (!cancelled) {
+          setLoading(false);
+        }
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   return (
