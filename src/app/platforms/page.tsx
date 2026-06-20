@@ -6,13 +6,17 @@ import PlatformPilotContact from "../components/PlatformPilotContact";
 import { DeploymentOptionsVisual } from "../components/platforms/DeploymentOptionsVisual";
 import { DifferentiationVisual } from "../components/platforms/DifferentiationVisual";
 import { HowItWorksFlow } from "../components/platforms/HowItWorksFlow";
+import { InteractiveDemosHub } from "../components/platforms/InteractiveDemosHub";
 import { InvestigationDeliverables } from "../components/platforms/InvestigationDeliverables";
-import { PlatformDemosSection } from "../components/platforms/PlatformDemosSection";
+import { PlatformProductSection } from "../components/platforms/PlatformProductSection";
 import { PlatformProofStrip } from "../components/platforms/PlatformProofStrip";
-import { VerifiedRcaPacketSection } from "../components/platforms/VerifiedRcaPacketSection";
-import { ProductTierSection } from "../components/platforms/ProductTierSection";
+import {
+  PlatformsHeroTree,
+  PlatformsTreeNav,
+} from "../components/platforms/PlatformsTreeNav";
 import { SampleInvestigationReport } from "../components/platforms/SampleInvestigationReport";
 import { EMAIL_PLATFORMS } from "../components/contact";
+import { platformTiers } from "@/lib/platform-sections";
 
 export const metadata: Metadata = {
   title: "ShandayAI Reliability Intelligence Platform",
@@ -33,8 +37,10 @@ export default function PlatformsPage() {
       <SiteHeader />
 
       <main>
-        {/* Hero */}
-        <section className="relative overflow-hidden border-b border-white/10">
+        <section
+          id="overview"
+          className="scroll-mt-24 relative overflow-hidden border-b border-white/10"
+        >
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(34,211,238,0.14),transparent_30%),radial-gradient(circle_at_20%_10%,rgba(139,92,246,0.10),transparent_28%)]" />
           <div className="relative mx-auto max-w-7xl px-6 py-16 lg:px-8 lg:py-24">
             <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
@@ -51,12 +57,11 @@ export default function PlatformsPage() {
                   Evidence-backed root cause analysis from incident logs
                 </p>
                 <p className="mt-3 text-base leading-7 text-slate-400">
-                  Ingest logs and incident data, rank likely root causes with supporting evidence,
-                  and produce reports your teams can review and act on. Start with a local container
-                  today; expand through design partner pilots as requirements grow.
+                  Start with RCA Core for local evaluation. Expand to RCA Assist and the full
+                  platform through design partner pilots as requirements grow.
                 </p>
 
-                <div className="mt-8 flex flex-wrap justify-center gap-2 lg:justify-start">
+                <div className="mt-6 flex flex-wrap justify-center gap-2 lg:justify-start">
                   {availabilityItems.map((item) => (
                     <span
                       key={item.label}
@@ -69,9 +74,11 @@ export default function PlatformsPage() {
                   ))}
                 </div>
 
+                <PlatformsHeroTree />
+
                 <a
                   href={`mailto:${EMAIL_PLATFORMS}?subject=${encodeURIComponent("Reliability Intelligence inquiry")}`}
-                  className="mt-10 inline-flex items-center gap-2 rounded-2xl bg-cyan-300 px-7 py-3.5 font-semibold text-slate-950 hover:bg-cyan-200"
+                  className="mt-8 inline-flex items-center gap-2 rounded-2xl bg-cyan-300 px-7 py-3.5 font-semibold text-slate-950 hover:bg-cyan-200"
                 >
                   <Mail className="h-5 w-5" />
                   Discuss Your Use Case
@@ -90,68 +97,72 @@ export default function PlatformsPage() {
 
         <PlatformProofStrip />
 
-        <VerifiedRcaPacketSection />
-
-        <PlatformDemosSection />
-
-        {/* Product tiers */}
-        <section className="border-b border-white/10">
-          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-            <ProductTierSection />
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="border-b border-white/10 py-4 lg:hidden">
+            <PlatformsHeroTree />
           </div>
-        </section>
-
-        {/* How it works */}
-        <section className="border-b border-white/10 bg-white/[0.02]">
-          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-            <div className="max-w-3xl">
-              <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">How it works</h2>
-              <p className="mt-4 text-slate-400">
-                Logs and incident data in. Evidence-backed findings and reports out. Optional
-                AI-assisted investigation on the Assist and Platform tiers.
-              </p>
+          <div className="grid gap-10 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-12">
+            <div className="hidden lg:block">
+              <PlatformsTreeNav />
             </div>
-            <div className="mt-10">
-              <HowItWorksFlow />
+
+            <div className="min-w-0">
+              {platformTiers.map((tier) => (
+                <PlatformProductSection key={tier.id} tier={tier} />
+              ))}
+
+              <InteractiveDemosHub />
+
+              <section
+                id="how-it-works"
+                className="scroll-mt-28 border-b border-white/10 bg-white/[0.02] py-16 lg:py-20"
+              >
+                <div className="max-w-3xl">
+                  <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">How it works</h2>
+                  <p className="mt-4 text-slate-400">
+                    Logs and incident data in. Evidence-backed findings and reports out. Optional
+                    AI-assisted investigation on the Assist and Platform tiers.
+                  </p>
+                </div>
+                <div className="mt-10">
+                  <HowItWorksFlow />
+                </div>
+              </section>
+
+              <section id="deliverables" className="scroll-mt-28 border-b border-white/10 py-16 lg:py-20">
+                <InvestigationDeliverables />
+              </section>
+
+              <section
+                id="deployment"
+                className="scroll-mt-28 border-b border-white/10 bg-white/[0.02] py-16 lg:py-20"
+              >
+                <div className="max-w-3xl">
+                  <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">Deployment</h2>
+                  <p className="mt-4 text-slate-400">
+                    Start with a local container. Move to private enterprise infrastructure when
+                    security, data locality, and governance requirements require it.
+                  </p>
+                </div>
+                <div className="mt-10">
+                  <DeploymentOptionsVisual />
+                </div>
+              </section>
+
+              <section className="border-b border-white/10 py-16 lg:py-20">
+                <DifferentiationVisual />
+              </section>
             </div>
           </div>
-        </section>
+        </div>
 
-        {/* Deliverables */}
-        <section className="border-b border-white/10">
-          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-            <InvestigationDeliverables />
-          </div>
-        </section>
-
-        {/* Deployment */}
-        <section className="border-b border-white/10 bg-white/[0.02]">
-          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-            <div className="max-w-3xl">
-              <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">Deployment</h2>
-              <p className="mt-4 text-slate-400">
-                Start with a local container. Move to private enterprise infrastructure when security,
-                data locality, and governance requirements require it.
-              </p>
-            </div>
-            <div className="mt-10">
-              <DeploymentOptionsVisual />
-            </div>
-          </div>
-        </section>
-
-        {/* Differentiation */}
-        <section className="border-b border-white/10">
-          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-            <DifferentiationVisual />
-          </div>
-        </section>
-
-        <PlatformPilotContact
-          headline="Start with RCA Core or join a design partner pilot."
-          body="RCA Core is available for local evaluation today. RCA Assist and the enterprise platform are available through scoped design partner engagements."
-          ctaLabel="Discuss Your Use Case"
-        />
+        <div id="contact" className="scroll-mt-28">
+          <PlatformPilotContact
+            headline="Start with RCA Core or join a design partner pilot."
+            body="RCA Core is available for local evaluation today. RCA Assist and the enterprise platform are available through scoped design partner engagements."
+            ctaLabel="Discuss Your Use Case"
+          />
+        </div>
       </main>
 
       <SiteFooter />

@@ -61,14 +61,18 @@ Customers start at the tier that matches their maturity. Each tier builds on the
 
 ## Page structure (do not duplicate)
 
-1. Hero — platform name + purpose + evidence-backed RCA + sample report + availability + CTA
-2. Proof strip — why teams evaluate (honest, no fake logos)
-3. Product tiers — one section only; each card shows today vs future releases
-4. How it works — one flow diagram
-5. Standard deliverables — compact list
-6. Deployment — today vs roadmap labels
-7. Fits your stack — short differentiation
-8. Contact
+1. **Hero** — platform name, purpose, evidence-backed RCA, availability pills, product tree pills (RCA Core / RCA Assist / Platform / Interactive demos), sample report, CTA
+2. **Proof strip** — why teams evaluate (honest, no fake logos)
+3. **Sidebar tree nav** (desktop) + **mobile product pills** — jump to Products, Interactive demos, How it works, Deliverables, Deployment, Contact
+4. **Product sections** — one section per tier (`#rca-core`, `#rca-assist`, `#platform`); today vs future releases; link to tier demos
+5. **Interactive demos hub** — single section (`#interactive-demos`) with sub-groups per tier (`#demos-rca-core`, `#demos-rca-assist`, `#demos-platform`); verified RCA packet preview embedded under RCA Core
+6. **How it works** — one flow diagram
+7. **Standard deliverables** — compact list
+8. **Deployment** — today vs roadmap labels
+9. **Fits your stack** — short differentiation
+10. **Contact**
+
+Shared config: `src/lib/platform-sections.ts` (tiers, nav tree, demo cards). Demo index at `/platforms/demo/` mirrors tier grouping.
 
 ## Copy rules
 
