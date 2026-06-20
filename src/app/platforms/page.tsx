@@ -9,6 +9,7 @@ import { HowItWorksFlow } from "../components/platforms/HowItWorksFlow";
 import { InvestigationDeliverables } from "../components/platforms/InvestigationDeliverables";
 import { PlatformDemosSection } from "../components/platforms/PlatformDemosSection";
 import { PlatformProofStrip } from "../components/platforms/PlatformProofStrip";
+import { VerifiedRcaPacketSection } from "../components/platforms/VerifiedRcaPacketSection";
 import { ProductTierSection } from "../components/platforms/ProductTierSection";
 import { SampleInvestigationReport } from "../components/platforms/SampleInvestigationReport";
 import { EMAIL_PLATFORMS } from "../components/contact";
@@ -88,6 +89,8 @@ export default function PlatformsPage() {
         </section>
 
         <PlatformProofStrip />
+
+        <VerifiedRcaPacketSection />
 
         <PlatformDemosSection />
 

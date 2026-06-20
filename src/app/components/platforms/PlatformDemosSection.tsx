@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, PlayCircle } from "lucide-react";
+import { ArrowRight, BadgeCheck, FileText, PlayCircle, Sparkles } from "lucide-react";
 
 export function PlatformDemosSection() {
   return (
@@ -27,7 +27,19 @@ export function PlatformDemosSection() {
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
-        <div className="mt-8 grid gap-4 sm:grid-cols-2">
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <Link
+            href="/platforms/demo/verified-rca-packet/"
+            className="rounded-2xl border border-cyan-400/30 bg-cyan-400/5 p-5 transition hover:border-cyan-300/50"
+          >
+            <div className="flex items-center gap-2">
+              <BadgeCheck className="h-4 w-4 text-cyan-300" />
+              <p className="text-sm font-semibold text-white">Verified RCA packet</p>
+            </div>
+            <p className="mt-1 text-xs text-slate-400">
+              OSIP ↔ SCRCA run · event-level grounding
+            </p>
+          </Link>
           <Link
             href="/platforms/demo/pipeline/"
             className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition hover:border-cyan-400/30"

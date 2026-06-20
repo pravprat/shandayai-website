@@ -1,0 +1,100 @@
+{
+  "meta": {
+    "title": "OSIP ↔ SCRCA verified local run",
+    "fixture": "Kubernetes audit CSV — gatekeeper 404 reference incident",
+    "job_id": "phase1_6_demo",
+    "run_date": "2026-06-20",
+    "source": "Phase 1.6 CLI run (osip-control-plane)"
+  },
+  "metrics": {
+    "primary_finding": "C1",
+    "evidence_count": 3,
+    "content_unit_count": 203,
+    "citation_type": "event-level",
+    "human_review": "required",
+    "replay_status": "reconstructed",
+    "artifact_count": 209,
+    "audit_events": 3,
+    "line_level_citations": 0,
+    "event_level_citations": 3
+  },
+  "invocation": {
+    "engine": "semantic-rca v2",
+    "exit_code": 0,
+    "duration_seconds": 10.76,
+    "events_ingested": 1576,
+    "pipeline_profile": "v2"
+  },
+  "primary_finding": {
+    "incident_id": "I1",
+    "cluster_id": "C1",
+    "actor": "system:serviceaccount:gatekeeper-system:gatekeeper-admin",
+    "component": "gatekeeper",
+    "resource": "assign",
+    "response_code": 404,
+    "summary": "At-fault service gatekeeper-admin within causal cluster C1 — HTTP 404 on assign resource."
+  },
+  "confidence": {
+    "sufficiency_score": 0.634572,
+    "claim_confidence": 0.683276
+  },
+  "evidence_items": [
+    {
+      "id": "ev_1",
+      "locator_type": "event",
+      "resource": "assign",
+      "response_code": 404,
+      "excerpt": "list assign — HTTP 404 (earliest failure in grounded sample)"
+    },
+    {
+      "id": "ev_2",
+      "locator_type": "event",
+      "resource": "constrainttemplates",
+      "response_code": 404,
+      "excerpt": "list constrainttemplates — HTTP 404 (supporting failure)"
+    },
+    {
+      "id": "ev_3",
+      "locator_type": "event",
+      "resource": "providers",
+      "response_code": 404,
+      "excerpt": "list providers — HTTP 404 (supporting failure)"
+    }
+  ],
+  "grounding": {
+    "total_scrca_evidence_items": 3,
+    "mapped_to_content_unit_count": 3,
+    "mapped_to_source_manifest_count": 3,
+    "unresolved_citation_count": 0,
+    "known_gap": "Kubernetes audit CSV ingest does not expose source line numbers; citations are event-level only."
+  },
+  "replay": {
+    "reconstructed": true,
+    "lineage_valid": true,
+    "hashes_valid": true,
+    "output_packet_present": true
+  },
+  "audit_timeline": [
+    {
+      "event_type": "source_registered",
+      "actor": "workflow",
+      "summary": "Input log registered as SourceManifest with content hash"
+    },
+    {
+      "event_type": "external_engine_invocation_started",
+      "actor": "adapter:scrca_engine",
+      "summary": "SCRCA subprocess started; raw output preservation enabled"
+    },
+    {
+      "event_type": "external_engine_invocation_completed",
+      "actor": "adapter:scrca_engine",
+      "summary": "Artifacts persisted; evidence grounding summary and RCA packet generated"
+    }
+  ],
+  "output_packet": {
+    "title": "Reliability RCA — incident I1",
+    "output_type": "reliability_rca_packet",
+    "human_review_required": true,
+    "primary_cluster_id": "C1"
+  }
+}

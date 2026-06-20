@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, FileText, Sparkles } from "lucide-react";
+import { ArrowRight, BadgeCheck, FileText, Sparkles } from "lucide-react";
 import SiteHeader from "../../components/SiteHeader";
 import SiteFooter from "../../components/SiteFooter";
 
@@ -12,13 +12,21 @@ export const metadata: Metadata = {
 
 const demos = [
   {
+    href: "/platforms/demo/verified-rca-packet/",
+    title: "Verified RCA packet flow",
+    description:
+      "Sanitized Phase 1.6 run: OSIP control plane, SCRCA engine, event-level grounding, audit and replay.",
+    icon: BadgeCheck,
+    badge: "Verified · OSIP + SCRCA",
+    primary: true,
+  },
+  {
     href: "/platforms/demo/play/",
     title: "Play full demo",
     description:
-      "Auto-play pipeline and RCA Assist on one reference incident. Best starting point.",
+      "Auto-play pipeline and RCA Assist on one reference incident.",
     icon: FileText,
-    badge: "Recommended",
-    primary: true,
+    badge: "Interactive",
   },
   {
     href: "/platforms/demo/pipeline/",
